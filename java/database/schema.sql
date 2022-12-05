@@ -19,11 +19,11 @@ sauce varchar(50),
 constraint pk_pizza_id primary key (pizza_id)
 );
 
-create table order (
+create table orders (
 order_id serial,
-order_time DATETIME,
+order_time timestamp,
 order_status varchar(50) not null,
-price double not null,
+price decimal not null,
 isDelivery Boolean,
 
 constraint pk_order_id primary key (order_id)
@@ -32,7 +32,7 @@ constraint pk_order_id primary key (order_id)
 create table topping (
 name varchar(50) not null,
 topping_id serial,
-price double not null,
+price decimal not null,
 isPremium boolean,
 isAvailable boolean,
 
@@ -43,16 +43,16 @@ create table order_pizza (
 pizza_id int not null,
 order_id int not null,
 
-constraint fk_pizza foreign key references pizza(pizza_id),
-constraint fk_order foreign key references order(order_id),
+constraint fk_pizza foreign key (pizza_id) references pizza(pizza_id),
+constraint fk_order foreign key (order_id) references orders(order_id),
 constraint pk_pizza_order primary key (pizza_id,order_id)
 );
 
 create table pizza_toppings (
 pizza_id int,
 topping_id int,
-constraint fk_pizza_top foreign key references pizza(pizza_id),
-constraint fk_topping_piz foreign key references topping(topping_id),
+constraint fk_pizza_top foreign key (pizza_id) references pizza(pizza_id),
+constraint fk_topping_piz foreign key (topping_id) references topping(topping_id),
 constraint pk_topping_pizza primary key (pizza_id,topping_id)
 );
 
@@ -62,7 +62,7 @@ order_id int,
 address varchar(100),
 credit_card varchar(16),
 CVV varchar(3),
-constraint fk_order foreign key references order(order_id)
+constraint fk_order foreign key (order_id) references orders(order_id)
 );
 
 COMMIT TRANSACTION;
