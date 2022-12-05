@@ -1,4 +1,4 @@
-package com.techelevator.classes;
+package com.techelevator.model;
 
 import com.techelevator.model.Toppings;
 
