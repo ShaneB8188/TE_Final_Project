@@ -1,5 +1,7 @@
 package com.techelevator.classes;
 
+import com.techelevator.model.Toppings;
+
 import java.util.ArrayList;
 
 public class Pizza {
