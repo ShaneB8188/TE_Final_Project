@@ -1,22 +1,16 @@
 package com.techelevator.model;
 
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Order {
+public class NewOrderDto {
     private int orderId;
     private LocalDateTime date;
     private BigDecimal price;
     private boolean isDelivery;
     private String orderStatus;
 
-
-    public Order() {
-
-    }
-
-    public Order(int orderId, LocalDateTime date, BigDecimal price, boolean isDelivery, String orderStatus) {
+    public NewOrderDto(int orderId, LocalDateTime date, BigDecimal price, boolean isDelivery, String orderStatus) {
         this.orderId = orderId;
         this.date = date;
         this.price = price;
