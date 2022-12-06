@@ -9,10 +9,12 @@
 </template>
 <script>
 import Home from '@/views/Home'
+import Menu from '@/views/Menu.vue'
 
 export default{
   components: 
   Home,
+  Menu,
 }
 
 </script>
