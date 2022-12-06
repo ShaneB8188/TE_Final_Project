@@ -9,17 +9,19 @@ public class Order {
     private LocalDateTime date;
     private BigDecimal price;
     private boolean isDelivery;
+    private String orderStatus;
 
 
     public Order() {
 
     }
 
-    public Order(int orderId, LocalDateTime date, BigDecimal price, boolean isDelivery) {
+    public Order(int orderId, LocalDateTime date, BigDecimal price, boolean isDelivery, String orderStatus) {
         this.orderId = orderId;
         this.date = date;
         this.price = price;
         this.isDelivery = isDelivery;
+        this.orderStatus = orderStatus;
     }
 
     public int getOrderId() {
@@ -52,5 +54,13 @@ public class Order {
 
     public void setDelivery(boolean delivery) {
         isDelivery = delivery;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

@@ -48,12 +48,19 @@ public class JdbcOrderDao implements OrderDao{
 
     @Override
     public Order insertOrder(NewOrderDto order) {
-        return null;
+        Integer orderId = 0;
+        Order newOrder = new Order();
+        String sql = "INSERT into orders (order_time, order_status, price, isDelivery) VALUES (CURRENT_TIMESTAMP,?,?,?) returning order_id;";
+        orderId = jdbcTemplate.queryForObject(sql, Integer.class, order.getOrderStatus(), order.getPrice(), order.isDelivery());
+        newOrder = getOrderById(orderId);
+        return newOrder;
     }
 
     @Override
     public Order updateOrderStatus(int orderId, OrderStatusUpdateDto updateDto) {
-        return null;
+        String sql = "UPDATE orders SET order_status = ? WHERE order_id = ?;";
+        jdbcTemplate.update(sql, updateDto.getOrderStatus(), orderId);
+        return getOrderById(orderId);
     }
 
     private Order mapRowtoOrder(SqlRowSet rowSet){
