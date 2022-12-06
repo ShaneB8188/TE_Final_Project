@@ -6,7 +6,7 @@ public interface PizzaDao {
 
     Pizza getPizzaById(int pizzaId);
 
-    boolean createPizza(String size, String crust, String sauce);
+    Pizza createPizza(String size, String crust, String sauce);
 
     Pizza getPizzaToppings(int pizzaId);
 }

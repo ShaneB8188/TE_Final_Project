@@ -39,11 +39,20 @@ public class JdbcToppingDao implements ToppingDao {
      * @return
      */
     @Override
-    public boolean createTopping(String name, double price, boolean isPremium) {
+    public Toppings createTopping(String name, double price, boolean isPremium) {
         String insertToppingSql = "INSERT into topping (name, price, isPremium, isAvailable) VALUES (?, ?, ?, ?) RETURNING topping_id";
         Integer newToppingId;
         newToppingId = jdbcTemplate.queryForObject(insertToppingSql, Integer.class, name, price, isPremium, true);
-        return newToppingId != null;
+        if ( newToppingId != null) {
+            String sql = "SELECT * FROM topping WHERE topping_id = ?";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newToppingId);
+            if (results.next()) {
+                return mapRowToToppings(results);
+            } else {
+                return null;
+            }
+        }
+        return null;
     }
 
 
