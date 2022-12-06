@@ -1,8 +1,10 @@
 package com.techelevator.model;
 
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Order {
     private int orderId;
@@ -10,18 +12,20 @@ public class Order {
     private BigDecimal price;
     private boolean isDelivery;
     private String orderStatus;
+    private ArrayList<Pizza> pizzaArrayList;
 
 
     public Order() {
 
     }
 
-    public Order(int orderId, LocalDateTime date, BigDecimal price, boolean isDelivery, String orderStatus) {
+    public Order(int orderId, LocalDateTime date, BigDecimal price, boolean isDelivery, String orderStatus, ArrayList<Pizza> pizzaArrayList) {
         this.orderId = orderId;
         this.date = date;
         this.price = price;
         this.isDelivery = isDelivery;
         this.orderStatus = orderStatus;
+        this.pizzaArrayList = pizzaArrayList;
     }
 
     public int getOrderId() {
@@ -62,5 +66,13 @@ public class Order {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public ArrayList<Pizza> getPizzaArrayList() {
+        return pizzaArrayList;
+    }
+
+    public void setPizzaArrayList(ArrayList<Pizza> pizzaArrayList) {
+        this.pizzaArrayList = pizzaArrayList;
     }
 }
