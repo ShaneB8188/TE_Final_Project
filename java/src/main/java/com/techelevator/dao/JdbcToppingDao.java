@@ -44,13 +44,7 @@ public class JdbcToppingDao implements ToppingDao {
         Integer newToppingId;
         newToppingId = jdbcTemplate.queryForObject(insertToppingSql, Integer.class, name, price, isPremium, true);
         if ( newToppingId != null) {
-            String sql = "SELECT * FROM topping WHERE topping_id = ?";
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newToppingId);
-            if (results.next()) {
-                return mapRowToToppings(results);
-            } else {
-                return null;
-            }
+           return getToppingById(newToppingId);
         }
         return null;
     }

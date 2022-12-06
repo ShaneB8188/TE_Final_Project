@@ -47,9 +47,7 @@ public class JdbcPizzaDao implements PizzaDao {
         newPizzaId = jdbcTemplate.queryForObject(insertToppingSql, Integer.class, size, crust, sauce);
         if (newPizzaId != null)
         {
-            String sql="SELECT * FROM pizza WHERE pizza_id = ?";
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newPizzaId);
-            return mapRowToPizza(results);
+           return getPizzaById(newPizzaId);
         }
         return null;
     }
