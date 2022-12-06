@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.classes.Order;
+import com.techelevator.model.Order;
 import com.techelevator.model.NewOrderDto;
 import com.techelevator.model.OrderStatusUpdateDto;
 

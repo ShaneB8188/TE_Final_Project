@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.classes.Order;
+import com.techelevator.model.Order;
 import com.techelevator.model.NewOrderDto;
 import com.techelevator.model.OrderStatusUpdateDto;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,6 +20,7 @@ public class JdbcOrderDao implements OrderDao{
         this.jdbcTemplate = jdbcTemplate;
         this.orderDao = orderDao;
     }
+
 
     @Override
     public List<Order> getAllOrders() {
