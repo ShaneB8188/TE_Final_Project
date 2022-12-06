@@ -6,5 +6,5 @@ public interface ToppingDao {
 
     Toppings getToppingById(int toppingId);
 
-    boolean createTopping(String name, double price, boolean isPremium);
+    Toppings createTopping(String name, double price, boolean isPremium);
 }

@@ -41,11 +41,15 @@ public class JdbcPizzaDao implements PizzaDao {
      * @return if the pizza has been created with a new id int
      */
     @Override
-    public boolean createPizza(String size, String crust, String sauce) {
+    public Pizza createPizza(String size, String crust, String sauce) {
         String insertToppingSql = "INSERT into pizza (pizza_size, crust, sauce) VALUES (?, ?, ?) RETURNING pizza_id";
         Integer newPizzaId;
         newPizzaId = jdbcTemplate.queryForObject(insertToppingSql, Integer.class, size, crust, sauce);
-        return newPizzaId != null;
+        if (newPizzaId != null)
+        {
+           return getPizzaById(newPizzaId);
+        }
+        return null;
     }
 
     /**
