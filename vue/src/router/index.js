@@ -57,9 +57,9 @@ const router = new Router({
       path:"/",
     name:"menu",
     component: Menu,
-    meta: {
-      requiresAuth: false
-    }
+      meta:{
+        requiresAuth: false
+      }
     }
     
 
