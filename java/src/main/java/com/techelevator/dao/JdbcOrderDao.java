@@ -10,15 +10,14 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class JdbcOrderDao implements OrderDao{
 
     private final JdbcTemplate jdbcTemplate;
-    private OrderDao orderDao;
 
-    public JdbcOrderDao(JdbcTemplate jdbcTemplate, OrderDao orderDao){
+    public JdbcOrderDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
-        this.orderDao = orderDao;
     }
 
 
