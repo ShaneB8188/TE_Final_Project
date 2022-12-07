@@ -1,21 +1,21 @@
 <template>
   <div>
-    <section>
       <home-banner />
-    </section>
-    <section>
-      <pizza-card/>
-    </section>
+      <pizza-card />
+      <create-pizza-footer/>
   </div>
 </template>
 
 <script>
-import HomeBanner from "../components/LandingPage/HomeBanner";
+import HomeBanner from "../components/HomeBanner";
+import CreatePizzaFooter from '../components/LandingPage/CreatePizzaFooter.vue';
 import PizzaCard from "../components/LandingPage/PizzaCards.vue";
 export default {
   components: {
     HomeBanner,
     PizzaCard,
+    CreatePizzaFooter,
+  
   },
 };
 </script>
