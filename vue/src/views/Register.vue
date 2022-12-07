@@ -1,4 +1,6 @@
+
 <template>
+
 <div class="content">
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
