@@ -3,7 +3,9 @@ package com.techelevator.dao;
 import com.techelevator.model.Order;
 import com.techelevator.model.NewOrderDto;
 import com.techelevator.model.OrderStatusUpdateDto;
+import com.techelevator.model.Pizza;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface OrderDao {
@@ -16,5 +18,7 @@ public interface OrderDao {
     Order updateOrderStatus(int orderId, OrderStatusUpdateDto updateDto);
 
 
+    Order insertPizzasIntoOrder(ArrayList<Pizza> pizzaArrayList, int orderId);
 
+    Order getOrderWithPizza(int orderId);
 }
