@@ -2,26 +2,46 @@
   <div>
     <div class="card" id="create-card">
       <header class="card-header">
-        <div class="card-header-title" id="create">Create Your Own</div>
+        <!-- implement real method later -->
+        <div class="card-header-title" id="create" @click="testPizza(Pizza)">
+          Create Your Own
+        </div>
+        <!-- implement real method later -->
       </header>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import OrderPizzaService from "@/services/OrderPizzaService";
+
+export default {
+  data() {
+    return {
+      Pizza: {
+        pizzaId: 1,
+        size: 'medium',
+        crust: 'normal',
+        sauce: 'red',
+        
+      }
+    };
+  },
+  methods: {
+    testPizza(Pizza) {
+      OrderPizzaService.addPizza(Pizza);
+    }
+  },
+};
 </script>
 
 <style>
-
-#create-card{
+#create-card {
   display: flex;
   justify-content: center;
-  
 }
-#create{
+#create {
   background-color: green;
   color: white;
-
 }
 </style>
