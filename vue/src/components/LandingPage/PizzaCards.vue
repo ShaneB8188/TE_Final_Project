@@ -4,6 +4,10 @@
       <header class="card-header">
         <p class="card-header-title">Meat Lovers Pizza</p>
       </header>
+          <figure class="image is-4by3">
+            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+          </figure>
+
       <div class="card-content">
         <div class="content">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -17,6 +21,9 @@
       <header class="card-header">
         <p class="card-header-title">Neopolitan</p>
       </header>
+        <figure class="image is-4by3">
+            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+        </figure>
       <div class="card-content">
         <div class="content">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -30,6 +37,9 @@
       <header class="card-header">
         <p class="card-header-title">Supreme</p>
       </header>
+      <figure class="image is-4by3">
+            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+      </figure>
       <div class="card-content">
         <div class="content">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -43,6 +53,9 @@
       <header class="card-header">
         <p class="card-header-title">Veggie</p>
       </header>
+      <figure class="image is-4by3">
+            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+      </figure>
       <div class="card-content">
         <div class="content">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -56,6 +69,9 @@
       <header class="card-header">
         <p class="card-header-title">Cheese</p> 
       </header>
+      <figure class="image is-4by3">
+            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+      </figure>
       <div class="card-content">
         <div class="content">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -69,6 +85,9 @@
       <header class="card-header">
         <p class="card-header-title">Pepperoni</p>
       </header>
+      <figure class="image is-4by3">
+            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+      </figure>
       <div class="card-content">
         <div class="content">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -94,62 +113,68 @@ export default {};
     grid-template-areas: "pepperoni supreme meat"
                             " veggie neopolitan cheese ";
 
-    grid-gap: 5px;
+    grid-gap: 10px;
 
 }
 #supreme{
 grid-area: supreme;
+background-color: #f3ebf6;
 
 }
 
 #pepperoni{
 grid-area: pepperoni;
+background-color: #f3ebf6;
 }
 
 #veggie{
 grid-area: veggie;
+background-color: #f3ebf6;
 }
 
 #neopolitan{
 grid-area: neopolitan;
+background-color: #f3ebf6;
 }
 
 #meat-lover{
 grid-area: meat;
+background-color: #f3ebf6;
 }
 #cheese{
 grid-area: cheese;
+background-color: #f3ebf6;
 }
 
 
 #supreme:hover{
  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.644);
+  background-color: rgba(252, 101, 101, 0.644);
 
 }
 
 #pepperoni:hover{
    cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.644);
+background-color: rgba(252, 101, 101, 0.644);
 }
 
 #veggie:hover{
    cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.644);
+background-color: rgba(252, 101, 101, 0.644);
 }
 
 #neopolitan:hover{
    cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.644);
+background-color: rgba(252, 101, 101, 0.644);
 }
 
 #meat-lover:hover{
    cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.644);
+background-color: rgba(252, 101, 101, 0.644);
 }
 #cheese:hover{
    cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.644);
+background-color: rgba(252, 101, 101, 0.644);
     
 }
 

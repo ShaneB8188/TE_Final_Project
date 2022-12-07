@@ -42,7 +42,7 @@ export default {
   justify-content: center;
 }
 #create {
-  background-color: green;
+  background: linear-gradient(to right, #27b055, #064d15);
   color: white;
 }
 </style>

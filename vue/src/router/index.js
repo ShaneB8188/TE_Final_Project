@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue';
 import Register from '../views/Register.vue';
 import store from '../store/index';
 import Menu from '../views/Menu.vue';
+import Checkout from '../views/Checkout.vue';
 Vue.use(Router)
 
 /**
@@ -54,14 +55,21 @@ const router = new Router({
       }
     },
     {
-      path:"/",
-    name:"menu",
-    component: Menu,
-      meta:{
+      path: "/",
+      name: "menu",
+      component: Menu,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/cart',
+      name: 'checkout',
+      component: Checkout,
+      meta: {
         requiresAuth: false
       }
     }
-    
 
   ]
 })
