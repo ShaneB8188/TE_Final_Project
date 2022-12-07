@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.JdbcToppingDao;
+import com.techelevator.dao.ToppingDao;
 import com.techelevator.model.Toppings;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 public class ToppingController {
-    private final JdbcToppingDao toppingDao;
+    private final ToppingDao toppingDao;
 
-    public ToppingController( JdbcToppingDao toppingDao) {
+    public ToppingController( ToppingDao toppingDao) {
         this.toppingDao=toppingDao;
     }
 

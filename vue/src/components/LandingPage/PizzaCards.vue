@@ -118,7 +118,7 @@ grid-area: neopolitan;
 grid-area: meat;
 }
 #cheese{
-    grid-area: cheese;
+grid-area: cheese;
 }
 
 

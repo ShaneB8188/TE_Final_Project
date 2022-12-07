@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.JdbcOrderDao;
+import com.techelevator.dao.OrderDao;
 import com.techelevator.model.NewOrderDto;
 import com.techelevator.model.Order;
 import com.techelevator.model.OrderStatusUpdateDto;
@@ -13,9 +14,9 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class OrderController {
-  private final JdbcOrderDao orderDao;
+  private final OrderDao orderDao;
 
-  public OrderController (JdbcOrderDao orderDao) {
+  public OrderController (OrderDao orderDao) {
       this.orderDao=orderDao;
 
   }
