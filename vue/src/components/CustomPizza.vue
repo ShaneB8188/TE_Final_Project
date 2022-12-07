@@ -12,7 +12,7 @@
     <label for="pizzaSizeExLarge">Extra Large</label>
     <br>
   
-    <label for="PizzaCrust"> Select a Crust Type</label>
+    <label for="PizzaCrust"> Select a crust type</label>
     <input id="pizzaCrustReg" type="radio" v-model="newPizza.crust" autocomplete="off" required value="Regular" >
     <label for="pizzaCrustReg">Regular</label>
     <input id="pizzaCrustThin" type="radio" v-model="newPizza.crust" autocomplete="off" required value="Thin">
@@ -21,6 +21,16 @@
     <label for="pizzaCrustDeep">Deep Dish</label>
     <br>
 
+    <label for="PizzaSauce"> Select which sauce you'd like</label>
+    <input id="pizzaSauceRed" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="Red" >
+    <label for="pizzaSauceRed">Red</label>
+    <input id="pizzaSauceWhite" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="White" >
+    <label for="pizzaSauceWhite">White</label>
+    <input id="pizzaSauceExRed" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="Extra Red" >
+    <label for="pizzaSauceExRed">Extra red</label>
+    <br>
+    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza(newPizza)"> Order </button>
+    <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
   </form>
 </template>
 
@@ -34,6 +44,10 @@ export default {
         size: "",
         crust: "",
         sauce: "",
+        topping: {
+          peppers: true,
+          
+        }
       },
     };
   },
@@ -41,6 +55,13 @@ export default {
     createNewPizza(Pizza) {
       OrderPizzaService.addPizza(Pizza);
     },
+    resetForm() {
+      this.newPizza = {
+        size: '',
+        crust: '',
+        sauce: '',
+      }
+    }
   },
 };
 </script>
