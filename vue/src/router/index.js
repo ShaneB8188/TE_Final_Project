@@ -55,7 +55,6 @@ const router = new Router({
       }
     },
     {
-<<<<<<< HEAD
       path: "/",
       name: "menu",
       component: Menu,
@@ -68,12 +67,6 @@ const router = new Router({
       name: 'checkout',
       component: Checkout,
       meta: {
-=======
-      path:"/",
-    name:"menu",
-    component: Menu,
-      meta:{
->>>>>>> d1e59a4ba8c621a5582e225bd6726b1acf535340
         requiresAuth: false
       }
     }
