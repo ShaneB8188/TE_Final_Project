@@ -22,7 +22,7 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
       meta: {
@@ -54,9 +54,12 @@ const router = new Router({
       }
     },
     {
-      path:"/menu",
+      path:"/",
     name:"menu",
-    component: Menu
+    component: Menu,
+      meta:{
+        requiresAuth: false
+      }
     }
     
 
