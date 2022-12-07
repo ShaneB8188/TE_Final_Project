@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue';
 import Register from '../views/Register.vue';
 import store from '../store/index';
 import Menu from '../views/Menu.vue';
+import CustomPizza from '../views/CustomPizza.vue';
 Vue.use(Router)
 
 /**
@@ -54,14 +55,22 @@ const router = new Router({
       }
     },
     {
-      path:"/",
-    name:"menu",
-    component: Menu,
-      meta:{
+      path: "/",
+      name: "menu",
+      component: Menu,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/customPizza",
+      name: "customPizza",
+      component: CustomPizza,
+      meta: {
         requiresAuth: false
       }
     }
-    
+
 
   ]
 })

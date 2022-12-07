@@ -2,37 +2,18 @@
   <div>
     <div class="card" id="create-card">
       <header class="card-header">
-        <!-- implement real method later -->
-        <div class="card-header-title" id="create" @click="testPizza(Pizza)">
-          Create Your Own
+        <div class="card-header-title" id="create">
+          <router-link v-bind:to="{ name: 'customPizza' }">
+            Create Your Own
+          </router-link>
         </div>
-        <!-- implement real method later -->
       </header>
     </div>
   </div>
 </template>
 
 <script>
-import OrderPizzaService from "@/services/OrderPizzaService";
-
-export default {
-  data() {
-    return {
-      Pizza: {
-        pizzaId: 1,
-        size: 'medium',
-        crust: 'normal',
-        sauce: 'red',
-        
-      }
-    };
-  },
-  methods: {
-    testPizza(Pizza) {
-      OrderPizzaService.addPizza(Pizza);
-    }
-  },
-};
+export default {};
 </script>
 
 <style>
