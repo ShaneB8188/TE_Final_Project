@@ -7,6 +7,7 @@ import Register from '../views/Register.vue';
 import store from '../store/index';
 import Menu from '../views/Menu.vue';
 import CustomPizza from '../views/CustomPizza.vue';
+import Checkout from '../views/Checkout.vue';
 Vue.use(Router)
 
 /**
@@ -27,7 +28,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -66,11 +67,16 @@ const router = new Router({
       path: "/customPizza",
       name: "customPizza",
       component: CustomPizza,
+
+    },
+    {
+      path: '/cart',
+      name: 'checkout',
+      component: Checkout,
       meta: {
         requiresAuth: false
       }
     }
-
 
   ]
 })

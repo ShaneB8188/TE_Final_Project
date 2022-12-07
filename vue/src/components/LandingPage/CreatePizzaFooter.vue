@@ -13,7 +13,27 @@
 </template>
 
 <script>
-export default {};
+import OrderPizzaService from "@/services/OrderPizzaService";
+
+export default {
+  data() {
+    return {
+      Pizza: {
+        pizzaId: 1,
+        size: 'medium',
+        crust: 'normal',
+        sauce: 'red',
+        
+      }, 
+      Toppings:{}
+    };
+  },
+  methods: {
+    createNewPizza(Pizza) {
+      OrderPizzaService.addPizza(Pizza);
+    }
+  },
+};
 </script>
 
 <style>
