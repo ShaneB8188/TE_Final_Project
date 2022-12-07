@@ -24,11 +24,12 @@ export default {
         crust: 'normal',
         sauce: 'red',
         
-      }
+      }, 
+      Toppings:{}
     };
   },
   methods: {
-    testPizza(Pizza) {
+    createNewPizza(Pizza) {
       OrderPizzaService.addPizza(Pizza);
     }
   },

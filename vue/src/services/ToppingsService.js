@@ -1,5 +1,20 @@
 import axios from "axios";
 
-getAllTopings(){
-    return axios.get('')
+export default {
+
+    getAllToppings() {
+        return axios.get('/toppings')
+    },
+
+    createToppings(topping) {
+        return axios.post('/toppings', topping)
+    },
+
+    getToppingsById(toppingId) {
+        return axios.get(`/toppings/${toppingId}`)
+    },
+
+
 }
+
+

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div id="home">Home</div>
-    <div id="employee-login">Employee Login</div>
+    <div id="employee-login" @click="">Employee Login</div>
     <div id="cart">Cart</div>
   </section>
 </template>
