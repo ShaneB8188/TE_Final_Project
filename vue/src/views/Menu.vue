@@ -1,19 +1,25 @@
 <template>
   <div>
-     <home-banner></home-banner>
-
+    <section>
+      <home-banner />
+    </section>
+    <section>
+      <pizza-card/>
+    </section>
   </div>
 </template>
 
 <script>
-import HomeBanner from '@/components/HomeBanner.vue'
-
+import HomeBanner from "../components/LandingPage/HomeBanner";
+import PizzaCard from "../components/LandingPage/PizzaCards.vue";
 export default {
-components:
-HomeBanner,
-}
+  components: {
+    HomeBanner,
+    PizzaCard,
+  },
+};
 </script>
 
-<style>
 
+<style>
 </style>

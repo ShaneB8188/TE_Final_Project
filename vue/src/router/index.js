@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Logout from '../views/Logout.vue'
-import Register from '../views/Register.vue'
-import store from '../store/index'
-import Menu from '../views/Menu.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '../views/Home.vue';
+import Login from '../views/Login.vue';
+import Logout from '../views/Logout.vue';
+import Register from '../views/Register.vue';
+import store from '../store/index';
+import Menu from '../views/Menu.vue';
 Vue.use(Router)
 
 /**
@@ -22,7 +22,7 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
       meta: {
@@ -54,9 +54,12 @@ const router = new Router({
       }
     },
     {
-      path:"/menu",
+      path:"/",
     name:"menu",
-    component: Menu
+    component: Menu,
+    meta: {
+      requiresAuth: false
+    }
     }
     
 
