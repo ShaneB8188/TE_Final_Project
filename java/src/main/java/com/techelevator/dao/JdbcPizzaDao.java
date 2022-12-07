@@ -4,9 +4,11 @@ import com.techelevator.model.Pizza;
 import com.techelevator.model.Toppings;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component
 public class JdbcPizzaDao implements PizzaDao {
 
     private final JdbcTemplate jdbcTemplate;

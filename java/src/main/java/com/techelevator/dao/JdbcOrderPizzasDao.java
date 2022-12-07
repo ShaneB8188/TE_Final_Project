@@ -4,6 +4,7 @@ import com.techelevator.model.Order;
 import com.techelevator.model.Pizza;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
