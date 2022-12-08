@@ -12,14 +12,12 @@
         v-if="$store.state.token != ''"
         >Logout</router-link
       > 
-      
-      <home-banner/>
+
      <router-view></router-view>
     </div>
   </div>
 </template>
 <script>
-import HomeBanner from '@/components/HomeBanner.vue'
 
 // import Home from '@/views/Home';
 // import Menu from '@/views/Menu';
@@ -29,7 +27,7 @@ export default {
   // components:
   // Menu,
   // Home,
-  HomeBanner
+
 };
 </script>
 <style>

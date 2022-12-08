@@ -81,25 +81,50 @@
         </div>
       </div>
     </div>
-
-   
+    <router-link id="create" :to="{ name: 'customPizza' }">
+    <div class="card" id="create">
+      <header class="card-header">
+        <p class="card-header-title">Create Your Own Pizza</p>
+      </header>
+      <figure class="image is-4by3">
+            <img class="pizza-photo"  src="\Assests\create.jfif" alt="Place Holder Image for Pizza">
+      </figure>
+      <div class="card-content">
+        <div class="content">
+        Customize your pizza how you like with any number of cheeses, toppings, sauce, and crust        
+        </div>
+      </div>
+    </div>
+   </router-link>
   </div>
 </template>
 
 <script>
-export default {};
+
+export default {
+
+  components: {
+    
+  }
+};
 </script>
 
 <style>
+
 
 #body{
     display: grid;
     grid-template-columns:  20px 1fr 1fr 1fr 20px;
     grid-template-areas: ". pepperoni supreme meat ."
-                            ". veggie neopolitan cheese .";
+                            ". veggie neopolitan cheese ."
+                            ". create . . . ";
 
     grid-gap: 40px;
 
+}
+#create{
+  grid-area: create;
+  background-color: #f3ebf6;
 }
 #supreme{
 grid-area: supreme;
@@ -161,6 +186,10 @@ background-color: rgba(252, 101, 101, 0.644);
    cursor: pointer;
 background-color: rgba(252, 101, 101, 0.644);
     
+}
+#create:hover{
+  cursor: pointer;
+  background-color: rgba(252, 101, 101, 0.644);
 }
 
 
