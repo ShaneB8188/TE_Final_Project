@@ -78,6 +78,38 @@ export default {
           isAvailable: true,
           added: false
         },
+        {
+          name: "Black Olives",
+          toppingId: 4,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+        {
+          name: "Sausage",
+          toppingId: 5,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+        {
+          name: "Ham",
+          toppingId: 6,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+        {
+          name: "Banana Peppers",
+          toppingId: 7,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
       ],
       newPizza: {
         pizzaId: 1,
