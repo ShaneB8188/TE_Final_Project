@@ -2,11 +2,11 @@
   <div>
     <div class="card" id="create-card">
       <header class="card-header">
-        <!-- implement real method later -->
-        <div class="card-header-title" id="create" @click="testPizza(Pizza)">
-          Create Your Own
+        <div class="card-header-title" id="create">
+          <router-link v-bind:to="{ name: 'customPizza' }">
+           <button class="create-card-btn">Create Your Own</button> 
+          </router-link>
         </div>
-        <!-- implement real method later -->
       </header>
     </div>
   </div>
@@ -24,11 +24,12 @@ export default {
         crust: 'normal',
         sauce: 'red',
         
-      }
+      }, 
+      Toppings:{}
     };
   },
   methods: {
-    testPizza(Pizza) {
+    createNewPizza(Pizza) {
       OrderPizzaService.addPizza(Pizza);
     }
   },
@@ -40,8 +41,12 @@ export default {
   display: flex;
   justify-content: center;
 }
-#create {
+.create-card-btn {
   background-color: green;
   color: white;
+
+  
+  
 }
+
 </style>
