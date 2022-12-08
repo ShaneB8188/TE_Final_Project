@@ -5,15 +5,12 @@
         <p class="card-header-title">Meat Lovers Pizza</p>
       </header>
           <figure class="image is-4by3">
-            <img src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img src="\Assests\meaty.jfif" alt="Place Holder Image for Pizza">
           </figure>
 
       <div class="card-content">
         <div class="content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          cumque eligendi nihil a animi reprehenderit laboriosam dolorem, sint
-          beatae mollitia quam iste blanditiis possimus tempore natus doloribus.
-          Rerum, rem. Voluptatem.
+          Sausage, Bacon, Ham, Pepperoni, hand shredded mozzarella cheese, house made red tomato sauce and a hand made crust
         </div>
       </div>
     </div>
@@ -22,14 +19,11 @@
         <p class="card-header-title">Neopolitan</p>
       </header>
         <figure class="image is-4by3">
-            <img src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img src="\Assests\neo2.jfif" alt="Place Holder Image for Pizza">
         </figure>
       <div class="card-content">
         <div class="content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          cumque eligendi nihil a animi reprehenderit laboriosam dolorem, sint
-          beatae mollitia quam iste blanditiis possimus tempore natus doloribus.
-          Rerum, rem. Voluptatem.
+         Large Rolls of mozzarella cheese, red tomato sauce made from Pomodorino del Piennolo del vesuvio tomatoes all on top of a fluffy hand made crust
         </div>
       </div>
     </div>
@@ -38,14 +32,11 @@
         <p class="card-header-title">Supreme</p>
       </header>
       <figure class="image is-4by3">
-            <img class="pizza-photo" src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo" src="\Assests\supreme.jfif" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          cumque eligendi nihil a animi reprehenderit laboriosam dolorem, sint
-          beatae mollitia quam iste blanditiis possimus tempore natus doloribus.
-          Rerum, rem. Voluptatem.
+         Diced tomatoes, black olives, mushrooms, red peppers, green peppers, house made tomato sauce and a homemade crust
         </div>
       </div>
     </div>
@@ -54,14 +45,12 @@
         <p class="card-header-title">Veggie</p>
       </header>
       <figure class="image is-4by3">
-            <img class="pizza-photo"  src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo"  src="\Assests\Vegetarian-Pizza-720x720.jpg" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          cumque eligendi nihil a animi reprehenderit laboriosam dolorem, sint
-          beatae mollitia quam iste blanditiis possimus tempore natus doloribus.
-          Rerum, rem. Voluptatem.
+          Black and green olives, mushrooms, sliced zucchini, sliced squash, shredded carrots, shredded mozzarella cheese, homemade garlic based sauce , homemade crust
+      
         </div>
       </div>
     </div>
@@ -70,15 +59,12 @@
         <p class="card-header-title">Cheese</p> 
       </header>
       <figure class="image is-4by3">
-            <img class="pizza-photo"  src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo"  src="\Assests\cheese.jfif" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          cumque eligendi nihil a animi reprehenderit laboriosam dolorem, sint
-          beatae mollitia quam iste blanditiis possimus tempore natus doloribus.
-          Rerum, rem. Voluptatem.
-        </div>
+          Gorgonzola cheese, Parmigiano Reggiano, fresh goat cheese, mozzarella cheese, house made tomato sauce, homemade crust
+                  </div>
       </div>
     </div>
     <div class="card" id="pepperoni">
@@ -86,14 +72,12 @@
         <p class="card-header-title">Pepperoni</p>
       </header>
       <figure class="image is-4by3">
-            <img class="pizza-photo"  src="/Assests/gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo"  src="\Assests\pepperoni.jpeg" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
-          cumque eligendi nihil a animi reprehenderit laboriosam dolorem, sint
-          beatae mollitia quam iste blanditiis possimus tempore natus doloribus.
-          Rerum, rem. Voluptatem.
+         Tons of pepperoni slices, Gorgonzola and mozzarella cheeses, house made tomato sauce, homemade crust
+        
         </div>
       </div>
     </div>

@@ -1,8 +1,7 @@
 <template>
   <section>
-    <div id="home">Home</div>
-    <div id="employee-login">Employee Login</div>
-    <div id="cart">Cart</div>
+    <div id="home">Its Pizza Time!</div>
+    
   </section>
 </template>
 

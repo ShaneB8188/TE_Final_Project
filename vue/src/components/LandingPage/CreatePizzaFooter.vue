@@ -40,6 +40,7 @@ export default {
 #create-card {
   display: flex;
   justify-content: center;
+  flex-grow: 1;
 }
 #create {
   background: linear-gradient(to right, #27b055, #064d15);
