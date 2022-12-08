@@ -46,7 +46,7 @@ export default {
         sauce: "",
         topping: {
           peppers: true,
-          
+          pepperoni: false,
         }
       },
     };
