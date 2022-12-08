@@ -1,6 +1,8 @@
 <template>
   
     <form >
+    <label for="PizzaName"> Name your Custom Pizza </label>
+    <input type="text" name="PizzaName" v-model="newPizza.name"> <br>
     <label for="PizzaSize"> Select a Pizza Size</label>
     <input id="pizzaSizeSmall" type="radio" v-model="newPizza.size" autocomplete="off" required value="Small" >
     <label for="pizzaSizeSmall">Small</label>
@@ -77,9 +79,42 @@ export default {
           isAvailable: true,
           added: false
         },
+        {
+          name: "Black Olives",
+          toppingId: 4,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+        {
+          name: "Sausage",
+          toppingId: 5,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+        {
+          name: "Ham",
+          toppingId: 6,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+        {
+          name: "Banana Peppers",
+          toppingId: 7,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
       ],
       newPizza: {
         pizzaId: 1,
+        name: "",
         size: "",
         crust: "",
         sauce: "",
@@ -101,6 +136,7 @@ export default {
     },
     resetForm() {
       this.newPizza = {
+        name: '',
         size: '',
         crust: '',
         sauce: '',
