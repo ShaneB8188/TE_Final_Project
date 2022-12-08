@@ -83,30 +83,21 @@ export default {
         size: "",
         crust: "",
         sauce: "",
-<<<<<<< HEAD
-        topping: {
-          // peppers: true,
-          
-        }
-=======
         toppings: []
->>>>>>> 2ab0287698d5ec588a08de8907be0a856a5e9527
       },
     };
   },
   methods: {
     createNewPizza(Pizza) {
-<<<<<<< HEAD
-      this.$store.commit("ADD_TO_CART", Pizza);
-=======
       const newPizza = { ...Pizza };
 
       newPizza.toppings = Pizza.toppings.map(toppingId => {
         return this.toppings.find(topping => topping.toppingId === toppingId);
       })
 
-      OrderPizzaService.addPizza(newPizza);
->>>>>>> 2ab0287698d5ec588a08de8907be0a856a5e9527
+      // OrderPizzaService.addPizza(newPizza);
+      this.$store.commit("ADD_TO_CART", newPizza);
+
     },
     resetForm() {
       this.newPizza = {
