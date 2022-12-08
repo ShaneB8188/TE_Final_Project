@@ -87,7 +87,7 @@
         <p class="card-header-title">Create Your Own Pizza</p>
       </header>
       <figure class="image is-4by3">
-            <img class="pizza-photo"  src="\Assests\pepperoni.jpeg" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo"  src="\Assests\create.jfif" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
