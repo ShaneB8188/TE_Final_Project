@@ -1,9 +1,7 @@
 import axios from "axios";
 
 export default {
-    addTopping() {
-        return axios.get()
-    },
+
     getAllToppings() {
         return axios.get('/toppings')
     },

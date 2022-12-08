@@ -2,6 +2,10 @@ import axios from 'axios';
 
 export default {
     addPizza(pizza) {
+        return axios.post('/pizza',pizza);
+    },
+    
+    addPizzaToCart(pizza) {
         return axios.post('/pizzas',pizza);
     },
     

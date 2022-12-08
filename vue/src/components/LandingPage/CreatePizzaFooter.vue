@@ -4,7 +4,7 @@
       <header class="card-header">
         <div class="card-header-title" id="create">
           <router-link v-bind:to="{ name: 'customPizza' }">
-            Create Your Own
+           <button class="create-card-btn">Create Your Own</button> 
           </router-link>
         </div>
       </header>
@@ -41,8 +41,12 @@ export default {
   display: flex;
   justify-content: center;
 }
-#create {
+.create-card-btn {
   background-color: green;
   color: white;
+
+  
+  
 }
+
 </style>
