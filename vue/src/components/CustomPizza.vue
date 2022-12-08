@@ -1,6 +1,8 @@
 <template>
   
     <form >
+    <label for="PizzaName"> Name your Custom Pizza </label>
+    <input type="text" name="PizzaName" v-model="newPizza.name"> <br>
     <label for="PizzaSize"> Select a Pizza Size</label>
     <input id="pizzaSizeSmall" type="radio" v-model="newPizza.size" autocomplete="off" required value="Small" >
     <label for="pizzaSizeSmall">Small</label>
@@ -113,6 +115,7 @@ export default {
       ],
       newPizza: {
         pizzaId: 1,
+        name: "",
         size: "",
         crust: "",
         sauce: "",
@@ -132,6 +135,7 @@ export default {
     },
     resetForm() {
       this.newPizza = {
+        name: '',
         size: '',
         crust: '',
         sauce: '',
