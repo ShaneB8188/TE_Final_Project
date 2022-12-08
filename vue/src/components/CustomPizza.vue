@@ -29,36 +29,91 @@
     <input id="pizzaSauceExRed" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="Extra Red" >
     <label for="pizzaSauceExRed">Extra red</label>
     <br>
-    <button type="submit" class="btn btn-submit" onClick="return confirm('Pizza added to cart')" @click.prevent="createNewPizza(newPizza)"> Order </button>
+
+    Select which toppings you'd like
+    <div v-for="topping in toppings" :key="topping.name">
+        <label for="PizzaTopping"> </label>
+        <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping.toppingId" >
+        <label :for="topping.name">{{topping.name}}</label>
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza(newPizza)"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
   </form>
 </template>
 
 <script>
 export default {
+  computed: {
+    // pizzaToppingSetter() {
+    //   return this.toppings.filter(obj => obj.added == true);
+    // },
+  },
   data() {
     return {
+      toppings: [
+        {
+          name: "Cheese",
+          toppingId: 1,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+        {
+          name: "Pepperoni",
+          toppingId: 2,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+        {
+          name: "Basil",
+          toppingId: 3,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
+        },
+      ],
       newPizza: {
         pizzaId: 1,
         size: "",
         crust: "",
         sauce: "",
+<<<<<<< HEAD
         topping: {
           // peppers: true,
           
         }
+=======
+        toppings: []
+>>>>>>> 2ab0287698d5ec588a08de8907be0a856a5e9527
       },
     };
   },
   methods: {
     createNewPizza(Pizza) {
+<<<<<<< HEAD
       this.$store.commit("ADD_TO_CART", Pizza);
+=======
+      const newPizza = { ...Pizza };
+
+      newPizza.toppings = Pizza.toppings.map(toppingId => {
+        return this.toppings.find(topping => topping.toppingId === toppingId);
+      })
+
+      OrderPizzaService.addPizza(newPizza);
+>>>>>>> 2ab0287698d5ec588a08de8907be0a856a5e9527
     },
     resetForm() {
       this.newPizza = {
         size: '',
         crust: '',
         sauce: '',
+        topping: [],
       }
     }
   },
