@@ -1,7 +1,9 @@
 <template>
   <section>
-    <div id="home">Its Pizza Time!</div>
-    
+    <div>Pizza Restaurant Name</div>
+    <!-- <div id="home">Home</div> -->
+    <!-- <div id="employee-login">Employee Login</div>
+    <div id="cart">Cart</div> -->
   </section>
 </template>
 
@@ -13,8 +15,14 @@ export default {};
 section{
   display: flex;
   justify-content: flex-end;
-  background-color: rgba(255,0,0);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  background: linear-gradient(to right, white, #be162c);
   color: white;
+
 
 }
 
@@ -22,12 +30,12 @@ section{
   margin: 10px;
   
 }
-#home:hover{
+/* #home:hover{
   cursor: pointer;
   background-color: rgb(122, 6, 6);
   margin: 10px;
-}
-#employee-login:hover{
+} */
+/* #employee-login:hover{
   cursor: pointer;
   background-color: rgb(122, 6, 6);
   margin: 10px;
@@ -36,7 +44,7 @@ section{
   cursor: pointer;
   background-color: rgb(122, 6, 6);
   margin: 10px;
-}
+} */
 
 
 #employee-login{

@@ -6,6 +6,8 @@ import Logout from '../views/Logout.vue';
 import Register from '../views/Register.vue';
 import store from '../store/index';
 import Menu from '../views/Menu.vue';
+import Orders from '../views/Orders.vue';
+import CustomPizza from '../views/CustomPizza.vue';
 import Checkout from '../views/Checkout.vue';
 Vue.use(Router)
 
@@ -63,9 +65,23 @@ const router = new Router({
       }
     },
     {
+      path: "/customPizza",
+      name: "customPizza",
+      component: CustomPizza,
+
+    },
+    {
       path: '/cart',
       name: 'checkout',
       component: Checkout,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/orders/",
+      name: "Orders",
+      component: Orders,
       meta: {
         requiresAuth: false
       }

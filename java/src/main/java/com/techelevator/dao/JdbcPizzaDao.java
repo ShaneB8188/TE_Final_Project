@@ -43,10 +43,10 @@ public class JdbcPizzaDao implements PizzaDao {
      * @return if the pizza has been created with a new id int
      */
     @Override
-    public Pizza createPizza(String size, String crust, String sauce) {
-        String insertToppingSql = "INSERT into pizza (pizza_size, crust, sauce) VALUES (?, ?, ?) RETURNING pizza_id";
+    public Pizza createPizza(String name, String size, String crust, String sauce) {
+        String insertToppingSql = "INSERT into pizza (name, pizza_size, crust, sauce) VALUES (?, ?, ?, ?) RETURNING pizza_id";
         Integer newPizzaId;
-        newPizzaId = jdbcTemplate.queryForObject(insertToppingSql, Integer.class, size, crust, sauce);
+        newPizzaId = jdbcTemplate.queryForObject(insertToppingSql, Integer.class, name, size, crust, sauce);
         if (newPizzaId != null)
         {
            return getPizzaById(newPizzaId);
@@ -66,7 +66,7 @@ public class JdbcPizzaDao implements PizzaDao {
         String getPizzaToppingsSql = "SELECT * from pizza_toppings WHERE pizza_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(getPizzaToppingsSql, pizzaId);
         if (results.next()) {
-            pizza.setToppingsArrayList(mapRowToToppingsList(results));
+            pizza.setToppings(mapRowToToppingsList(results));
         }
         return pizza;
     }
@@ -93,7 +93,7 @@ public class JdbcPizzaDao implements PizzaDao {
             int toppingIdToInsert = results.getInt("topping_id");
             toppingsArrayList.add(toppingDao.getToppingById(toppingIdToInsert));
         }
-        pizza.setToppingsArrayList(toppingsArrayList);
+        pizza.setToppings(toppingsArrayList);
         return pizza;
     }
 
@@ -105,6 +105,7 @@ public class JdbcPizzaDao implements PizzaDao {
     private Pizza mapRowToPizza(SqlRowSet rowSet) {
         Pizza pizza = new Pizza();
         pizza.setPizzaId(rowSet.getInt("pizza_id"));
+        pizza.setName(rowSet.getString("name"));
         pizza.setSize(rowSet.getString("pizza_size"));
         pizza.setCrust(rowSet.getString("crust"));
         pizza.setSauce(("sauce"));

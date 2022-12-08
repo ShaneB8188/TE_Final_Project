@@ -2,11 +2,11 @@
   <div>
     <div class="card" id="create-card">
       <header class="card-header">
-        <!-- implement real method later -->
-        <div class="card-header-title" id="create" @click="testPizza(Pizza)">
-          Create Your Own
+        <div class="card-header-title" id="create">
+          <router-link v-bind:to="{ name: 'customPizza' }">
+           <button class="create-card-btn">Create Your Own</button> 
+          </router-link>
         </div>
-        <!-- implement real method later -->
       </header>
     </div>
   </div>
@@ -42,8 +42,12 @@ export default {
   justify-content: center;
   flex-grow: 1;
 }
-#create {
-  background: linear-gradient(to right, #27b055, #064d15);
+.create-card-btn {
+  background-color: green;
   color: white;
+
+  
+  
 }
+
 </style>
