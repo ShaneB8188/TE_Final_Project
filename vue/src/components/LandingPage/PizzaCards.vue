@@ -5,7 +5,7 @@
         <p class="card-header-title">Meat Lovers Pizza</p>
       </header>
           <figure class="image is-4by3">
-            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
           </figure>
 
       <div class="card-content">
@@ -22,7 +22,7 @@
         <p class="card-header-title">Neopolitan</p>
       </header>
         <figure class="image is-4by3">
-            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
         </figure>
       <div class="card-content">
         <div class="content">
@@ -38,7 +38,7 @@
         <p class="card-header-title">Supreme</p>
       </header>
       <figure class="image is-4by3">
-            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo" src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
@@ -54,7 +54,7 @@
         <p class="card-header-title">Veggie</p>
       </header>
       <figure class="image is-4by3">
-            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo"  src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
@@ -70,7 +70,7 @@
         <p class="card-header-title">Cheese</p> 
       </header>
       <figure class="image is-4by3">
-            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo"  src="\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
@@ -86,7 +86,7 @@
         <p class="card-header-title">Pepperoni</p>
       </header>
       <figure class="image is-4by3">
-            <img src="vue\Assests\gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
+            <img class="pizza-photo"  src="/Assests/gettyimages-1435155940___21112143079.webp" alt="Place Holder Image for Pizza">
       </figure>
       <div class="card-content">
         <div class="content">
@@ -107,13 +107,14 @@ export default {};
 </script>
 
 <style>
+
 #body{
     display: grid;
-    grid-template-columns:  1fr 1fr 1fr;
-    grid-template-areas: "pepperoni supreme meat"
-                            " veggie neopolitan cheese ";
+    grid-template-columns:  20px 1fr 1fr 1fr 20px;
+    grid-template-areas: ". pepperoni supreme meat ."
+                            ". veggie neopolitan cheese .";
 
-    grid-gap: 10px;
+    grid-gap: 40px;
 
 }
 #supreme{
