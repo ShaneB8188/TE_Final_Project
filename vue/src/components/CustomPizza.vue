@@ -29,6 +29,15 @@
     <input id="pizzaSauceExRed" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="Extra Red" >
     <label for="pizzaSauceExRed">Extra red</label>
     <br>
+
+    Select which toppings you'd like
+    <div v-for="topping in toppings" :key="topping.name">
+        <label for="PizzaTopping"> </label>
+        <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.topping" :value="topping.id" >
+        <label :for="topping.name">{{topping.name}}</label>
+    </div>
+
+    <br>
     <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza(newPizza)"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
   </form>
@@ -37,17 +46,36 @@
 <script>
 import OrderPizzaService from "@/services/OrderPizzaService";
 export default {
+  computed: {
+    // pizzaToppingSetter() {
+    //   return this.toppings.filter(obj => obj.added == true);
+    // },
+  },
   data() {
     return {
+      toppings: [
+        {
+          name: "Cheese",
+          added: false,
+          id: 1
+        },
+        {
+          name: "Pepperoni",
+          added: false,
+          id: 2
+        },
+        {
+          name: "Basil",
+          added: false,
+          id: 3
+        },
+      ],
       newPizza: {
         pizzaId: 1,
         size: "",
         crust: "",
         sauce: "",
-        topping: {
-          peppers: true,
-          
-        }
+        topping: []
       },
     };
   },
@@ -60,6 +88,7 @@ export default {
         size: '',
         crust: '',
         sauce: '',
+        topping: [],
       }
     }
   },
