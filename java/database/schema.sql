@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users, pizza, orders, topping, order_pizza, pizza_toppings, customer;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -12,6 +12,7 @@ CREATE TABLE users (
 
 create table pizza (
 pizza_id serial,
+name varchar(50) DEFAULT 'Custom Pizza',
 pizza_size varchar(50) not null,
 crust varchar(50) not null,
 sauce varchar(50),
