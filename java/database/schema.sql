@@ -66,4 +66,6 @@ CVV varchar(3),
 constraint fk_order foreign key (order_id) references orders(order_id)
 );
 
+
+
 COMMIT TRANSACTION;
