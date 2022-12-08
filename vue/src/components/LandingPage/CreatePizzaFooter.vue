@@ -40,6 +40,7 @@ export default {
 #create-card {
   display: flex;
   justify-content: center;
+  flex-grow: 1;
 }
 .create-card-btn {
   background-color: green;
