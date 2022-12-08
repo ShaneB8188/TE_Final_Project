@@ -23,9 +23,9 @@ public class PizzaController {
     @RequestMapping (path = "/pizza", method = RequestMethod.POST)
     public Pizza createPizza (@RequestBody Pizza newPizza) { //Create a pizza and add the toppings from a front end JSON, then return it
         Pizza returnPizza = pizzaDao.createPizza(newPizza.getSize(), newPizza.getCrust(),newPizza.getSauce());
-        if (newPizza.getToppingsArrayList() != null ) { //avoid returning null pointer when mapping arrayList to pizza object and SQL
-            pizzaDao.insertToppingsOnPizza(newPizza.getToppingsArrayList(), returnPizza.getPizzaId());
-            returnPizza.setToppingsArrayList(newPizza.getToppingsArrayList());
+        if (newPizza.getToppings() != null ) { //avoid returning null pointer when mapping arrayList to pizza object and SQL
+            pizzaDao.insertToppingsOnPizza(newPizza.getToppings(), returnPizza.getPizzaId());
+            returnPizza.setToppings(newPizza.getToppings());
         }
         return returnPizza;
     }
