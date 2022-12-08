@@ -33,7 +33,7 @@
     Select which toppings you'd like
     <div v-for="topping in toppings" :key="topping.name">
         <label for="PizzaTopping"> </label>
-        <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.topping" :value="topping.id" >
+        <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping.toppingId" >
         <label :for="topping.name">{{topping.name}}</label>
     </div>
 
@@ -56,18 +56,27 @@ export default {
       toppings: [
         {
           name: "Cheese",
-          added: false,
-          id: 1
+          toppingId: 1,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
         },
         {
           name: "Pepperoni",
-          added: false,
-          id: 2
+          toppingId: 2,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
         },
         {
           name: "Basil",
-          added: false,
-          id: 3
+          toppingId: 3,
+          price: 1,
+          isPremium: false,
+          isAvailable: true,
+          added: false
         },
       ],
       newPizza: {
@@ -75,13 +84,19 @@ export default {
         size: "",
         crust: "",
         sauce: "",
-        topping: []
+        toppings: []
       },
     };
   },
   methods: {
     createNewPizza(Pizza) {
-      OrderPizzaService.addPizza(Pizza);
+      const newPizza = { ...Pizza };
+
+      newPizza.toppings = Pizza.toppings.map(toppingId => {
+        return this.toppings.find(topping => topping.toppingId === toppingId);
+      })
+
+      OrderPizzaService.addPizza(newPizza);
     },
     resetForm() {
       this.newPizza = {

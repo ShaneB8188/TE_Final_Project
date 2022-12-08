@@ -66,7 +66,7 @@ public class JdbcPizzaDao implements PizzaDao {
         String getPizzaToppingsSql = "SELECT * from pizza_toppings WHERE pizza_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(getPizzaToppingsSql, pizzaId);
         if (results.next()) {
-            pizza.setToppingsArrayList(mapRowToToppingsList(results));
+            pizza.setToppings(mapRowToToppingsList(results));
         }
         return pizza;
     }
@@ -93,7 +93,7 @@ public class JdbcPizzaDao implements PizzaDao {
             int toppingIdToInsert = results.getInt("topping_id");
             toppingsArrayList.add(toppingDao.getToppingById(toppingIdToInsert));
         }
-        pizza.setToppingsArrayList(toppingsArrayList);
+        pizza.setToppings(toppingsArrayList);
         return pizza;
     }
 
