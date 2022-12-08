@@ -19,7 +19,11 @@ public class PizzaController {
     @ResponseStatus (HttpStatus.CREATED)
     @RequestMapping (path = "/pizzas", method = RequestMethod.POST)
     public Pizza createPizza (@RequestBody Pizza newPizza) {
-        return pizzaDao.createPizza(newPizza.getSize(), newPizza.getCrust(),newPizza.getSauce());
+        Pizza createdPizza = pizzaDao.createPizza(newPizza.getSize(), newPizza.getCrust(),newPizza.getSauce());
+        if (newPizza.getToppingsArrayList() != null) {
+            pizzaDao.insertToppingsOnPizza(newPizza.getToppingsArrayList(), createdPizza.getPizzaId());
+        }
+        return createdPizza;
     }
 
     @RequestMapping (path= "/pizzas/{id}", method = RequestMethod.GET)
