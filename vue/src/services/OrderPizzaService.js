@@ -5,6 +5,10 @@ export default {
         return axios.post('/pizzas',pizza);
     },
     
+    addPizzaToCart(pizza) {
+        return axios.post('/pizzas',pizza);
+    },
+    
     getAllOrders() {
         return axios.get('/orders/')
     },

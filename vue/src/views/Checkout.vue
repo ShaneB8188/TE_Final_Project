@@ -4,19 +4,34 @@
     
       <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
      
+
+     <div v-for="pizza in $store.state.Cart" :key="pizza.pizzaId">
+      {{ pizza }}
+
+      <p>{{ pizza.size }} </p>
+     </div>
       
       
       <router-link :to="{ name: 'menu' }">Return to Menu</router-link>
-      <button type="submit" class="checkoutBtn">Checkout</button>
+      <button type="submit" class="checkoutBtn" onClick="return confirm('Confirm Order')">Checkout</button>
+      
     
   </div>
   </div>
 </template>
 
 <script>
+
+// this.$store.commit("ADD_POST", Pizza);
+
 export default {
 
+
 }
+
+
+
+
 </script>
 
 <style>

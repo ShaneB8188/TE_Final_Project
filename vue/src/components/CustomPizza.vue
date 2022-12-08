@@ -29,13 +29,12 @@
     <input id="pizzaSauceExRed" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="Extra Red" >
     <label for="pizzaSauceExRed">Extra red</label>
     <br>
-    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza(newPizza)"> Order </button>
+    <button type="submit" class="btn btn-submit" onClick="return confirm('Pizza added to cart')" @click.prevent="createNewPizza(newPizza)"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
   </form>
 </template>
 
 <script>
-import OrderPizzaService from "@/services/OrderPizzaService";
 export default {
   data() {
     return {
@@ -45,7 +44,7 @@ export default {
         crust: "",
         sauce: "",
         topping: {
-          peppers: true,
+          // peppers: true,
           
         }
       },
@@ -53,7 +52,7 @@ export default {
   },
   methods: {
     createNewPizza(Pizza) {
-      OrderPizzaService.addPizza(Pizza);
+      this.$store.commit("ADD_TO_CART", Pizza);
     },
     resetForm() {
       this.newPizza = {
