@@ -54,6 +54,9 @@ export default {
     createOrder() {
      this.order = this.$store.state.Cart;
      this.order.orderStatus = "Pending";
+     this.order.pizzas.forEach(pizza => {
+       OrderPizzaService.addPizza(pizza);
+     });
      OrderPizzaService.addOrder(this.order);
      this.resetOrder();
   },

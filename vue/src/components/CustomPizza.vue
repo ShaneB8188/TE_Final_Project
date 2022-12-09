@@ -164,7 +164,7 @@ export default {
         },
       ],
       newPizza: {
-        pizzaId: 1,
+        pizzaId: '',
         name: "",
         size: "",
         crust: "",
