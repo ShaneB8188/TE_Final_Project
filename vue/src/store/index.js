@@ -47,8 +47,8 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    ADD_TO_CART(state, Pizza) {
-      state.Cart.pizzas.push(Pizza);
+    ADD_TO_CART(state, pizza) {
+      state.Cart.pizzas.push(pizza);
     },
     ADD_TOPPING(state,topping) {
       state.toppings.push(topping);
