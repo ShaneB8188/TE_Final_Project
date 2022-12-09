@@ -11,8 +11,6 @@ public interface PizzaDao {
 
     Pizza createPizza(String name, String size, String crust, String sauce);
 
-    Pizza getPizzaToppings(int pizzaId);
-
     Pizza insertToppingsOnPizza(ArrayList<Toppings> toppingsList, int pizzaId);
 
     Pizza getPizzaWithToppings(int pizzaId);
