@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,7 @@ public class JdbcOrderDao implements OrderDao{
     private Order mapRowtoOrder(SqlRowSet rowSet){
         Order order = new Order();
         order.setOrderId(rowSet.getInt("order_id"));
-        order.setDate(rowSet.getObject("order_time", LocalDateTime.class));
+        order.setDate(rowSet.getObject("order_time", Timestamp.class));
         order.setDelivery(rowSet.getBoolean("isDelivery"));
         order.setPrice(rowSet.getBigDecimal("price"));
 

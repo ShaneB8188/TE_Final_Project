@@ -93,6 +93,14 @@ export default {
            return topping;
          }
       })
+    },
+    pizzaPrice() {
+      let basePrice = 10;
+      let pizzaSum = 0;
+      this.newPizza.toppings.forEach(topping => {
+        pizzaSum = basePrice += topping.price;
+      });
+      return pizzaSum;
     }
   },
   data() {
@@ -161,6 +169,7 @@ export default {
         size: "",
         crust: "",
         sauce: "",
+        price: '',
         toppings: []
       },
     };
@@ -172,7 +181,7 @@ export default {
       newPizza.toppings = this.newPizza.toppings.map(toppingId => {
         return this.toppings.find(topping => topping.toppingId === toppingId);
       });
-
+      newPizza.price = this.pizzaPrice;
       // OrderPizzaService.addPizza(newPizza);
       this.$store.commit('ADD_TO_CART', newPizza);
       this.resetForm();
