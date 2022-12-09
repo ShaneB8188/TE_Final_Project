@@ -29,11 +29,11 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
 
 
     @Override
-    public SpecialtyPizza createNewSpecial(int pizzaId, String name, String pizzaSize, String crust, String sauce) {
-        String sql = "INSERT INTO specialty_pizzas(pizza_id, name, pizza_size, crust, sauce) VALUES (?,?,?,?,?) ";
+    public SpecialtyPizza createNewSpecial(String name, String pizzaSize, String crust, String sauce) {
+        String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?,?,?,?) RETURNING pizza_id";
 
 
-        Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, pizzaId, name, pizzaSize, crust, sauce);
+        Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, pizzaSize, crust, sauce);
         if (newPizzaId != null) {
 
         }return getSpecialById(newPizzaId);
@@ -70,7 +70,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
     private SpecialtyPizza mapRowToSpecial(SqlRowSet rowSet){
         SpecialtyPizza special = new SpecialtyPizza();
         special.setPizzaId(rowSet.getInt("topping_id"));
-        special.setPizzaName(rowSet.getString("name"));
+        special.setName(rowSet.getString("name"));
         special.setCrust(rowSet.getString("crust"));
         special.setSauce(rowSet.getString("sauce"));
         special.setPizzaSize(rowSet.getString("pizza_size"));

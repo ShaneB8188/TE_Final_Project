@@ -9,7 +9,7 @@ public interface SpecialtyDao {
 
     SpecialtyPizza getSpecialById(int specialId);
 
-    SpecialtyPizza createNewSpecial(int pizzaId, String name, String pizzaSize, String crust, String sauce);
+    SpecialtyPizza createNewSpecial(String name, String pizzaSize, String crust, String sauce);
 
     SpecialtyPizza getSpecialsPizzaWithToppings(int specialId);
 

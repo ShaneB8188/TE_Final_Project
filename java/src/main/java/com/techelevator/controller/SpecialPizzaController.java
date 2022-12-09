@@ -27,7 +27,7 @@ public class SpecialPizzaController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/SpecialtyPizza", method=RequestMethod.POST)
     public SpecialtyPizza createNewSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
-        SpecialtyPizza createdPizza = SpecialtyDao.createNewSpecial(newPizza.getPizzaId(), newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(),newPizza.getSauce());
+        SpecialtyPizza createdPizza = SpecialtyDao.createNewSpecial(newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(),newPizza.getSauce());
         if (newPizza.getToppings() != null){
         createdPizza.setToppings(newPizza.getToppings());
         }
