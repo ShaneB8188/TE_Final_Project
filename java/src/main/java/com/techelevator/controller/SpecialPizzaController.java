@@ -7,6 +7,8 @@ import com.techelevator.model.SpecialtyPizza;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class SpecialPizzaController {
@@ -18,14 +20,18 @@ public class SpecialPizzaController {
         this.SpecialtyDao=SpecialtyDao;
         this.toppingDao=toppingDao;
     }
-    @RequestMapping(path = "/SpecialtyPizza/{Id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/SpecialtyPizzas/{Id}", method = RequestMethod.GET)
     public SpecialtyPizza getPizzaById(int specialId){
         return SpecialtyDao.getSpecialById(specialId);
     }
 
+    @RequestMapping(path= "/SpecialtyPizzas", method = RequestMethod.GET)
+    public List<SpecialtyPizza> getAllSpecialtyPizzas() {
+        return SpecialtyDao.getAllSpecials();
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/SpecialtyPizza", method=RequestMethod.POST)
+    @RequestMapping(path = "/SpecialtyPizzas", method=RequestMethod.POST)
     public SpecialtyPizza createNewSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
         SpecialtyPizza createdPizza = SpecialtyDao.createNewSpecial(newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(),newPizza.getSauce());
         if (newPizza.getToppings() != null){
