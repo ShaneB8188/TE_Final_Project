@@ -3,15 +3,15 @@ import axios from 'axios';
 export default {
 
     getPizzaById(specialId) {
-        return axios.get(`/SpecialtyPizza/${specialId}`);
+        return axios.get(`/SpecialtyPizzas/${specialId}`);
       },
 
       getAllSpecialtyPizzas() {
-          return axios.get("/specialtyPizza");
+          return axios.get("/SpecialtyPizzas");
       },
     
       createNewSpecialtyPizza(pizza) {
-        return axios.post('/SpecialtyPizza', pizza);
+        return axios.post('/SpecialtyPizzas', pizza);
       }
     
 

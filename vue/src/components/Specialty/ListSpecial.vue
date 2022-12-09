@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <div>
     <h1>Specialty Pizzas</h1>
-    <div v-for="pizza in pizzas" :key="pizza">
+    <div v-for="pizza in pizzas" :key="pizza" class="card-container">
       <div class="card">
         <header class="content">
           <p class="card-header-title">{{ pizza.name }}</p>
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -36,11 +36,15 @@ export default {
   },
   created() {
     SpecialPizzaService.getAllSpecialtyPizzas().then((response) => {
-      this.orders = response.data;
+      this.pizzas = response.data;
     });
   },
 };
 </script>
-
 <style>
+    .card-container {
+        display: grid;
+        grid-column: 1fr, 1fr, 1fr;
+
+    }
 </style>

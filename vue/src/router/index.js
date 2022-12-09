@@ -100,7 +100,7 @@ const router = new Router({
     {
       path: "/addPizza",
       name: "AddPizza",
-      component: AddPizza.vue
+      component: AddPizza,
     }
   ]
 })
