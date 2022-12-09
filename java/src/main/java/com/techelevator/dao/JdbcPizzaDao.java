@@ -71,6 +71,12 @@ public class JdbcPizzaDao implements PizzaDao {
         return pizza;
     }
 
+    /**
+     * Creates many-to-many relationship in pizza_toppings intermediate table to associate toppings with a given pizza by IDs
+     * @param toppingsList ArrayList of Toppings to pull IDs from
+     * @param pizzaId ID int associated with a given pizza
+     * @return Pizza object
+     */
     @Override
     public Pizza insertToppingsOnPizza(ArrayList<Toppings> toppingsList, int pizzaId) {
         Pizza newPizza = new Pizza();
@@ -83,6 +89,11 @@ public class JdbcPizzaDao implements PizzaDao {
         return newPizza;
     }
 
+    /**
+     * Pulls pizza from pizza table by ID and populates toppings by IDs from toppings table by intermediate table pizza_toppings
+     * @param pizzaId int of pizza ID to be given ArrayList toppings
+     * @return pizza object with toppings ArrayList
+     */
     @Override
     public Pizza getPizzaWithToppings(int pizzaId) {
         Pizza pizza = new Pizza();
@@ -99,8 +110,8 @@ public class JdbcPizzaDao implements PizzaDao {
 
     /**
      * Map Sqlrowset query object to new Pizza object, returning pizza without toppings
-     * @param rowSet
-     * @return
+     * @param rowSet query for pizza_id, name, pizza_size, crust, and sauce
+     * @return pizza object with id, name, size, crust, and sauce
      */
     private Pizza mapRowToPizza(SqlRowSet rowSet) {
         Pizza pizza = new Pizza();
