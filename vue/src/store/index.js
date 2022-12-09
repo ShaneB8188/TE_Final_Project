@@ -29,6 +29,15 @@ export default new Vuex.Store({
       orderStatus: '',
       pizzas: []
     },
+
+    specialtyPizza:{
+      pizzaId: '',
+      name: '',
+      pizzaSize:'',
+      crust: '',
+      sauce: '',
+      toppings: []
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

@@ -4,10 +4,11 @@ import com.techelevator.model.SpecialtyPizza;
 import com.techelevator.model.Toppings;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class JdbcSpecialtyDao implements SpecialtyDao{
     private final JdbcTemplate jdbc;
     private final ToppingDao toppingDao;
@@ -67,6 +68,18 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
         }
         return pizza;
     }
+
+    @Override
+    public List<SpecialtyPizza> getAllPizzas() {
+        String sql = "SELECT * from specialty_pizza";
+        SqlRowSet rowSet = jdbc.queryForRowSet(sql);
+        while(rowSet.next()){
+            List<Toppings> toppingsList =new ArrayList<>();
+            SpecialtyPizza pizza = new SpecialtyPizza();
+            pizza.setToppings();
+        }
+    }
+
     private SpecialtyPizza mapRowToSpecial(SqlRowSet rowSet){
         SpecialtyPizza special = new SpecialtyPizza();
         special.setPizzaId(rowSet.getInt("topping_id"));
