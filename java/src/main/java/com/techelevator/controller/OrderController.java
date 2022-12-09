@@ -2,9 +2,11 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.JdbcOrderDao;
 import com.techelevator.dao.OrderDao;
+import com.techelevator.dao.PizzaDao;
 import com.techelevator.model.NewOrderDto;
 import com.techelevator.model.Order;
 import com.techelevator.model.OrderStatusUpdateDto;
+import com.techelevator.model.Pizza;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +17,11 @@ import java.util.List;
 @CrossOrigin
 public class OrderController {
   private final OrderDao orderDao;
+  private final PizzaDao pizzaDao;
 
-  public OrderController (OrderDao orderDao) {
+  public OrderController (OrderDao orderDao, PizzaDao pizzaDao) {
       this.orderDao=orderDao;
+      this.pizzaDao = pizzaDao;
 
   }
   @ResponseStatus(HttpStatus.CREATED)
@@ -25,6 +29,14 @@ public class OrderController {
     public Order createOrder (@RequestBody NewOrderDto order) {
     Order createdOrder = orderDao.insertOrder(order);
     if (order.getPizzas() != null) {
+      for (Pizza newPizza : order.getPizzas()){
+        Pizza returnPizza = pizzaDao.createPizza(newPizza.getName(), newPizza.getSize(), newPizza.getCrust(),newPizza.getSauce());
+        newPizza.setPizzaId(returnPizza.getPizzaId());
+        if (newPizza.getToppings() != null ) { //avoid returning null pointer when mapping arrayList to pizza object and SQL
+          pizzaDao.insertToppingsOnPizza(newPizza.getToppings(), returnPizza.getPizzaId());
+          returnPizza.setToppings(newPizza.getToppings());
+        }
+      }
       orderDao.insertPizzasIntoOrder(order.getPizzas(), createdOrder.getOrderId());
     }
       return createdOrder;

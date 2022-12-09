@@ -10,6 +10,7 @@ import Orders from '../views/Orders.vue';
 import CustomPizza from '../views/CustomPizza.vue';
 import Checkout from '../views/Checkout.vue';
 import ToppingView from '../views/ToppingView.vue';
+import AddPizza from '../views/AddPizza.vue';
 Vue.use(Router)
 
 /**
@@ -95,6 +96,11 @@ const router = new Router({
       requiresAuth: false 
       // this needs to be true once login functionality is done
     }
+    },
+    {
+      path: "/addPizza",
+      name: "AddPizza",
+      component: AddPizza,
     }
   ]
 })

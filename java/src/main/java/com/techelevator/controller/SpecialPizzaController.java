@@ -25,6 +25,10 @@ public class SpecialPizzaController {
         return SpecialtyDao.getSpecialById(specialId);
     }
 
+    @RequestMapping(path= "/SpecialtyPizzas", method = RequestMethod.GET)
+    public List<SpecialtyPizza> getAllSpecialtyPizzas() {
+        return SpecialtyDao.getAllSpecials();
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/specialtyPizza", method=RequestMethod.POST)
