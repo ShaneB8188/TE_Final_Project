@@ -40,7 +40,7 @@
     </div>
 
     <br>
-    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza(newPizza)"> Order </button>
+    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
   </form>
 </template>
@@ -124,16 +124,16 @@ export default {
     };
   },
   methods: {
-    createNewPizza(Pizza) {
-      const newPizza = { ...Pizza };
+    createNewPizza() {
+      const newPizza = this.newPizza;
 
-      newPizza.toppings = Pizza.toppings.map(toppingId => {
+      newPizza.toppings = this.newPizza.toppings.map(toppingId => {
         return this.toppings.find(topping => topping.toppingId === toppingId);
-      })
+      });
 
       // OrderPizzaService.addPizza(newPizza);
-      this.$store.commit("ADD_TO_CART", newPizza);
-
+      this.$store.commit('ADD_TO_CART', newPizza);
+      this.resetForm();
     },
     resetForm() {
       this.newPizza = {

@@ -21,12 +21,13 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
 
-    Cart: 
-    { orderId: '',
+    Cart: {
+      orderId: '',
       price: '',
       isDelivery: false,
       orderStatus: '',
       pizzas: []
+    },
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -45,8 +46,8 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    ADD_TO_CART(state, Pizza) {
-      state.Cart.pizzas.push(Pizza);
+    ADD_TO_CART(state, pizza) {
+      state.Cart.pizzas.push(pizza);
     }
-  }}
+  },
 })
