@@ -5,7 +5,7 @@
       <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
      
 
-     <div v-for="pizza in $store.state.Cart" :key="pizza.pizzaId">
+     <div v-for="pizza in this.$store.state.Cart" :key="pizza.pizzaId">
       {{ pizza }}
 
       <p>{{ pizza.size }} </p>

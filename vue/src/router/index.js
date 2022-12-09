@@ -9,6 +9,7 @@ import Menu from '../views/Menu.vue';
 import Orders from '../views/Orders.vue';
 import CustomPizza from '../views/CustomPizza.vue';
 import Checkout from '../views/Checkout.vue';
+
 Vue.use(Router)
 
 /**

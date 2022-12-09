@@ -42,10 +42,12 @@
     <br>
     <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza(newPizza)"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
+    
   </form>
 </template>
 
 <script>
+
 // import OrderPizzaService from '../services/OrderPizzaService.js'
 export default {
   computed: {
