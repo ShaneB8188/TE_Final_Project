@@ -4,9 +4,10 @@
     
       <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
      
-
-     <div v-for="pizza in $store.state.Cart" :key="pizza.pizzaId">
+      <p>Order Total: ${{orderTotal}}</p>
+     <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
       {{ pizza }}
+      
 
       <p>{{ pizza.size }} </p>
      </div>
@@ -24,6 +25,16 @@
 import OrderPizzaService from "@/services/OrderPizzaService.js"
 
 export default {
+
+  computed: {
+orderTotal(){
+    let sum = 0;
+    this.order.pizzas.forEach(pizza => {
+      sum += pizza.price;
+    });
+     return sum;
+  }
+  },
   data() {
     return {
       order: {
@@ -45,15 +56,15 @@ export default {
   methods: {
     createOrder() {
      this.order = this.$store.state.Cart;
+     this.order.orderStatus = "Pending";
      OrderPizzaService.addOrder(this.order);
      this.resetOrder();
-
   },
   resetOrder() {
     this.order = this.newOrder;
   }
+  
 }
-
 }
 </script>
 

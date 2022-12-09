@@ -22,12 +22,13 @@ export default new Vuex.Store({
     user: currentUser || {},
     toppings: [],
 
-    Cart: 
-    { orderId: '',
+    Cart: {
+      orderId: '',
       price: '',
       isDelivery: false,
       orderStatus: '',
       pizzas: []
+    },
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -52,5 +53,5 @@ export default new Vuex.Store({
     ADD_TOPPING(state,topping) {
       state.toppings.push(topping);
     }
-  }}
+  },
 })
