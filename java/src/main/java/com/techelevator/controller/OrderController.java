@@ -23,7 +23,11 @@ public class OrderController {
   @ResponseStatus(HttpStatus.CREATED)
   @RequestMapping(path = "/orders", method = RequestMethod.POST)
     public Order createOrder (@RequestBody NewOrderDto order) {
-      return orderDao.insertOrder(order);
+    Order createdOrder = orderDao.insertOrder(order);
+    if (order.getPizzas() != null) {
+      orderDao.insertPizzasIntoOrder(order.getPizzas(), createdOrder.getOrderId());
+    }
+      return createdOrder;
   }
 
   @RequestMapping(path = "/orders/", method = RequestMethod.GET)

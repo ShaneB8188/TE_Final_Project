@@ -21,16 +21,40 @@
 </template>
 
 <script>
-
+import OrderPizzaService from "@/services/OrderPizzaService.js"
 // this.$store.commit("ADD_POST", Pizza);
 
 export default {
+  data() {
+    return {
+      order: {
+        orderId: '',
+        price: '',
+        isDelivery: false,
+        orderStatus: '',
+        pizzas: []
+    },
+    newOrder: {
+      orderId: '',
+      price: '',
+      isDelivery: false,
+      orderStatus: '',
+      pizzas: []
+    }
+  }
+  },
+  methods: {
+    createOrder() {
+     this.order = this.$store.state.Cart;
+     OrderPizzaService.addOrder(this.order);
+     this.resetOrder();
 
-
+  },
+  resetOrder() {
+    this.order = this.newOrder;
+  }
 }
-
-
-
+}
 
 </script>
 
