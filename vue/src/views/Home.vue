@@ -21,7 +21,11 @@
         <li><a>Add A Pizza to Menu</a></li>
         <li><a>Update Pizza on Menu</a></li>
         <li><a>Remove Pizza From Menu</a></li>
-        <li><a>Add Topping to Menu</a></li>
+        <li>
+          <router-link :to="{name:'Toppings'}">
+          Add Topping to Menu
+          </router-link>
+        </li>
         <li><a>Update Topping Availability</a></li>
         <li><a>Remove Topping From Menu</a></li>
       </ul>
