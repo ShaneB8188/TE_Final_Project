@@ -3,12 +3,13 @@ package com.techelevator.model;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Order {
     private int orderId;
-    private LocalDateTime date;
+    private Timestamp date;
     private BigDecimal price;
     private boolean isDelivery;
     private String orderStatus;
@@ -19,7 +20,7 @@ public class Order {
 
     }
 
-    public Order(int orderId, LocalDateTime date, BigDecimal price, boolean isDelivery, String orderStatus, ArrayList<Pizza> pizzaArrayList) {
+    public Order(int orderId, Timestamp date, BigDecimal price, boolean isDelivery, String orderStatus, ArrayList<Pizza> pizzaArrayList) {
         this.orderId = orderId;
         this.date = date;
         this.price = price;
@@ -36,11 +37,11 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public LocalDateTime getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
