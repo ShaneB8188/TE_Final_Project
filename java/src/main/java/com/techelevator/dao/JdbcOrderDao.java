@@ -88,7 +88,7 @@ public class JdbcOrderDao implements OrderDao{
             int pizzaIdToInsert = results.getInt("pizza_id");
             pizzaArrayList.add(pizzaDao.getPizzaById(pizzaIdToInsert));
         }
-        order.setPizzaArrayList(pizzaArrayList);
+        order.setPizzas(pizzaArrayList);
         return order;
     }
 
