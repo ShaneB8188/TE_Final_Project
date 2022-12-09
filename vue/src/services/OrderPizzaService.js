@@ -5,21 +5,17 @@ export default {
         return axios.post('/pizza',pizza);
     },
     
-    addPizzaToCart(pizza) {
-        return axios.post('/pizzas',pizza);
-    },
-    
     getAllOrders() {
-        return axios.get('/orders/')
+        return axios.get('/orders/');
     },
     getOrderById(orderId) {
-        return axios.get(`/orders/${orderId}`)
+        return axios.get(`/orders/${orderId}`);
     },
 
     addOrder(order) {
         return axios.post('/orders',order);
     },
     updateOrderStatus(id,orderDto) {
-        return axios.put(`/orders/${id}`,orderDto)
+        return axios.put(`/orders/${id}`,orderDto);
     }
 }

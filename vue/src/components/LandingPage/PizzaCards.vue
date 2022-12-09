@@ -112,6 +112,12 @@ export default {
 <style>
 
 
+header:hover{
+     cursor: pointer;
+background-color: rgba(252, 101, 101, 0.644);
+}
+
+
 #body{
     display: grid;
     grid-template-columns:  20px 1fr 1fr 1fr 20px;
@@ -140,6 +146,9 @@ background-color: #f3ebf6;
 #veggie{
 grid-area: veggie;
 background-color: #f3ebf6;
+}header{
+  background: linear-gradient(to right, #27b055, #064d15);
+  color: white;
 }
 
 #neopolitan{
