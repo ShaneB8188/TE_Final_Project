@@ -60,16 +60,7 @@ public class JdbcPizzaDao implements PizzaDao {
      * @param pizzaId the Id int of the pizza to be queried
      * @return completed pizza object including toppings
      */
-    @Override
-    public Pizza getPizzaToppings(int pizzaId) {
-        Pizza pizza = getPizzaById(pizzaId);
-        String getPizzaToppingsSql = "SELECT * from pizza_toppings WHERE pizza_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(getPizzaToppingsSql, pizzaId);
-        if (results.next()) {
-            pizza.setToppings(mapRowToToppingsList(results));
-        }
-        return pizza;
-    }
+
 
     @Override
     public Pizza insertToppingsOnPizza(ArrayList<Toppings> toppingsList, int pizzaId) {
