@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import OrderPizzaService from '../services/OrderPizzaService.js'
+// import OrderPizzaService from '../services/OrderPizzaService.js'
 export default {
   computed: {
     // pizzaToppingSetter() {
@@ -131,8 +131,8 @@ export default {
         return this.toppings.find(topping => topping.toppingId === toppingId);
       })
 
-      OrderPizzaService.addPizza(newPizza);
-      // this.$store.commit("ADD_TO_CART", newPizza);
+      // OrderPizzaService.addPizza(newPizza);
+      this.$store.commit("ADD_TO_CART", newPizza);
 
     },
     resetForm() {
