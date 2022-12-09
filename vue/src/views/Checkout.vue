@@ -21,7 +21,7 @@
 </template>
 
 <script>
-
+//import orderpizzaservice and then formula
 // this.$store.commit("ADD_POST", Pizza);
 
 export default {
