@@ -1,14 +1,19 @@
 <template>
   <div>
-    <div class="card" id="create-card">
+     <div class="card" id="cheese">
       <header class="card-header">
-        <div class="card-header-title" id="create">
-          <router-link v-bind:to="{ name: 'customPizza' }">
-           <button class="create-card-btn">Create Your Own</button> 
-          </router-link>
-        </div>
+        <p class="card-header-title">Create Your Own Pizza</p> 
       </header>
+      <figure class="image is-4by3">
+            <img class="pizza-photo"  src="\Assests\cheese.jfif" alt="Place Holder Image for Pizza">
+      </figure>
+      <div class="card-content">
+        <div class="content">
+          Choose from any number of toppings, cheese, sauces and crust
+                  </div>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -34,19 +39,10 @@ export default {
     }
   },
 };
+
+
 </script>
 
 <style>
-#create-card {
-  display: flex;
-  justify-content: center;
-}
-.create-card-btn {
-  background-color: green;
-  color: white;
-
-  
-  
-}
 
 </style>

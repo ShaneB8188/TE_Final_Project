@@ -9,7 +9,7 @@ public interface PizzaDao {
 
     Pizza getPizzaById(int pizzaId);
 
-    Pizza createPizza(String size, String crust, String sauce);
+    Pizza createPizza(String name, String size, String crust, String sauce);
 
     Pizza getPizzaToppings(int pizzaId);
 

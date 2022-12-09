@@ -12,7 +12,7 @@ public class Order {
     private BigDecimal price;
     private boolean isDelivery;
     private String orderStatus;
-    private ArrayList<Pizza> pizzaArrayList;
+    private ArrayList<Pizza> pizzas;
 
 
     public Order() {
@@ -25,7 +25,7 @@ public class Order {
         this.price = price;
         this.isDelivery = isDelivery;
         this.orderStatus = orderStatus;
-        this.pizzaArrayList = pizzaArrayList;
+        this.pizzas = pizzaArrayList;
     }
 
     public int getOrderId() {
@@ -68,11 +68,11 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public ArrayList<Pizza> getPizzaArrayList() {
-        return pizzaArrayList;
+    public ArrayList<Pizza> getPizzas() {
+        return pizzas;
     }
 
-    public void setPizzaArrayList(ArrayList<Pizza> pizzaArrayList) {
-        this.pizzaArrayList = pizzaArrayList;
+    public void setPizzas(ArrayList<Pizza> pizzaArrayList) {
+        this.pizzas = pizzaArrayList;
     }
 }
