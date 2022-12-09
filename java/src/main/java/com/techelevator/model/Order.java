@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Order {
     private int orderId;
-    private Timestamp date;
+    private LocalDateTime date;
     private BigDecimal price;
     private boolean isDelivery;
     private String orderStatus;
@@ -20,7 +20,7 @@ public class Order {
 
     }
 
-    public Order(int orderId, Timestamp date, BigDecimal price, boolean isDelivery, String orderStatus, ArrayList<Pizza> pizzaArrayList) {
+    public Order(int orderId, LocalDateTime date, BigDecimal price, boolean isDelivery, String orderStatus, ArrayList<Pizza> pizzaArrayList) {
         this.orderId = orderId;
         this.date = date;
         this.price = price;
@@ -37,11 +37,11 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Timestamp getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
