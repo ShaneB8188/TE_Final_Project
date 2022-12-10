@@ -35,9 +35,10 @@ public class SpecialPizzaController {
     public SpecialtyPizza createNewSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
         SpecialtyPizza createdPizza = SpecialtyDao.createNewSpecial(newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(),newPizza.getSauce());
         if (newPizza.getToppings() != null){
-        createdPizza.setToppings(newPizza.getToppings());
+            SpecialtyDao.addToppingsToPizza(newPizza.getToppings(), createdPizza.getPizzaId());
+            createdPizza.setToppings(newPizza.getToppings());
         }
-            return createdPizza;
+        return createdPizza;
     }
 
     

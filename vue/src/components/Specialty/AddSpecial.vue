@@ -83,6 +83,7 @@
 
 <script>
 // import OrderPizzaService from '../services/OrderPizzaService.js'
+import SpecialPizzaService from '../../services/SpecialPizzaService.js'
 export default {
   computed: {
 
@@ -183,7 +184,7 @@ export default {
       });
       newPizza.price = this.pizzaPrice;
       // OrderPizzaService.addPizza(newPizza);
-      this.$store.commit('ADD_TO_CART', newPizza);
+      SpecialPizzaService.createNewSpecialtyPizza(newPizza);
       this.resetForm();
     },
     resetForm() {
