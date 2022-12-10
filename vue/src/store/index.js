@@ -68,6 +68,10 @@ export default new Vuex.Store({
       sum += pizza.price;
     });
     state.Cart.price = sum;
+    },
+  
+    UPDATE_PIZZA_LIST(state, pizza){
+       state.specialtyPizza.push(pizza)
     }
   },
 })
