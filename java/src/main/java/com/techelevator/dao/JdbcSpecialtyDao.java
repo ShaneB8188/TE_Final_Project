@@ -49,11 +49,8 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
     @Override
     public SpecialtyPizza createNewSpecial(String name, String pizzaSize, String crust, String sauce) {
         String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?,?,?,?) RETURNING pizza_id;";
-
-
         Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, pizzaSize, crust, sauce);
         if (newPizzaId != null) {
-
         }return getSpecialById(newPizzaId);
     }
 
@@ -82,6 +79,16 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
         }
         return pizza;
     }
+
+    @Override
+    public SpecialtyPizza updateSpecial(int pizzaId, String name, String pizzaSize, String crust, String sauce) {
+        String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?,?,?,?) WHERE pizza_id = ? RETURNING pizza_id;";
+        Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, pizzaSize, crust, sauce, pizzaId);
+        if (newPizzaId != null) {
+        }
+        return getSpecialById(newPizzaId);
+    }
+
     private SpecialtyPizza mapRowToSpecial(SqlRowSet rowSet){
         SpecialtyPizza special = new SpecialtyPizza();
         special.setPizzaId(rowSet.getInt("pizza_id"));

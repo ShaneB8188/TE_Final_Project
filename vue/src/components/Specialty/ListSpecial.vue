@@ -11,7 +11,8 @@
             <p>Size: {{ pizza.pizzaSize }}</p>
             <p>Crust: {{ pizza.crust }}</p>
             <p>Sauce: {{ pizza.sauce }}</p>
-            <div> Toppings: 
+            <div>
+              Toppings:
               <ul>
                 <li v-for="topping in pizza.toppings" :key="topping">
                   {{ topping.name }}
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-import SpecialPizzaService from "@/services/SpecialPizzaService";
+  //import SpecialPizzaService from "@/services/SpecialPizzaService";
 
 export default {
   data() {
@@ -35,16 +36,17 @@ export default {
     };
   },
   created() {
-    SpecialPizzaService.getAllSpecialtyPizzas().then((response) => {
-      this.pizzas = response.data;
-    });
+    this.$store.dispatch("setSpecials");
+    this.pizzas = this.$store.state.specials;
+    // SpecialPizzaService.getAllSpecialtyPizzas().then((response) => {
+    //   this.pizzas = response.data;
+    // });
   },
 };
 </script>
 <style>
-    .card-container {
-        display: grid;
-        grid-column: 1fr, 1fr, 1fr;
-
-    }
+.card-container {
+  display: grid;
+  grid-column: 1fr, 1fr, 1fr;
+}
 </style>

@@ -41,6 +41,16 @@ public class SpecialPizzaController {
         return createdPizza;
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path= API_BASE + "/{id}", method=RequestMethod.PUT)
+    public SpecialtyPizza updateSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
+        SpecialtyPizza createdPizza = SpecialtyDao.updateSpecial(newPizza.getPizzaId(), newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(),newPizza.getSauce());
+        if (newPizza.getToppings() != null){
+            SpecialtyDao.addToppingsToPizza(newPizza.getToppings(), newPizza.getPizzaId());
+            createdPizza.setToppings(newPizza.getToppings());
+        }
+        return createdPizza;
+    }
     
 
 }

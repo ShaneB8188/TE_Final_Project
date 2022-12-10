@@ -1,89 +1,168 @@
 <template>
-
-    <form id="pizzaForm" >
-      <div id="redDiv"></div>
-      <div id="main">
+  <form id="pizzaForm">
+    <div id="redDiv"></div>
+    <div id="main">
       <div id="pizzaNameDiv">
-       <label for="PizzaName"> Name your Custom Pizza </label>
-       <br>
-    <input type="text" name="PizzaName" id="pizzaName" v-model="newPizza.name"> <br>
-    </div>
+        <label for="PizzaName"> Name your Custom Pizza </label>
+        <br />
+        <input
+          type="text"
+          name="PizzaName"
+          id="pizzaName"
+          v-model="newPizza.name"
+        />
+        <br />
+      </div>
       <div id="pizzaSize">
-    <label for="PizzaSize"> Select a Pizza Size</label>
-    <div id=pizzaSizeBtn>
-      <div>
-    <input  type="radio" v-model="newPizza.size" autocomplete="off" required value="Small" >
-    <label for="pizzaSizeSmall">Small</label>
-    </div>
-    <div>
-    <input  type="radio" v-model="newPizza.size" autocomplete="off" required value="Medium">
-    <label for="pizzaSizeMedium">Medium</label>
-    </div>
-    <div>
-    <input type="radio" v-model="newPizza.size" autocomplete="off" required value="Large">
-    <label for="pizzaSizeLarge">Large</label>
-    </div>
-    <div>
-    <input  type="radio" v-model="newPizza.size" autocomplete="off" required value="ExLarge">
-    <label for="pizzaSizeExLarge">Extra Large</label>
-    </div>
-    <br>
-    
+        <label for="PizzaSize"> Select a Pizza Size</label>
+        <div id="pizzaSizeBtn">
+          <div>
+            <input
+              type="radio"
+              v-model="newPizza.pizzaSize"
+              autocomplete="off"
+              required
+              value="Small"
+            />
+            <label for="pizzaSizeSmall">Small</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              v-model="newPizza.pizzaSize"
+              autocomplete="off"
+              required
+              value="Medium"
+            />
+            <label for="pizzaSizeMedium">Medium</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              v-model="newPizza.pizzaSize"
+              autocomplete="off"
+              required
+              value="Large"
+            />
+            <label for="pizzaSizeLarge">Large</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              v-model="newPizza.pizzaSize"
+              autocomplete="off"
+              required
+              value="ExLarge"
+            />
+            <label for="pizzaSizeExLarge">Extra Large</label>
+          </div>
+          <br />
+        </div>
       </div>
+      <label for="PizzaCrust"> Select a crust type</label>
+
+      <div id="pizzaCrustBtn">
+        <div>
+          <input
+            id="pizzaCrustReg"
+            type="radio"
+            v-model="newPizza.crust"
+            autocomplete="off"
+            required
+            value="Regular"
+          />
+          <label for="pizzaCrustReg">Regular</label>
+        </div>
+        <div>
+          <input
+            id="pizzaCrustThin"
+            type="radio"
+            v-model="newPizza.crust"
+            autocomplete="off"
+            required
+            value="Thin"
+          />
+          <label for="pizzaCrustThin">Thin</label>
+        </div>
+        <div>
+          <input
+            id="pizzaCrustDeep"
+            type="radio"
+            v-model="newPizza.crust"
+            autocomplete="off"
+            required
+            value="Deep Dish"
+          />
+          <label for="pizzaCrustDeep">Deep Dish</label>
+        </div>
+        <br />
       </div>
-    <label for="PizzaCrust"> Select a crust type</label>
-    
-    <div id="pizzaCrustBtn">
-      <div>
-    <input id="pizzaCrustReg" type="radio" v-model="newPizza.crust" autocomplete="off" required value="Regular" >
-    <label for="pizzaCrustReg">Regular</label>
-    </div>
-    <div>
-    <input id="pizzaCrustThin" type="radio" v-model="newPizza.crust" autocomplete="off" required value="Thin">
-    <label for="pizzaCrustThin">Thin</label>
-    </div>
-    <div>
-    <input id="pizzaCrustDeep" type="radio" v-model="newPizza.crust" autocomplete="off" required value="Deep Dish">
-    <label for="pizzaCrustDeep">Deep Dish</label>
-    </div>
-    <br>
-    </div>
-    <label for="PizzaSauce"> Select which sauce you'd like</label>
-    
-    <div id ="pizzaSauceBtn">
-      <div>
-    <input id="pizzaSauceRed" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="Red" >
-    <label for="pizzaSauceRed">Red</label>
-    </div>
-    <div>
-    <input id="pizzaSauceWhite" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="White" >
-    <label for="pizzaSauceWhite">White</label>
-    </div>
-    <div>
-    <input id="pizzaSauceExRed" type="radio" v-model="newPizza.sauce" autocomplete="off" required value="Extra Red" >
-    <label for="pizzaSauceExRed">Extra red</label>
-    </div>
-    <br>
-    </div><div id="toppingList">
-    Select which toppings you'd like
-    <!-- change to topping in availableToppings once topping add functionality is complete -->
-    <div v-for="topping in toppings" :key="topping.id" >
-        <label for="PizzaTopping"> </label>
-        <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping.toppingId" >
-        <label :for="topping.name">{{topping.name}}</label>
-    </div>
-</div>
-    <br>
-    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
-    <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
+      <label for="PizzaSauce"> Select which sauce you'd like</label>
+
+      <div id="pizzaSauceBtn">
+        <div>
+          <input
+            id="pizzaSauceRed"
+            type="radio"
+            v-model="newPizza.sauce"
+            autocomplete="off"
+            required
+            value="Red"
+          />
+          <label for="pizzaSauceRed">Red</label>
+        </div>
+        <div>
+          <input
+            id="pizzaSauceWhite"
+            type="radio"
+            v-model="newPizza.sauce"
+            autocomplete="off"
+            required
+            value="White"
+          />
+          <label for="pizzaSauceWhite">White</label>
+        </div>
+        <div>
+          <input
+            id="pizzaSauceExRed"
+            type="radio"
+            v-model="newPizza.sauce"
+            autocomplete="off"
+            required
+            value="Extra Red"
+          />
+          <label for="pizzaSauceExRed">Extra red</label>
+        </div>
+        <br />
       </div>
-    <div id ="greenDiv"></div>
-  
+      <div id="toppingList">
+        Select which toppings you'd like
+        <!-- change to topping in availableToppings once topping add functionality is complete -->
+        <div v-for="topping in toppings" :key="topping.id">
+          <label for="PizzaTopping"> </label>
+          <input
+            :id="`PizzaTopping${topping.name}`"
+            type="checkbox"
+            v-model="newPizza.toppings"
+            :value="topping.toppingId"
+          />
+          <label :for="topping.name">{{ topping.name }}</label>
+        </div>
+      </div>
+      <br />
+      <button
+        type="submit"
+        class="btn btn-submit"
+        @click.prevent="updatePizza"
+      >
+        Order
+      </button>
+      <button type="button" class="btn btn-cancel" @click="resetForm">
+        Clear Choices
+      </button>
+    </div>
+    <div id="greenDiv"></div>
   </form>
-
-
-
-
 </template>
 
 <script>
@@ -115,7 +194,9 @@ export default {
     //   this.toppings = response.data;
     // });
     //sets store toppings array equal to toppings list in backend
-   this.$store.dispatch('setToppings');
+      this.$store.dispatch('setToppings');
+   //sets store specials equal to specials list in backend - calling in two vues makes it run twice
+      // this.$store.dispatch('setSpecials');
   },
   data() {
     return {
@@ -123,7 +204,7 @@ export default {
       newPizza: {
         pizzaId: '',
         name: "",
-        size: "",
+        pizzaSize: "",
         crust: "",
         sauce: "",
         price: '',
@@ -143,10 +224,24 @@ export default {
       SpecialPizzaService.createNewSpecialtyPizza(newPizza);
       this.resetForm();
     },
+    //Finds pizza from store state if pizza name == existing name and updates it, else calls createNewPizza function
+    updatePizza() {
+      const newPizza = this.newPizza;
+      const specialsList = this.$store.specialsList;
+      if (specialsList.filter(obj => {
+        obj.name == newPizza.name;
+      })) {
+        SpecialPizzaService.updateSpecialtyPizza(newPizza);
+      } else {
+        this.createNewPizza;
+      }
+
+    }
+    ,
     resetForm() {
       this.newPizza = {
         name: '',
-        size: '',
+        pizzaSize: '',
         crust: '',
         sauce: '',
         toppings: [],
@@ -159,9 +254,8 @@ export default {
 
 <style>
 button {
-  
   align-content: space-around;
-  
+
   width: 50%;
   cursor: pointer;
   border-radius: 5em;
@@ -181,28 +275,27 @@ button {
   margin-bottom: 24px;
 }
 
-#pizzaForm{
+#pizzaForm {
   /* text-align: center; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   height: 96vh;
-  
 }
 
-#pizzaSizeBtn{
+#pizzaSizeBtn {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   width: 100%;
 }
 #pizzaSauceBtn {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   width: 100%;
 }
 #pizzaCrustBtn {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   width: 100%;
 }
 
@@ -210,30 +303,29 @@ button {
   display: flex;
   align-content: center;
   flex-wrap: wrap;
-  
 }
-#pizzaNameDiv{
+#pizzaNameDiv {
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
 }
 #toppingList {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-#greenDiv{
+#greenDiv {
   background: green;
   flex-grow: 1;
 }
-#redDiv{
+#redDiv {
   background: red;
   flex-grow: 1;
 }
-#main{
+#main {
   flex-grow: 1;
   justify-content: flex-start;
-  background: #F9F6D8;
+  background: #f9f6d8;
   height: 100%;
 }
 </style>
