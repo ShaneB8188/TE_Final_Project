@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Specialty Pizzas</h1>
-    <div v-for="pizza in pizzas" :key="pizza" class="card-container">
+    <div v-for="pizza in pizzas" :key="pizza.id" class="card-container">
       <div class="card">
         <header class="content">
           <p class="card-header-title">{{ pizza.name }}</p>

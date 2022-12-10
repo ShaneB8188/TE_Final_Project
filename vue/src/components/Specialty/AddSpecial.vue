@@ -67,7 +67,7 @@
     </div><div id="toppingList">
     Select which toppings you'd like
     <!-- change to topping in availableToppings once topping add functionality is complete -->
-    <div v-for="topping in toppings" :key="topping.name" >
+    <div v-for="topping in toppings" :key="topping.id" >
         <label for="PizzaTopping"> </label>
         <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping.toppingId" >
         <label :for="topping.name">{{topping.name}}</label>
@@ -78,12 +78,18 @@
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
       </div>
     <div id ="greenDiv"></div>
+  
   </form>
+
+
+
+
 </template>
 
 <script>
 // import OrderPizzaService from '../services/OrderPizzaService.js'
-import SpecialPizzaService from '../../services/SpecialPizzaService.js'
+import SpecialPizzaService from '../../services/SpecialPizzaService.js';
+// import ToppingsService from '../../services/ToppingsService';
 export default {
   computed: {
 
@@ -102,68 +108,18 @@ export default {
         pizzaSum = basePrice += topping.price;
       });
       return pizzaSum;
-    }
+    },
+  },
+    created() {
+    // ToppingsService.getAllToppings().then((response) => {
+    //   this.toppings = response.data;
+    // });
+    //sets store toppings array equal to toppings list in backend
+   this.$store.dispatch('setToppings');
   },
   data() {
     return {
-      toppings: [
-        {
-          name: "Cheese",
-          toppingId: 1,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Pepperoni",
-          toppingId: 2,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Basil",
-          toppingId: 3,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Black Olives",
-          toppingId: 4,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Sausage",
-          toppingId: 5,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Ham",
-          toppingId: 6,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Banana Peppers",
-          toppingId: 7,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-      ],
+      toppings: [],
       newPizza: {
         pizzaId: '',
         name: "",
@@ -193,7 +149,7 @@ export default {
         size: '',
         crust: '',
         sauce: '',
-        topping: [],
+        toppings: [],
       }
     }
   },

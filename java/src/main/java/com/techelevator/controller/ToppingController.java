@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @CrossOrigin
@@ -18,8 +20,14 @@ public class ToppingController {
         this.toppingDao=toppingDao;
     }
 
+    @ResponseStatus(HttpStatus.FOUND)
+    @RequestMapping(path="/toppings/", method=RequestMethod.GET)
+    public List<Toppings> getAllToppings() {
+        return toppingDao.getAllToppings();
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/toppings", method = RequestMethod.POST)
+    @RequestMapping(path = "/toppings/", method = RequestMethod.POST)
     public Toppings createTopping(@RequestBody Toppings topping) {
         return toppingDao.createTopping(topping.getName(),topping.getPrice().doubleValue(),topping.isPremium());
     }

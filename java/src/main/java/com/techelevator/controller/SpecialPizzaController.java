@@ -14,7 +14,7 @@ import java.util.List;
 public class SpecialPizzaController {
     private final SpecialtyDao SpecialtyDao;
     private final ToppingDao toppingDao;
-    private final String API_BASE = ""; // need to determine what local host this is running on
+    private final String API_BASE = "/SpecialtyPizzas"; // need to determine what local host this is running on
 
     public SpecialPizzaController(SpecialtyDao SpecialtyDao, ToppingDao toppingDao) {
         this.SpecialtyDao=SpecialtyDao;
@@ -25,13 +25,13 @@ public class SpecialPizzaController {
         return SpecialtyDao.getSpecialById(specialId);
     }
 
-    @RequestMapping(path= API_BASE + "/", method = RequestMethod.GET)
+    @RequestMapping(path= API_BASE, method = RequestMethod.GET)
     public List<SpecialtyPizza> getAllSpecialtyPizzas() {
         return SpecialtyDao.getAllSpecials();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path= API_BASE + "/", method=RequestMethod.POST)
+    @RequestMapping(path= API_BASE, method=RequestMethod.POST)
     public SpecialtyPizza createNewSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
         SpecialtyPizza createdPizza = SpecialtyDao.createNewSpecial(newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(),newPizza.getSauce());
         if (newPizza.getToppings() != null){

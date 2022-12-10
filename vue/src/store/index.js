@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from 'axios'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import axios from 'axios';
+import ToppingsService from '../services/ToppingsService';
 
 Vue.use(Vuex)
 
@@ -72,6 +73,17 @@ export default new Vuex.Store({
   
     UPDATE_PIZZA_LIST(state, pizza){
        state.specialtyPizza.push(pizza)
+    },
+    SET_TOPPINGS_LIST(state, theToppings) {
+      state.toppings = theToppings;
+    }
+  },
+  actions: {
+    setToppings({commit}) {
+      ToppingsService.getAllToppings().then((response) => {
+        commit('SET_TOPPINGS_LIST', response.data);
+      })
     }
   },
 })
+
