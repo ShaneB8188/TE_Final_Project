@@ -29,6 +29,15 @@ export default new Vuex.Store({
       orderStatus: '',
       pizzas: []
     },
+
+    specialtyPizza:{
+      pizzaId: '',
+      name: '',
+      pizzaSize:'',
+      crust: '',
+      sauce: '',
+      toppings: []
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -59,6 +68,10 @@ export default new Vuex.Store({
       sum += pizza.price;
     });
     state.Cart.price = sum;
+    },
+  
+    UPDATE_PIZZA_LIST(state, pizza){
+       state.specialtyPizza.push(pizza)
     }
   },
 })
