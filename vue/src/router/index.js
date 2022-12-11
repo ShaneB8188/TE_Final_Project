@@ -101,6 +101,9 @@ const router = new Router({
       path: "/addPizza",
       name: "AddPizza",
       component: AddPizza,
+      meta: {
+        requiresAuth: false
+      }
     }
   ]
 })

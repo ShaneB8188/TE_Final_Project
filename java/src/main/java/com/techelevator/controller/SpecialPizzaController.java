@@ -14,30 +14,43 @@ import java.util.List;
 public class SpecialPizzaController {
     private final SpecialtyDao SpecialtyDao;
     private final ToppingDao toppingDao;
-    private String API_BASE = ""; // need to determine what local host this is running on
+    private final String API_BASE = "/SpecialtyPizzas"; // need to determine what local host this is running on
 
     public SpecialPizzaController(SpecialtyDao SpecialtyDao, ToppingDao toppingDao) {
         this.SpecialtyDao=SpecialtyDao;
         this.toppingDao=toppingDao;
     }
-    @RequestMapping(path = "/SpecialtyPizzas/{Id}", method = RequestMethod.GET)
+    @RequestMapping(path = API_BASE + "/{Id}", method = RequestMethod.GET)
     public SpecialtyPizza getPizzaById(int specialId){
         return SpecialtyDao.getSpecialById(specialId);
     }
 
-    @RequestMapping(path= "/SpecialtyPizzas", method = RequestMethod.GET)
+    @RequestMapping(path= API_BASE, method = RequestMethod.GET)
     public List<SpecialtyPizza> getAllSpecialtyPizzas() {
         return SpecialtyDao.getAllSpecials();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/SpecialtyPizzas", method=RequestMethod.POST)
+    @RequestMapping(path= API_BASE, method=RequestMethod.POST)
     public SpecialtyPizza createNewSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
         SpecialtyPizza createdPizza = SpecialtyDao.createNewSpecial(newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(),newPizza.getSauce());
         if (newPizza.getToppings() != null){
-        createdPizza.setToppings(newPizza.getToppings());
+            SpecialtyDao.addToppingsToPizza(newPizza.getToppings(), createdPizza.getPizzaId());
+            createdPizza.setToppings(newPizza.getToppings());
         }
-            return createdPizza;
+        return createdPizza;
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path= API_BASE + "/{id}", method=RequestMethod.PUT)
+    public SpecialtyPizza updateSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
+        SpecialtyPizza createdPizza = SpecialtyDao.updateSpecial(newPizza.getPizzaId(), newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(),newPizza.getSauce());
+        if (newPizza.getToppings() != null){
+            SpecialtyDao.addToppingsToPizza(newPizza.getToppings(), newPizza.getPizzaId());
+            createdPizza.setToppings(newPizza.getToppings());
+        }
+        return createdPizza;
+    }
+    
 
 }

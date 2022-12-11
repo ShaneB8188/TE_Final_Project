@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Component
 public class JdbcSpecialtyDao implements SpecialtyDao{
     private final JdbcTemplate jdbc;
@@ -27,7 +26,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
     @Override
     public List<SpecialtyPizza> getAllSpecials() {
         List<SpecialtyPizza> list = new ArrayList<>();
-        String sql = "SELECT * FROM specialty_pizzas";
+        String sql = "SELECT * FROM specialty_pizzas;";
         SqlRowSet results = jdbc.queryForRowSet(sql);
         while (results.next()) {
             SpecialtyPizza special = mapRowToSpecial(results);
@@ -39,7 +38,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
 
     @Override
     public SpecialtyPizza getSpecialById(int specialId) {
-        String sql = "SELECT pizza_id FROM specialty_pizzas WHERE pizza_id = ?";
+        String sql = "SELECT pizza_id FROM specialty_pizzas WHERE pizza_id = ?;";
         SqlRowSet results = jdbc.queryForRowSet(sql, specialId);
         if (results.next()) {
 
@@ -49,12 +48,9 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
 
     @Override
     public SpecialtyPizza createNewSpecial(String name, String pizzaSize, String crust, String sauce) {
-        String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?,?,?,?) RETURNING pizza_id";
-
-
+        String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?,?,?,?) RETURNING pizza_id;";
         Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, pizzaSize, crust, sauce);
         if (newPizzaId != null) {
-
         }return getSpecialById(newPizzaId);
     }
 
@@ -62,7 +58,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
     public SpecialtyPizza getSpecialsPizzaWithToppings(int specialId) {
         SpecialtyPizza pizza = new SpecialtyPizza();
         List<Toppings>toppingsList = new ArrayList<>();
-        String sql = "SELECT topping_id FROM specialty_pizza_toppings WHERE pizza_id = ? ";
+        String sql = "SELECT topping_id FROM specialty_pizza_toppings WHERE pizza_id = ?; ";
         SqlRowSet results = jdbc.queryForRowSet(sql,specialId);
         while(results.next()){
             int insert = results.getInt("topping_id");
@@ -77,12 +73,22 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
         SpecialtyPizza pizza = new SpecialtyPizza();
         int newSpecialId = 0;
         for(Toppings topping : toppingsList){
-            String sql = "INSERT INTO specialty_pizza_toppings (pizza_id, topping_id) VALUES (?,?) RETURNING pizza_id";
+            String sql = "INSERT INTO specialty_pizza_toppings (pizza_id, topping_id) VALUES (?,?) RETURNING pizza_id;";
             newSpecialId = jdbc.queryForObject(sql, Integer.class, pizzaId, topping.getToppingId());
             pizza = getSpecialsPizzaWithToppings(newSpecialId);
         }
         return pizza;
     }
+
+    @Override
+    public SpecialtyPizza updateSpecial(int pizzaId, String name, String pizzaSize, String crust, String sauce) {
+        String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?,?,?,?) WHERE pizza_id = ? RETURNING pizza_id;";
+        Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, pizzaSize, crust, sauce, pizzaId);
+        if (newPizzaId != null) {
+        }
+        return getSpecialById(newPizzaId);
+    }
+
     private SpecialtyPizza mapRowToSpecial(SqlRowSet rowSet){
         SpecialtyPizza special = new SpecialtyPizza();
         special.setPizzaId(rowSet.getInt("pizza_id"));
