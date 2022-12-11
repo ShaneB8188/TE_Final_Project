@@ -1,5 +1,6 @@
 <template>
   <div>
+    <create-pizza />
     <pizza-cards
       v-for="pizza in this.$store.state.specials"
       v-bind:key="pizza.id" v-bind:pizza="pizza"
@@ -9,10 +10,12 @@
 
 <script>
 import PizzaCards from "./PizzaCards.vue";
+import CreatePizza from "./CreatePizza.vue";
 // import SpecialPizzaService from '@/services/SpecialPizzaService.js'
 export default {
   components: {
     PizzaCards,
+    CreatePizza
   },
   pizzas: [],
   toppings: [],
