@@ -59,7 +59,7 @@ const router = new Router({
       }
     },
     {
-      path: "/",
+      path: "/SpecialtyPizzas/",
       name: "menu",
       component: Menu,
       meta: {

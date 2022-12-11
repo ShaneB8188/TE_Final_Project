@@ -1,6 +1,6 @@
 <template>
   <div>
-      <pizza-cards v-for="pizza in $store.state.specialtyPizza" v-bind:key="pizza"/>
+      <pizza-cards v-for="pizza in $store.state.specialtyPizza" v-bind:key="pizza.id"/>
 
   </div>
 </template>
@@ -13,11 +13,12 @@ export default {
       PizzaCards,
       },
       pizzas:[],
+      
 
       created() {
         
            SpecialPizzaService.getAllSpecialtyPizzas().then((response) => {
-      this.pizzas = response.data;
+      this.pizzas = response.data.specialtyPizza;
        });
   
        
