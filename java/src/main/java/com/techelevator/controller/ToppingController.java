@@ -8,24 +8,32 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @CrossOrigin
 public class ToppingController {
     private final ToppingDao toppingDao;
+    private final String API_BASE = "/toppings"; // need to determine what local host this is running on
 
     public ToppingController( ToppingDao toppingDao) {
         this.toppingDao=toppingDao;
     }
+    
+    @RequestMapping(path= API_BASE + "/", method=RequestMethod.GET)
+    public List<Toppings> getAllToppings() {
+        return toppingDao.getAllToppings();
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/toppings", method = RequestMethod.POST)
+    @RequestMapping(path = API_BASE + "/", method = RequestMethod.POST)
     public Toppings createTopping(@RequestBody Toppings topping) {
         return toppingDao.createTopping(topping.getName(),topping.getPrice().doubleValue(),topping.isPremium());
     }
     // potential for this to cause floating point error in price if there is one its most likely this method
 
-    @RequestMapping(path="/toppings/{id}", method = RequestMethod.GET)
+    @RequestMapping(path= API_BASE + "/{id}", method = RequestMethod.GET)
     public Toppings getToppingById (int topId) {
         return toppingDao.getToppingById(topId);
     }
