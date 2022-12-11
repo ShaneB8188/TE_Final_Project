@@ -36,7 +36,7 @@ export default new Vuex.Store({
     specialtyPizza: {
       pizzaId: '',
       name: '',
-      pizzaSize: '',
+      size: '',
       crust: '',
       sauce: '',
       toppings: []
@@ -90,7 +90,8 @@ export default new Vuex.Store({
       // }
       // for (let i = 0; i < specialsList.length; i++) {
       specialsMod.push(specialsList);
-      for (let i = 0; i < specialsMod.length; i++) {
+      // state.specials.push(specialsMod[0]);
+      for (let i = 0; i < specialsMod[0].length; i++) {
         state.specials.push(specialsList[i]);
       }
 

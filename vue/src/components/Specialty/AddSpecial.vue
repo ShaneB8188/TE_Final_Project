@@ -19,7 +19,7 @@
           <div>
             <input
               type="radio"
-              v-model="newPizza.pizzaSize"
+              v-model="newPizza.size"
               autocomplete="off"
               required
               value="Small"
@@ -29,7 +29,7 @@
           <div>
             <input
               type="radio"
-              v-model="newPizza.pizzaSize"
+              v-model="newPizza.size"
               autocomplete="off"
               required
               value="Medium"
@@ -39,7 +39,7 @@
           <div>
             <input
               type="radio"
-              v-model="newPizza.pizzaSize"
+              v-model="newPizza.size"
               autocomplete="off"
               required
               value="Large"
@@ -49,7 +49,7 @@
           <div>
             <input
               type="radio"
-              v-model="newPizza.pizzaSize"
+              v-model="newPizza.size"
               autocomplete="off"
               required
               value="ExLarge"
@@ -204,7 +204,7 @@ export default {
       newPizza: {
         pizzaId: '',
         name: "",
-        pizzaSize: "",
+        size: "",
         crust: "",
         sauce: "",
         price: '',
@@ -241,7 +241,7 @@ export default {
     resetForm() {
       this.newPizza = {
         name: '',
-        pizzaSize: '',
+        size: '',
         crust: '',
         sauce: '',
         toppings: [],
