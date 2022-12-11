@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <create-pizza />
+  <div class="main-container">
+    <create-pizza id="create-pizza"/>
     <pizza-cards
       v-for="pizza in this.$store.state.specials"
-      v-bind:key="pizza.id" v-bind:pizza="pizza"
+      v-bind:key="pizza.id" v-bind:pizza="pizza" id="pizza"
     />
   </div>
 </template>
@@ -30,4 +30,14 @@ export default {
 </script>
 
 <style>
+  .main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "#create-pizza #pizza #pizza"
+    "#pizza #pizza #pizza"
+    "#pizza #pizza #pizza";
+
+  grid-gap: 40px;
+}
 </style>

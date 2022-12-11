@@ -7,10 +7,18 @@
       <figure class="image is-4by3">
         <img src="\Assests\meaty.jfif" alt="Place Holder Image for Pizza" />
       </figure>
-
+      <div>
+        {{pizza.pizzaSize}}
+      </div>
+      <div>
+        {{pizza.crust}}
+      </div>
+      <div>
+        {{pizza.sauce}}
+      </div>
       <div class="card-content">
-        <div class="content">
-          {{ pizza.toppings }}
+        <div class="content" v-for="topping in pizza.toppings" v-bind:key="topping.name">
+          {{ topping.name }}
         </div>
       </div>
     </div>
