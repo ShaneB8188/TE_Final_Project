@@ -39,11 +39,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      specialtyPizza: this.setPizza,
-    };
-  },
+  // data() {
+  //   return {
+  //     specialtyPizza: this.setPizza,
+  //   };
+  // },
   computed: {
     setPizza() {
       return this.pizza;
