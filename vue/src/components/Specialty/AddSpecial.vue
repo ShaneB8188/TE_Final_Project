@@ -3,7 +3,7 @@
     <div id="redDiv"></div>
     <div id="main">
       <div id="pizzaNameDiv">
-        <label for="PizzaName"> Name your Custom Pizza </label>
+        <label for="PizzaName"> Name your Specialty Pizza </label>
         <br />
         <input
           type="text"
@@ -189,15 +189,6 @@ export default {
       return pizzaSum;
     },
   },
-    created() {
-    // ToppingsService.getAllToppings().then((response) => {
-    //   this.toppings = response.data;
-    // });
-    //sets store toppings array equal to toppings list in backend
-      // this.$store.dispatch('setToppings');
-   //sets store specials equal to specials list in backend - calling in two vues makes it run twice
-      // this.$store.dispatch('setSpecials');
-  },
   data() {
     return {
       toppings: [],
@@ -211,6 +202,9 @@ export default {
         toppings: []
       },
     };
+  },
+  created() {
+    this.toppings = this.$store.state.toppings;
   },
   methods: {
     createNewPizza() {
@@ -235,9 +229,7 @@ export default {
       } else {
         this.createNewPizza;
       }
-
-    }
-    ,
+    },
     resetForm() {
       this.newPizza = {
         name: '',

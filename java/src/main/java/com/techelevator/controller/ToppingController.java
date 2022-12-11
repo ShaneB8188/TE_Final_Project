@@ -20,8 +20,7 @@ public class ToppingController {
     public ToppingController( ToppingDao toppingDao) {
         this.toppingDao=toppingDao;
     }
-
-    @ResponseStatus(HttpStatus.FOUND)
+    
     @RequestMapping(path= API_BASE + "/", method=RequestMethod.GET)
     public List<Toppings> getAllToppings() {
         return toppingDao.getAllToppings();

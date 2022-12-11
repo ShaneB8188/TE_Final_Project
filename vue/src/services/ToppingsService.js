@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
 
     getAllToppings() {
-        return axios.get('/toppings/')
+        return axios.get("/toppings/")
     },
 
     createToppings(topping) {

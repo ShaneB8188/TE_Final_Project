@@ -39,7 +39,7 @@ export default {
   created() {
     this.$store.dispatch("setSpecials");
     this.pizzas = this.$store.state.specials;
-    this.$store.dispatch('setToppings');
+    this.$store.dispatch("setToppings");
     this.toppings = this.$store.state.toppings;
   },
 };
