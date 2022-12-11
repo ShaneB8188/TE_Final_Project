@@ -33,14 +33,14 @@ export default {
   data() {
     return {
       pizzas: [],
+      toppings: [],
     };
   },
   created() {
     this.$store.dispatch("setSpecials");
     this.pizzas = this.$store.state.specials;
-    // SpecialPizzaService.getAllSpecialtyPizzas().then((response) => {
-    //   this.pizzas = response.data;
-    // });
+    this.$store.dispatch('setToppings');
+    this.toppings = this.$store.state.toppings;
   },
 };
 </script>

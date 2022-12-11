@@ -76,27 +76,20 @@ export default new Vuex.Store({
     UPDATE_PIZZA_LIST(state, pizza) {
       state.specialtyPizza.push(pizza)
     },
-    SET_TOPPINGS_LIST(state, theToppings) {
-      // for (let topping in theToppings) {
-      //   state.toppings.push(topping);
-      // }
-      state.toppings.push(theToppings);
+    SET_TOPPINGS_LIST(state, toppingsList) {
+      let toppingsMod = [];
+      toppingsMod.push(toppingsList);
+      for(let i = 0; i < toppingsMod[0].length; i++) {
+          state.toppings.push(toppingsList[i]);
+      }
 
     },
     SET_SPECIALS_LIST(state, specialsList) {
       let specialsMod = [];
-      // for (let special in specialsList) {
-      //   state.specials.push(special);
-      // }
-      // for (let i = 0; i < specialsList.length; i++) {
       specialsMod.push(specialsList);
-      // state.specials.push(specialsMod[0]);
       for (let i = 0; i < specialsMod[0].length; i++) {
         state.specials.push(specialsList[i]);
       }
-
-      // }
-
     },
   },
   actions: {

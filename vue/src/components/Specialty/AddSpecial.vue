@@ -194,7 +194,7 @@ export default {
     //   this.toppings = response.data;
     // });
     //sets store toppings array equal to toppings list in backend
-      this.$store.dispatch('setToppings');
+      // this.$store.dispatch('setToppings');
    //sets store specials equal to specials list in backend - calling in two vues makes it run twice
       // this.$store.dispatch('setSpecials');
   },
