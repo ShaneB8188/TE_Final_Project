@@ -221,7 +221,7 @@ export default {
     //Finds pizza from store state if pizza name == existing name and updates it, else calls createNewPizza function
     updatePizza() {
       const newPizza = this.newPizza;
-      const specialsList = this.$store.specialsList;
+      const specialsList = this.$store.specials;
       if (specialsList.filter(obj => {
         obj.name == newPizza.name;
       })) {
