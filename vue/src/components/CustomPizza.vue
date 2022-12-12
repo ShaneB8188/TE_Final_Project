@@ -69,7 +69,7 @@
     <!-- change to topping in availableToppings once topping add functionality is complete -->
     <div v-for="topping in availableToppings" :key="topping.name" >
         <label for="PizzaTopping"> </label>
-        <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping.toppingId" >
+        <input :key="toppings.name" :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping" >
         <label :for="topping.name">{{topping.name}}</label>
     </div>
 </div>
@@ -82,8 +82,22 @@
 </template>
 
 <script>
+
 // import OrderPizzaService from '../services/OrderPizzaService.js'
 export default {
+  created() {
+    if (this.$store.state.toppings.length < 1){
+      this.$store.dispatch("setToppings");
+    }
+    this.toppings = this.$store.state.toppings;
+
+    if(this.$store.state.tempSpecialtyPizza.pizzaId) {
+        this.newPizza = this.$store.state.tempSpecialtyPizza;
+        this.newPizza.toppings = this.$store.state.tempSpecialtyPizza.toppings;
+
+      }
+
+  },
   computed: {
 
   // currently does nothing until topping add functionality is added
@@ -96,9 +110,9 @@ export default {
     },
     pizzaPrice() {
       let basePrice = 10;
-      let pizzaSum = 0;
+      let pizzaSum = basePrice;
       this.newPizza.toppings.forEach(topping => {
-        pizzaSum = basePrice += topping.price;
+        pizzaSum += topping.price;
       });
       return pizzaSum;
     }
@@ -106,62 +120,7 @@ export default {
   data() {
     return {
       toppings: [
-        {
-          name: "Cheese",
-          toppingId: 1,
-          price: 1,
-          isPremium: false,
-          available: true,
-          added: false
-        },
-        {
-          name: "Pepperoni",
-          toppingId: 2,
-          price: 1,
-          isPremium: false,
-          available: true,
-          added: false
-        },
-        {
-          name: "Basil",
-          toppingId: 3,
-          price: 1,
-          isPremium: false,
-          available: true,
-          added: false
-        },
-        {
-          name: "Black Olives",
-          toppingId: 4,
-          price: 1,
-          isPremium: false,
-          available: true,
-          added: false
-        },
-        {
-          name: "Sausage",
-          toppingId: 5,
-          price: 1,
-          isPremium: false,
-          available: true,
-          added: false
-        },
-        {
-          name: "Ham",
-          toppingId: 6,
-          price: 1,
-          isPremium: false,
-          available: true,
-          added: false
-        },
-        {
-          name: "Banana Peppers",
-          toppingId: 7,
-          price: 1,
-          isPremium: false,
-          available: true,
-          added: false
-        },
+        
       ],
       newPizza: {
         pizzaId: '',
@@ -174,16 +133,19 @@ export default {
       },
     };
   },
+
+  
+
   methods: {
     createNewPizza() {
       const newPizza = this.newPizza;
 
-      newPizza.toppings = this.newPizza.toppings.map(toppingId => {
-        return this.toppings.find(topping => topping.toppingId === toppingId);
-      });
+      // newPizza.toppings = this.newPizza.toppings.map(toppingId => {
+      //   return this.toppings.find(topping => topping.toppingId === toppingId);
+      // });
       newPizza.price = this.pizzaPrice;
-      // OrderPizzaService.addPizza(newPizza);
       this.$store.commit('ADD_TO_CART', newPizza);
+//      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
     },
     resetForm() {

@@ -8,9 +8,18 @@
         </header>
         <div class="card-content">
           <div class="content">
-            <p>Size: {{ pizza.pizzaSize }}</p>
-            <p>Crust: {{ pizza.crust }}</p>
-            <p>Sauce: {{ pizza.sauce }}</p>
+            <div>
+              <p>Size: {{ pizza.size }}</p>
+            </div>
+            <br>
+            <div>
+              <p>Crust: {{ pizza.crust }}</p>
+            </div>
+            <br>
+            <div>
+              <p>Sauce: {{ pizza.sauce }}</p>
+            </div>
+            <br>
             <div>
               Toppings:
               <ul>
@@ -27,7 +36,7 @@
 </template>
 
 <script>
-  //import SpecialPizzaService from "@/services/SpecialPizzaService";
+//import SpecialPizzaService from "@/services/SpecialPizzaService";
 
 export default {
   data() {
@@ -36,10 +45,15 @@ export default {
       toppings: [],
     };
   },
+  computed: {
+    storePizzas() {
+      return this.$store.state.specials;
+    },
+  },
   created() {
-    // this.$store.dispatch("setSpecials");
+    this.$store.dispatch("setSpecials");
     this.pizzas = this.$store.state.specials;
-    // this.$store.dispatch("setToppings");
+    this.$store.dispatch("setToppings");
     this.toppings = this.$store.state.toppings;
   },
 };
@@ -47,6 +61,31 @@ export default {
 <style>
 .card-container {
   display: grid;
-  grid-column: 1fr, 1fr, 1fr;
+  grid-column: 1fr;
+}
+
+header:hover {
+  cursor: pointer;
+  background-color: rgba(252, 101, 101, 0.644);
+}
+
+header {
+  background: linear-gradient(to right, #27b055, #064d15);
+  color: white;
+}
+
+#meat-lover {
+  grid-area: meat;
+  background-color: #f3ebf6;
+}
+
+#meat-lover:hover {
+  cursor: pointer;
+  background-color: rgba(252, 101, 101, 0.644);
+}
+
+.pizza:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.644);
 }
 </style>

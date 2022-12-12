@@ -27,6 +27,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     specials: [],
     toppings: [],
+    showCart: false,
 
     Cart: {
       orderId: '',
@@ -37,6 +38,15 @@ export default new Vuex.Store({
     },
 
     specialtyPizza: {
+      pizzaId: '',
+      name: '',
+      size: '',
+      crust: '',
+      sauce: '',
+      toppings: []
+    }, 
+
+    tempSpecialtyPizza:{
       pizzaId: '',
       name: '',
       size: '',
@@ -106,6 +116,19 @@ export default new Vuex.Store({
         state.specials.push(specialsList[i]);
       }
     },
+    REMOVE_SPECIAL(state, pizza) {
+      let specialsMod = state.specials.filter(obj => {
+        return obj.name !== pizza.name;
+      })
+      state.specials = specialsMod;
+    },
+    SET_TEMP_PIZZA(state, pizza) {
+      state.tempSpecialtyPizza = pizza;
+    },
+    SET_CART_TOTAL(state, price){
+      state.Cart.price = price;
+    }
+    
   },
   actions: {
     setToppings({ commit }) {
@@ -117,8 +140,7 @@ export default new Vuex.Store({
       SpecialPizzaService.getAllSpecialtyPizzas().then((response) => {
         commit('SET_SPECIALS_LIST', response.data);
       })
-    },
-
-  },
+    }
+  }
 })
 

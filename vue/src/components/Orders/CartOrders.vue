@@ -1,77 +1,112 @@
 <template>
   <div class="content">
-  <div id="login" class="text-center">
-    
+    <div id="login" class="text-center">
       <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
-     
-      <p>Order Total: ${{this.order.price}}</p>
-     <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
-      <p>Pizza: {{pizza.name}}</p>
-      <div>Toppings: 
-        <p v-for="topping in pizza.toppings" :key="topping.toppingId">{{topping.name}}</p>
-      </div>
-      <p>Price: {{pizza.price}}</p>
 
-      <p>{{ pizza.size }} </p>
-     </div>
-      
-      
+      <h3>Order Total: ${{ cartTotal }}</h3>
+      <label for="isDelivery">Delivery </label>
+      <input type="checkbox" name="isDelivery" v-model="isDelivery" />
+      <br />
+      <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
+        Pizza Name: {{ pizza.name }} <br />
+        {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
+        {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
+      </div>
+      <form v-show="isDelivery">
+        <label for="Address">Street Address for Delivery</label> <br />
+        <input type="text" name="Address" /><br />
+        <label for="City">City</label><br />
+        <input type="text" name="City" /><br />
+        <label for="State">State</label><br />
+        <input type="text" name="State" /><br />
+        <label for="ZipCode">ZipCode</label><br />
+        <input type="text" name="ZipCode" /><br />
+      </form>
+
       <router-link :to="{ name: 'menu' }">Return to Menu</router-link>
-      <button type="submit" class="checkoutBtn" onClick="return confirm('Confirm Order')" @click="createOrder()">Checkout</button>
-      
-    
-  </div>
+      <br />
+      <button
+        type="submit"
+        class="checkoutBtn"
+        onClick="return confirm('Confirm Order')"
+        @click="createOrder()"
+      >
+        Checkout
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-import OrderPizzaService from "@/services/OrderPizzaService.js"
+import OrderPizzaService from "@/services/OrderPizzaService.js";
 
 export default {
-  created() {
-    this.generateOrderTotal();
+  computed: {
+    cartTotal() {
+      let sum = 0;
+      this.$store.state.Cart.pizzas.forEach((pizza) => {
+        sum += pizza.price;
+      });
+      return sum;
+    }
   },
 
   data() {
     return {
-      order: {
-        orderId: '',
-        price: '',
-        isDelivery: false,
-        orderStatus: '',
-        pizzas: []
-    },
-    newOrder: {
-      orderId: '',
-      price: '',
       isDelivery: false,
-      orderStatus: '',
-      pizzas: []
-    }
-  }
+      order: {
+        orderId: "",
+        price: "",
+        isDelivery: false,
+        orderStatus: "",
+        pizzas: [],
+      },
+      newOrder: {
+        orderId: "",
+        price: "",
+        isDelivery: false,
+        orderStatus: "",
+        pizzas: [],
+      },
+    };
   },
   methods: {
     createOrder() {
-     this.order = this.$store.state.Cart;
-     this.order.orderStatus = "Pending";
-    //  this.order.pizzas.forEach(pizza => {
-    //    OrderPizzaService.addPizza(pizza);
-    //  });
-     OrderPizzaService.addOrder(this.order);
-     this.resetOrder();
+      this.$store.commit("SET_CART_TOTAL", this.cartTotal1());
+      this.order = this.$store.state.Cart;
+      this.order.orderStatus = "Pending";
+      this.$store.state.Cart.isDelivery = this.isDelivery;
+      OrderPizzaService.addOrder(this.order);
+      this.resetOrder();
+    },
+    resetOrder() {
+      this.order = this.newOrder;
+    },
+    cartTotal1() {
+      let sum = 0;
+      this.$store.state.Cart.pizzas.forEach((pizza) => {
+        sum += pizza.price;
+      });
+      return sum;
+    }
   },
-  resetOrder() {
-    this.order = this.newOrder;
-  },
-  generateOrderTotal() {
-    this.$store.commit('UPDATE_CART_TOTAL')
-    this.order.price = this.$store.state.Cart.price;
-  }
-  
-}
-}
+};
 </script>
 
 <style>
-
+.text-center {
+  display: inline;
+  justify-content: center;
+}
+.isDelivery {
+  display: flex;
+  flex-direction: row;
+}
+.checkoutBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  justify-items: center;
+}
 </style>

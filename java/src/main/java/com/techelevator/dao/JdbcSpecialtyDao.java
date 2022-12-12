@@ -38,7 +38,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
 
     @Override
     public SpecialtyPizza getSpecialById(int specialId) {
-        String sql = "SELECT pizza_id FROM specialty_pizzas WHERE pizza_id = ?;";
+        String sql = "SELECT * FROM specialty_pizzas WHERE pizza_id = ?;";
         SqlRowSet results = jdbc.queryForRowSet(sql, specialId);
         if (results.next()) {
 
@@ -47,9 +47,9 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
 
 
     @Override
-    public SpecialtyPizza createNewSpecial(String name, String pizzaSize, String crust, String sauce) {
+    public SpecialtyPizza createNewSpecial(String name, String size, String crust, String sauce) {
         String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?,?,?,?) RETURNING pizza_id;";
-        Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, pizzaSize, crust, sauce);
+        Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, size, crust, sauce);
         if (newPizzaId != null) {
         }return getSpecialById(newPizzaId);
     }
@@ -83,16 +83,22 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
     @Override
     public void removeAllToppings(int pizzaId) {
         String sql = "DELETE FROM specialty_pizza_toppings WHERE pizza_id = ?;";
-        jdbc.update(sql);
+        jdbc.update(sql, pizzaId);
     }
 
     @Override
-    public SpecialtyPizza updateSpecial(String name, int pizzaId, String size, String crust, String sauce) {
-        String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?, ?,?,?) WHERE pizza_id = ? RETURNING pizza_id;";
-        Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, size, crust, sauce, pizzaId);
-        if (newPizzaId != null) {
-        }
-        return getSpecialById(newPizzaId);
+    public SpecialtyPizza updateSpecial(String name, int pizzaId, String size, String crust, String sauce, List<Toppings> toppingsList) {
+        String sql = "UPDATE specialty_pizzas SET name = ?, pizza_size = ?, crust = ?, sauce = ? WHERE pizza_id = ?;";
+        jdbc.update(sql, name, size, crust, sauce, pizzaId);
+        removeAllToppings(pizzaId);
+        addToppingsToPizza(toppingsList, pizzaId);
+        return getSpecialById(pizzaId);
+    }
+
+    @Override
+    public void deleteSpecial(int pizzaId) {
+        String sql = "DELETE FROM specialty_pizzas WHERE pizza_id = ?;";
+        jdbc.update(sql, pizzaId);
     }
 
     private SpecialtyPizza mapRowToSpecial(SqlRowSet rowSet){
@@ -101,7 +107,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
         special.setName(rowSet.getString("name"));
         special.setCrust(rowSet.getString("crust"));
         special.setSauce(rowSet.getString("sauce"));
-        special.setPizzaSize(rowSet.getString("pizza_size"));
+        special.setSize(rowSet.getString("pizza_size"));
         return special;
     }
 
