@@ -4,7 +4,7 @@
   <div id="app">
     <div id="nav">
       <div id="banner">
-        <button id="cart-btn" @click="showCart = !showCart">
+        <button id="cart-btn" @click="$store.state.showCart = !$store.state.showCart">
           <div id="fa-icon">
             <font-awesome-icon icon="fas fa-shopping-cart" />
           </div>
@@ -25,7 +25,7 @@
         >
       </div>
 
-      <checkout v-show="showCart" />
+      <checkout v-show="$store.state.showCart" />
 
       <router-view></router-view>
     </div>
@@ -44,7 +44,7 @@ export default {
   methods: {},
   data() {
     return {
-      showCart: false,
+      
     };
   },
   
@@ -59,6 +59,8 @@ export default {
 }
 #cart-btn {
   display: flex;
+  justify-content: flex-end;
+  
   margin:0;
   
   /* position: fixed; */
