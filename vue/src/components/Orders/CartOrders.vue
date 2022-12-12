@@ -49,7 +49,7 @@ export default {
         sum += pizza.price;
       });
       return sum;
-    },
+    }
   },
 
   data() {
@@ -73,6 +73,7 @@ export default {
   },
   methods: {
     createOrder() {
+      this.$store.commit("SET_CART_TOTAL", this.cartTotal1());
       this.order = this.$store.state.Cart;
       this.order.orderStatus = "Pending";
       this.$store.state.Cart.isDelivery = this.isDelivery;
@@ -82,6 +83,13 @@ export default {
     resetOrder() {
       this.order = this.newOrder;
     },
+    cartTotal1() {
+      let sum = 0;
+      this.$store.state.Cart.pizzas.forEach((pizza) => {
+        sum += pizza.price;
+      });
+      return sum;
+    }
   },
 };
 </script>
@@ -100,9 +108,6 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
+  justify-items: center;
 }
 </style>
