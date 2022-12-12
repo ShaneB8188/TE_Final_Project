@@ -27,7 +27,7 @@
       <router-link :to="{ name: 'menu' }">Return to Menu</router-link>
       <br>
       <button type="submit" class="checkoutBtn" onClick="return confirm('Confirm Order')" @click="createOrder()">Checkout</button>
-      
+      </div>
     
   </div>
   </div>
@@ -82,5 +82,24 @@ return sum}
 </script>
 
 <style>
-
+.text-center {
+  display: inline;
+  justify-content: center;
+  
+}
+.isDelivery {
+  display: flex;
+  flex-direction: row;
+  
+  
+}
+.checkoutBtn {
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  justify-items: center;
+  
+}
 </style>
