@@ -10,6 +10,7 @@ import Orders from '../views/Orders.vue';
 import CustomPizza from '../views/CustomPizza.vue';
 import Checkout from '../views/Checkout.vue';
 import ToppingView from '../views/ToppingView.vue';
+import ToppingsAvailability from '../views/ToppingsAvailability';
 Vue.use(Router)
 
 /**
@@ -95,6 +96,15 @@ const router = new Router({
       requiresAuth: false 
       // this needs to be true once login functionality is done
     }
+    },
+    {
+      path: "/toppings/availability",
+      name: "Toppings avail",
+      component: ToppingsAvailability,
+      meta: {
+        requiresAuth: false
+        // this needs to be true once login functionality is done
+      }
     }
   ]
 })

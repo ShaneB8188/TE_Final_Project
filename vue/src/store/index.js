@@ -46,6 +46,9 @@ export default new Vuex.Store({
     },
     ADD_TOPPING(state,topping) {
       state.toppings.push(topping);
+    },
+    UPDATE_TOPPING(state,topping){
+      state.toppings.p;
     }
   }
 })
