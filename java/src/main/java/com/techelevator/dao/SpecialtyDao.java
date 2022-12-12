@@ -20,4 +20,6 @@ public interface SpecialtyDao {
     void removeAllToppings(int pizzaId);
 
     SpecialtyPizza updateSpecial(String name, int pizzaId, String size, String crust, String sauce, List<Toppings> toppingsList);
+
+    void deleteSpecial(int pizzaId);
 }

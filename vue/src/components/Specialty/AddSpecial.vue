@@ -238,9 +238,11 @@ export default {
         });
         SpecialPizzaService.updateSpecialtyPizza(newPizza).then(() => {
           this.resetForm();
+          this.$store.dispatch("setSpecials");
         });
       } else {
         this.createNewPizza();
+        this.$store.dispatch("setSpecials");
       }
     },
     resetForm() {

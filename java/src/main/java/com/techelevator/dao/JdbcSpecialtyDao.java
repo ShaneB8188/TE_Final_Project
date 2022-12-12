@@ -95,6 +95,12 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
         return getSpecialById(pizzaId);
     }
 
+    @Override
+    public void deleteSpecial(int pizzaId) {
+        String sql = "DELETE FROM specialty_pizzas WHERE pizza_id = ?;";
+        jdbc.update(sql, pizzaId);
+    }
+
     private SpecialtyPizza mapRowToSpecial(SqlRowSet rowSet){
         SpecialtyPizza special = new SpecialtyPizza();
         special.setPizzaId(rowSet.getInt("pizza_id"));

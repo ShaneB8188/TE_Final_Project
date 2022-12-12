@@ -16,6 +16,10 @@ export default {
 
       updateSpecialtyPizza(pizza) {
         return axios.put(`/SpecialtyPizzas/${pizza.pizzaId}`, pizza);
+      },
+
+      deleteSpecialtyPizza(pizza) {
+        return axios.delete(`/SpecialtyPizzas/${pizza.pizzaId}`);
       }
     
 

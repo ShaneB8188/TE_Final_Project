@@ -21,7 +21,7 @@ public class SpecialPizzaController {
         this.toppingDao=toppingDao;
     }
     @RequestMapping(path = API_BASE + "/{Id}", method = RequestMethod.GET)
-    public SpecialtyPizza getPizzaById(int specialId){
+    public SpecialtyPizza getPizzaById(@PathVariable int pizzaId, int specialId){
         return SpecialtyDao.getSpecialById(specialId);
     }
 
@@ -43,10 +43,15 @@ public class SpecialPizzaController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path= API_BASE + "/{pizzaId}", method=RequestMethod.PUT)
-    public SpecialtyPizza updateSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
+    public SpecialtyPizza updateSpecialtyPizza(@RequestBody SpecialtyPizza newPizza, @PathVariable int pizzaId){
         SpecialtyPizza createdPizza = SpecialtyDao.updateSpecial(newPizza.getName(), newPizza.getPizzaId(), newPizza.getSize(), newPizza.getCrust(), newPizza.getSauce(), newPizza.getToppings());
         return createdPizza;
     }
-    
+
+    @RequestMapping(path=API_BASE + "/{pizzaId}", method=RequestMethod.DELETE)
+    public void deleteSpecialtyPizza(@PathVariable int pizzaId) {
+        SpecialtyDao.removeAllToppings(pizzaId);
+        SpecialtyDao.deleteSpecial(pizzaId);
+    }
 
 }
