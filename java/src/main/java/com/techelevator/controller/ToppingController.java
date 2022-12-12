@@ -37,4 +37,9 @@ public class ToppingController {
     public Toppings getToppingById (int topId) {
         return toppingDao.getToppingById(topId);
     }
+
+    @RequestMapping(path= API_BASE + "/{id}",method = RequestMethod.PUT)
+    public void updateTopping(@RequestBody Toppings topping, @PathVariable int id) {
+         toppingDao.updateToppingById(topping.isAvailable(),id);
+    }
 }

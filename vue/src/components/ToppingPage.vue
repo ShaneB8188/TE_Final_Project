@@ -19,7 +19,7 @@
   </div>
   <div>
       <label for="toppingAvailable">Is the topping available. checked means true</label>
-      <input type="checkbox" name="toppingAvailable" v-model="newTopping.isAvailable">
+      <input type="checkbox" name="toppingAvailable" v-model="newTopping.available">
   </div>
   <div>
       <button type="submit" @click.prevent="createNewTopping(newTopping)">Create this Topping</button>
@@ -35,20 +35,26 @@ import ToppingService from '../services/ToppingsService'
 export default {
     data() {
         return {
+            toppings: [],
             newTopping :{
                 name: "",
                 toppingId: 1,
                 price: 0,
                 isPremium: false,
-                isAvailable: true,
+                available: true,
                 added: false
             }
         }
+    },
+    created(){
+        this.$store.dispatch("setToppings");
+        this.toppings = this.$store.state.toppings;
     },
     methods:{
         createNewTopping(Topping){
             ToppingService.createToppings(Topping);
             this.$store.commit("ADD_TOPPING",Topping);
+            this.toppings = this.$store.state.toppings;
         },
         clearForm(){
             this.newTopping ={
@@ -56,7 +62,7 @@ export default {
                 toppingId: 1,
                 price: 0,
                 isPremium: false,
-                isAvailable: true,
+                available: true,
                 added: false
             }
         }

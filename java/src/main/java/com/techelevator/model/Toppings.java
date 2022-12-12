@@ -6,15 +6,15 @@ public class Toppings {
     private String name;
     private int toppingId;
     private BigDecimal price;
-    private boolean isPremium;
-    private boolean isAvailable;
+    private boolean premium;
+    private boolean available;
 
     public Toppings(String name, int toppingId, BigDecimal price, boolean isPremium, boolean isAvailable) {
         this.name = name;
         this.toppingId = toppingId;
         this.price = price;
-        this.isPremium = isPremium;
-        this.isAvailable = isAvailable;
+        this.premium = isPremium;
+        this.available = isAvailable;
     }
     public Toppings() {
 
@@ -45,18 +45,18 @@ public class Toppings {
     }
 
     public boolean isPremium() {
-        return isPremium;
+        return premium;
     }
 
     public void setPremium(boolean premium) {
-        isPremium = premium;
+        this.premium = premium;
     }
 
     public boolean isAvailable() {
-        return isAvailable;
+        return available;
     }
 
     public void setAvailable(boolean available) {
-        isAvailable = available;
+        this.available = available;
     }
 }

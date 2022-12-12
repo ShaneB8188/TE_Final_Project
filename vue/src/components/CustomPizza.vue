@@ -67,7 +67,7 @@
     </div><div id="toppingList">
     Select which toppings you'd like
     <!-- change to topping in availableToppings once topping add functionality is complete -->
-    <div v-for="topping in toppings" :key="topping.name" >
+    <div v-for="topping in availableToppings" :key="topping.name" >
         <label for="PizzaTopping"> </label>
         <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping.toppingId" >
         <label :for="topping.name">{{topping.name}}</label>
@@ -89,7 +89,7 @@ export default {
   // currently does nothing until topping add functionality is added
     availableToppings() {
       return this.$store.state.toppings.filter(topping => {
-         if ( topping.isAvailable == true) {
+         if ( topping.available == true) {
            return topping;
          }
       })
@@ -111,7 +111,7 @@ export default {
           toppingId: 1,
           price: 1,
           isPremium: false,
-          isAvailable: true,
+          available: true,
           added: false
         },
         {
@@ -119,7 +119,7 @@ export default {
           toppingId: 2,
           price: 1,
           isPremium: false,
-          isAvailable: true,
+          available: true,
           added: false
         },
         {
@@ -127,7 +127,7 @@ export default {
           toppingId: 3,
           price: 1,
           isPremium: false,
-          isAvailable: true,
+          available: true,
           added: false
         },
         {
@@ -135,7 +135,7 @@ export default {
           toppingId: 4,
           price: 1,
           isPremium: false,
-          isAvailable: true,
+          available: true,
           added: false
         },
         {
@@ -143,7 +143,7 @@ export default {
           toppingId: 5,
           price: 1,
           isPremium: false,
-          isAvailable: true,
+          available: true,
           added: false
         },
         {
@@ -151,7 +151,7 @@ export default {
           toppingId: 6,
           price: 1,
           isPremium: false,
-          isAvailable: true,
+          available: true,
           added: false
         },
         {
@@ -159,7 +159,7 @@ export default {
           toppingId: 7,
           price: 1,
           isPremium: false,
-          isAvailable: true,
+          available: true,
           added: false
         },
       ],

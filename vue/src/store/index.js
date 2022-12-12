@@ -68,6 +68,10 @@ export default new Vuex.Store({
     ADD_TOPPING(state, topping) {
       state.toppings.push(topping);
     },
+    UPDATE_TOPPING(state,topping){
+      let correctTopping = state.toppings.find(top => top.toppingId == topping.toppingId)
+      correctTopping.available = topping.available;
+    },
     UPDATE_CART_TOTAL(state) {
       let sum = 0;
       state.Cart.pizzas.forEach(pizza => {

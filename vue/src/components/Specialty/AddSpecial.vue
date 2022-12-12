@@ -170,7 +170,7 @@ export default {
     // currently does nothing until topping add functionality is added
     availableToppings() {
       return this.$store.state.toppings.filter((topping) => {
-        if (topping.isAvailable == true) {
+        if (topping.available == true) {
           return topping;
         }
       });

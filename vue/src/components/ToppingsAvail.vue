@@ -2,38 +2,43 @@
 <form id="toppingForm">
     <div id="redDiv"></div>
     <div id='main'>
-    <div v-for="topping in toppings" :key="topping.name">
-            <label :for="isAvailable"> {{topping.name}} availability. Checked for true Unchecked for false </label>
-            <input type="checkbox" :v-model="topping.isAvailable">
+    <div v-for="topping in $store.state.toppings" :key="topping.name">
+            <label > {{topping.name}} availability. Checked for true Unchecked for false </label>
+            <input type="checkbox" v-model="topping.available">
     </div>
     <!-- not sure how to tackle. should each button have a submit? ideally submit should submit them all but sending all of the toppings would be awkward -->
-    <button type="submit" @click.prevent="updateTopping(updatedToppings)">Update these Toppings</button>
-    <button @click="clearForm">Clear form</button>
+    <button type="submit" @click.prevent="updateTopping(toppings)">Update these Toppings</button> 
+    <!-- <button @click="clearForm">Clear form</button> -->
     </div>
     <div id="greenDiv"></div>
-</form>
+</form> 
 </template>
 
 <script>
+import ToppingService from '../services/ToppingsService'
 export default {
     data() {
         return{
-            
+            toppings: []
                 
             
         }
     },
     computed: {
-        toppings(){
-            return this.$store.state.toppings;
-        }
+        // toppings(){
+        //     return this.$store.state.toppings;
+        // }
+    },
+     created(){
+        this.$store.dispatch("setToppings");
+        this.toppings = this.$store.state.toppings;
     },
     methods: {
         updateTopping(){
-            // this.toppings.forEach(element => {
-                // create update toppings in service and controller
-                // this.$store.commit
-            // });
+            this.$store.state.toppings.forEach(topping => {
+               ToppingService.updateToppingById(topping.toppingId, topping)
+                this.$store.commit("UPDATE_TOPPING",topping)
+            });
           
     },
     }
