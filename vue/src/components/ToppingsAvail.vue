@@ -30,10 +30,10 @@ export default {
     },
     methods: {
         updateTopping(){
-            this.toppings.forEach(element => {
+            // this.toppings.forEach(element => {
                 // create update toppings in service and controller
-                this.$store.commit
-            });
+                // this.$store.commit
+            // });
           
     },
     }

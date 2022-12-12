@@ -21,13 +21,25 @@
 
 // import Home from '@/views/Home';
 // import Menu from '@/views/Menu';
-
+// import ToppingService from '@/services/ToppingsService';
+// import SpecialPizzaService from '@/services/SpecialPizzaService'
 export default {
   
   // components:
   // Menu,
   // Home,
-
+  // created() {
+  //   // getAllPizza
+  //   // getAllToppings
+  //   // getAllOrders
+  //   // getAllSpecials
+  //   ToppingService.getAllToppings().forEach(topping => {
+  //     this.$store.commit("ADD_TOPPING",topping);
+  //   });
+  //   SpecialPizzaService.getAllSpecialtyPizzas().forEach(pizza => {
+  //     this.$store.commit("UPDATE_PIZZA_LIST", pizza);
+  //   });
+  // }
 };
 </script>
 <style>

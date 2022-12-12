@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+
 import ToppingsService from '../services/ToppingsService';
 import SpecialPizzaService from '../services/SpecialPizzaService';
+
 
 Vue.use(Vuex)
 
@@ -19,6 +21,7 @@ if (currentToken != null) {
 }
 
 export default new Vuex.Store({
+  // plugins: [createPersistedState()],
   state: {
     token: currentToken || '',
     user: currentUser || {},

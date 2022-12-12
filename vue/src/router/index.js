@@ -10,11 +10,8 @@ import Orders from '../views/Orders.vue';
 import CustomPizza from '../views/CustomPizza.vue';
 import Checkout from '../views/Checkout.vue';
 import ToppingView from '../views/ToppingView.vue';
-<<<<<<< HEAD
 import ToppingsAvailability from '../views/ToppingsAvailability';
-=======
 import AddPizza from '../views/AddPizza.vue';
->>>>>>> d589c94a793b27151010b28cc82a802410cf8a3a
 Vue.use(Router)
 
 /**
