@@ -192,7 +192,7 @@ export default {
         size: '',
         crust: '',
         sauce: '',
-        topping: [],
+        toppings: [],
       }
     }
   },

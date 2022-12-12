@@ -31,8 +31,8 @@ public class SpecialtyPizza {
         return size;
     }
 
-    public void setPizzaSize(String pizzaSize) {
-        this.size = pizzaSize;
+    public void setPizzaSize(String size) {
+        this.size = size;
     }
 
     public String getCrust() {
