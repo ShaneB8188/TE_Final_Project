@@ -23,10 +23,8 @@ export default {
   toppings: [],
 
   created() {
-    if (this.$store.state.toppings.length < 1) {
-      this.$store.dispatch("setSpecials");
-      this.$store.dispatch("setToppings");
-    }
+    this.$store.dispatch("setSpecials");
+    this.$store.dispatch("setToppings");
     this.pizzas = this.$store.state.specials;
     this.toppings = this.$store.state.toppings;
   },
