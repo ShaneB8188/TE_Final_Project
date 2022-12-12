@@ -150,11 +150,7 @@
         </div>
       </div>
       <br />
-      <button
-        type="submit"
-        class="btn btn-submit"
-        @click.prevent="updatePizza"
-      >
+      <button type="submit" class="btn btn-submit" @click.prevent="updatePizza">
         Order
       </button>
       <button type="button" class="btn btn-cancel" @click="resetForm">
@@ -167,23 +163,22 @@
 
 <script>
 // import OrderPizzaService from '../services/OrderPizzaService.js'
-import SpecialPizzaService from '../../services/SpecialPizzaService.js';
+import SpecialPizzaService from "../../services/SpecialPizzaService.js";
 // import ToppingsService from '../../services/ToppingsService';
 export default {
   computed: {
-
-  // currently does nothing until topping add functionality is added
+    // currently does nothing until topping add functionality is added
     availableToppings() {
-      return this.$store.state.toppings.filter(topping => {
-         if ( topping.isAvailable == true) {
-           return topping;
-         }
-      })
+      return this.$store.state.toppings.filter((topping) => {
+        if (topping.isAvailable == true) {
+          return topping;
+        }
+      });
     },
     pizzaPrice() {
       let basePrice = 10;
       let pizzaSum = 0;
-      this.newPizza.toppings.forEach(topping => {
+      this.newPizza.toppings.forEach((topping) => {
         pizzaSum = basePrice += topping.price;
       });
       return pizzaSum;
@@ -193,13 +188,13 @@ export default {
     return {
       toppings: [],
       newPizza: {
-        pizzaId: '',
+        pizzaId: "",
         name: "",
         size: "",
         crust: "",
         sauce: "",
-        price: '',
-        toppings: []
+        price: "",
+        toppings: [],
       },
     };
   },
@@ -210,37 +205,46 @@ export default {
     createNewPizza() {
       const newPizza = this.newPizza;
 
-      newPizza.toppings = this.newPizza.toppings.map(toppingId => {
-        return this.toppings.find(topping => topping.toppingId === toppingId);
+      newPizza.toppings = this.newPizza.toppings.map((toppingId) => {
+        return this.toppings.find((topping) => topping.toppingId === toppingId);
       });
       newPizza.price = this.pizzaPrice;
       // OrderPizzaService.addPizza(newPizza);
       SpecialPizzaService.createNewSpecialtyPizza(newPizza);
       this.resetForm();
     },
+    filterPizza() {
+      const newPizza = this.newPizza;
+      const specialsList = this.$store.state.specials;
+      const specialsMod = specialsList.filter((obj) => {
+        obj.name == newPizza.name;
+      });
+      return specialsMod;
+    },
+
     //Finds pizza from store state if pizza name == existing name and updates it, else calls createNewPizza function
     updatePizza() {
       const newPizza = this.newPizza;
-      const specialsList = this.$store.specials;
-      if (specialsList.filter(obj => {
-        obj.name == newPizza.name;
-      })) {
+      const specialsMod = this.filterPizza();
+      if (specialsMod.length > 0) {
+        newPizza.pizzaId = specialsMod[0].pizzaId;
         SpecialPizzaService.updateSpecialtyPizza(newPizza);
+        this.resetForm();
       } else {
-        this.createNewPizza;
+        this.createNewPizza();
       }
     },
     resetForm() {
       this.newPizza = {
-        name: '',
-        size: '',
-        crust: '',
-        sauce: '',
+        pizzaId: -1,
+        name: "",
+        size: "",
+        crust: "",
+        sauce: "",
         toppings: [],
-      }
-    }
+      };
+    },
   },
-  
 };
 </script>
 
