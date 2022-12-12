@@ -24,8 +24,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  
+};
 </script>
 
 <style>
+header:hover{
+ cursor: pointer;
+  background-color: rgba(252, 101, 101, 0.644);
+}
 </style>

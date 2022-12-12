@@ -69,12 +69,12 @@
     <!-- change to topping in availableToppings once topping add functionality is complete -->
     <div v-for="topping in toppings" :key="topping.name" >
         <label for="PizzaTopping"> </label>
-        <input :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping.toppingId" >
+        <input :key="toppings.name" :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping" >
         <label :for="topping.name">{{topping.name}}</label>
     </div>
 </div>
     <br>
-    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
+    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza, resetForm"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
       </div>
     <div id ="greenDiv"></div>
@@ -90,6 +90,13 @@ export default {
       this.$store.dispatch("setToppings");
     }
     this.toppings = this.$store.state.toppings;
+
+    if(this.$store.state.tempSpecialtyPizza.pizzaId) {
+        this.newPizza = this.$store.state.tempSpecialtyPizza;
+        this.newPizza.toppings = this.$store.state.tempSpecialtyPizza.toppings;
+
+      }
+
   },
   computed: {
 
@@ -126,6 +133,9 @@ export default {
       },
     };
   },
+
+  
+
   methods: {
     createNewPizza() {
       const newPizza = this.newPizza;
@@ -134,8 +144,8 @@ export default {
         return this.toppings.find(topping => topping.toppingId === toppingId);
       });
       newPizza.price = this.pizzaPrice;
-      // OrderPizzaService.addPizza(newPizza);
       this.$store.commit('ADD_TO_CART', newPizza);
+      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
     },
     resetForm() {

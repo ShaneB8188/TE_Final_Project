@@ -41,6 +41,15 @@ export default new Vuex.Store({
       crust: '',
       sauce: '',
       toppings: []
+    }, 
+
+    tempSpecialtyPizza:{
+      pizzaId: '',
+      name: '',
+      size: '',
+      crust: '',
+      sauce: '',
+      toppings: []
     }
   },
   mutations: {
@@ -66,14 +75,7 @@ export default new Vuex.Store({
     ADD_TOPPING(state, topping) {
       state.toppings.push(topping);
     },
-    UPDATE_CART_TOTAL(state) {
-      let sum = 0;
-      state.Cart.pizzas.forEach(pizza => {
-        sum += pizza.price;
-      });
-      state.Cart.price = sum;
-    },
-
+    
     UPDATE_PIZZA_LIST(state, pizza) {
       state.specialtyPizza.push(pizza)
     },
@@ -93,6 +95,10 @@ export default new Vuex.Store({
       for (let i = 0; i < specialsMod[0].length; i++) {
         state.specials.push(specialsList[i]);
       }
+    }
+    },
+    SET_TEMP_PIZZA(state, pizza) {
+      state.tempSpecialtyPizza = pizza;
     },
   },
   actions: {

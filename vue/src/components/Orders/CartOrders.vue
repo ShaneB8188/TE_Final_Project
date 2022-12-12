@@ -4,7 +4,7 @@
     
       <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
      
-      <h3>Order Total: ${{this.order.price}}</h3>
+      <h3>Order Total: ${{cartTotal}}</h3>
       <label for="isDelivery">Delivery  </label>
       <input type="checkbox" name="isDelivery" v-model="isDelivery">
       <br>
@@ -12,10 +12,20 @@
         Pizza Name: {{pizza.name}} <br>
         {{pizza.crust}} Crust, {{pizza.sauce}} Sauce, {{pizza.toppings.map(topping => topping.name).join(", ")}}
      </div>
-      <div class="bottomOption">
-      <!-- <button class="returnMenu">
-      <router-link :to="{ name: 'menu' }" @click="$store.state.showCart = !$store.state.showCart">Return to Menu</router-link>
-      </button><br> -->
+      <form v-show="isDelivery">
+        <label for="Address">Street Address for Delivery</label> <br>
+        <input type="text" name="Address"><br>
+        <label for="City">City</label><br>
+        <input type="text" name="City"><br>
+        <label for="State">State</label><br>
+        <input type="text" name="State"><br>
+        <label for="ZipCode">ZipCode</label><br>
+        <input type="text" name="ZipCode"><br>
+
+      </form>
+      
+      <router-link :to="{ name: 'menu' }">Return to Menu</router-link>
+      <br>
       <button type="submit" class="checkoutBtn" onClick="return confirm('Confirm Order')" @click="createOrder()">Checkout</button>
       </div>
     
@@ -27,8 +37,13 @@
 import OrderPizzaService from "@/services/OrderPizzaService.js"
 
 export default {
-  created() {
-    this.generateOrderTotal();
+  computed: {
+    cartTotal() {
+let sum = 0;
+    this.$store.state.Cart.pizzas.forEach(pizza => {
+        sum += pizza.price;
+      });
+return sum}
   },
 
   data() {
@@ -55,18 +70,11 @@ export default {
      this.order = this.$store.state.Cart;
      this.order.orderStatus = "Pending";
      this.$store.state.Cart.isDelivery = this.isDelivery;
-    //  this.order.pizzas.forEach(pizza => {
-    //    OrderPizzaService.addPizza(pizza);
-    //  });
      OrderPizzaService.addOrder(this.order);
      this.resetOrder();
   },
   resetOrder() {
     this.order = this.newOrder;
-  },
-  generateOrderTotal() {
-    this.$store.commit('UPDATE_CART_TOTAL')
-    this.order.price = this.$store.state.Cart.price;
   }
   
 }
