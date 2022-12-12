@@ -94,8 +94,14 @@ export default new Vuex.Store({
       specialsMod.push(specialsList);
       for (let i = 0; i < specialsMod[0].length; i++) {
         state.specials.push(specialsList[i]);
-      }},
-
+      }
+    },
+    REMOVE_SPECIAL(state, pizza) {
+      let specialsMod = state.specials.filter(obj => {
+        return obj.name !== pizza.name;
+      })
+      state.specials = specialsMod;
+    },
     SET_TEMP_PIZZA(state, pizza) {
       state.tempSpecialtyPizza = pizza;
     },

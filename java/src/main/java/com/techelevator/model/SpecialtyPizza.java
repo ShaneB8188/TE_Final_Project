@@ -27,11 +27,11 @@ public class SpecialtyPizza {
         this.name = name;
     }
 
-    public String getPizzaSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setPizzaSize(String size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
