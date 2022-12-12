@@ -186,6 +186,7 @@ export default {
   },
   data() {
     return {
+      testPizza: [],
       toppings: [],
       newPizza: {
         pizzaId: "",
@@ -217,7 +218,7 @@ export default {
       const newPizza = this.newPizza;
       const specialsList = this.$store.state.specials;
       const specialsMod = specialsList.filter((obj) => {
-        obj.name == newPizza.name;
+        return obj.name.toUpperCase() == newPizza.name.toUpperCase();
       });
       return specialsMod;
     },
@@ -226,10 +227,18 @@ export default {
     updatePizza() {
       const newPizza = this.newPizza;
       const specialsMod = this.filterPizza();
+      this.testPizza = specialsMod;
       if (specialsMod.length > 0) {
+        alert(newPizza);
         newPizza.pizzaId = specialsMod[0].pizzaId;
-        SpecialPizzaService.updateSpecialtyPizza(newPizza);
-        this.resetForm();
+        newPizza.toppings = this.newPizza.toppings.map((toppingId) => {
+          return this.toppings.find(
+            (topping) => topping.toppingId === toppingId
+          );
+        });
+        SpecialPizzaService.updateSpecialtyPizza(newPizza).then(() => {
+          this.resetForm();
+        });
       } else {
         this.createNewPizza();
       }

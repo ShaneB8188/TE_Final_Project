@@ -1,6 +1,6 @@
 <template>
   <div class="pizza" id="body">
-    <div class="card" id="meat-lover" v-show="pizza.name">
+    <div class="card" id="meat-lover">
       <header class="card-header">
         <p class="card-header-title">{{ pizza.name }}</p>
       </header>

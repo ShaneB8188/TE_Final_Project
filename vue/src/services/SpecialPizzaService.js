@@ -11,11 +11,11 @@ export default {
       },
     
       createNewSpecialtyPizza(pizza) {
-        return axios.post('/SpecialtyPizzas', pizza);
+        return axios.post('/SpecialtyPizzas/', pizza);
       },
 
       updateSpecialtyPizza(pizza) {
-        return axios.put(`/SpecialtyPizzas/${pizza.id}`, pizza);
+        return axios.put(`/SpecialtyPizzas/${pizza.pizzaId}`, pizza);
       }
     
 

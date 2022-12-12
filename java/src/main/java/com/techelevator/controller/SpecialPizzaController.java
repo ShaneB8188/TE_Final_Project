@@ -31,9 +31,9 @@ public class SpecialPizzaController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path= API_BASE, method=RequestMethod.POST)
+    @RequestMapping(path= API_BASE + "/", method=RequestMethod.POST)
     public SpecialtyPizza createNewSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
-        SpecialtyPizza createdPizza = SpecialtyDao.createNewSpecial(newPizza.getName(), newPizza.getPizzaSize(), newPizza.getCrust(), newPizza.getSauce());
+        SpecialtyPizza createdPizza = SpecialtyDao.createNewSpecial(newPizza.getName(), newPizza.getSize(), newPizza.getCrust(), newPizza.getSauce());
         if (newPizza.getToppings() != null){
             SpecialtyDao.addToppingsToPizza(newPizza.getToppings(), createdPizza.getPizzaId());
             createdPizza.setToppings(newPizza.getToppings());
@@ -44,12 +44,7 @@ public class SpecialPizzaController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path= API_BASE + "/{pizzaId}", method=RequestMethod.PUT)
     public SpecialtyPizza updateSpecialtyPizza(@RequestBody SpecialtyPizza newPizza){
-        SpecialtyPizza createdPizza = SpecialtyDao.updateSpecial(newPizza.getName(), newPizza.getPizzaId(), newPizza.getPizzaSize(), newPizza.getCrust(), newPizza.getSauce());
-        SpecialtyDao.removeAllToppings(newPizza.getPizzaId());
-        if (newPizza.getToppings() != null){
-            SpecialtyDao.addToppingsToPizza(newPizza.getToppings(), newPizza.getPizzaId());
-            createdPizza.setToppings(newPizza.getToppings());
-        }
+        SpecialtyPizza createdPizza = SpecialtyDao.updateSpecial(newPizza.getName(), newPizza.getPizzaId(), newPizza.getSize(), newPizza.getCrust(), newPizza.getSauce(), newPizza.getToppings());
         return createdPizza;
     }
     
