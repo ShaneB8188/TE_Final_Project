@@ -174,6 +174,17 @@ export default {
       },
     };
   },
+
+  created(){
+
+      if(this.$store.state.tempSpecialtyPizza.pizzaId) {
+        this.newPizza = this.$store.state.tempSpecialtyPizza
+      }
+
+      
+    
+  },
+
   methods: {
     createNewPizza() {
       const newPizza = this.newPizza;

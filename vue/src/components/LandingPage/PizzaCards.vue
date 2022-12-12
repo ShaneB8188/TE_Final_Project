@@ -3,7 +3,7 @@
   
   <router-link :to="{ name: 'customPizza' }" class="pizza" id="body">
   
-    <div class="card" id="meat-lover" @click="populateSpecialPizzas">
+    <div class="card" id="meat-lover" @click="populateSpecialtyPizza(pizza.pizzaId)">
       <header class="card-header">
         <p class="card-header-title">{{ pizza.name }}</p>
       </header>
@@ -50,11 +50,14 @@ export default {
   components: {},
 
   methods: {
-    populateSpecialtyPizzas() {
-      this.$store.specials = this.temp 
-      t
+    populateSpecialtyPizza(pizzaId) {
+
+      this.$store.commit("SET_TEMP_PIZZA",this.$store.state.specials.filter(obj => {
+        return obj.pizzaId == pizzaId;
+      })[0]); 
+      
     }
-  }
+  },  
 };
 </script>
 
