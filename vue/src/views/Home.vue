@@ -25,8 +25,16 @@
           Add Topping to Menu
           </router-link>
         </li>
-        <li><a>Update Topping Availability</a></li>
-        <li><a>Remove Topping From Menu</a></li>
+        <li>
+          <router-link :to="{name:'Toppings avail'}">
+            Update Topping Availability
+            </router-link>
+          </li>
+        <li>
+           <!-- <router-link :to="{name:'Toppings delete'}">
+          Remove Topping From Menu
+          </router-link> -->
+          </li>
       </ul>
     </li>
   </ul>

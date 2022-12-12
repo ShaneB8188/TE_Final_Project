@@ -35,6 +35,12 @@ public class JdbcToppingDao implements ToppingDao {
     }
 
     @Override
+    public void updateToppingById(boolean check, int toppingId) {
+        String sql = "UPDATE topping set isavailable = ? where topping_ID = ?";
+        jdbcTemplate.update(sql, check, toppingId);
+    }
+
+    @Override
     public List<Toppings> getAllToppings() {
         List<Toppings> list = new ArrayList<>();
         String sql = "SELECT * FROM topping";
@@ -63,6 +69,12 @@ public class JdbcToppingDao implements ToppingDao {
            return getToppingById(newToppingId);
         }
         return null;
+    }
+
+    @Override
+    public void deleteTopping (int id) {
+        String sql ="delete from topping where topping_id = ?";
+        jdbcTemplate.update(sql,id);
     }
 
 

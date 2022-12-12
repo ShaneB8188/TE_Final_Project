@@ -10,7 +10,9 @@ import Orders from '../views/Orders.vue';
 import CustomPizza from '../views/CustomPizza.vue';
 import Checkout from '../views/Checkout.vue';
 import ToppingView from '../views/ToppingView.vue';
+import ToppingsAvailability from '../views/ToppingsAvailability';
 import AddPizza from '../views/AddPizza.vue';
+import ToppingsDelete from '../views/ToppingsDelete';
 import DeleteSpecial from '../views/DestroyPizza.vue';
 import AboutUs from '../views/AboutUs.vue';
 Vue.use(Router)
@@ -100,6 +102,14 @@ const router = new Router({
       }
     },
     {
+      path: "/toppings/availability",
+      name: "Toppings avail",
+      component: ToppingsAvailability,
+      meta: {
+        requiresAuth: false
+        // this needs to be true once login functionality is done
+      }},
+      {
       path: "/addPizza",
       name: "AddPizza",
       component: AddPizza,
@@ -108,6 +118,15 @@ const router = new Router({
       }
     },
     {
+      path: "/toppings/delete",
+      name: "Toppings delete",
+      component: ToppingsDelete,
+      meta: {
+        requiresAuth: false
+        // this needs to be true once login functionality is done
+      }
+    },
+      {
       path: "/deleteSpecial",
       name: "DeleteSpecial",
       component: DeleteSpecial,

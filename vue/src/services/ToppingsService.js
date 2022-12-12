@@ -13,6 +13,13 @@ export default {
     getToppingsById(toppingId) {
         return axios.get(`/toppings/${toppingId}`)
     },
+    updateToppingById(toppingId, topping) {
+        return axios.put(`/toppings/${toppingId}`, topping)
+    },
+
+    deleteToppingsById(toppingId) {
+        return axios.delete(`/toppings/${toppingId}`)
+    }
 
 
 }
