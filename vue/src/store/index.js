@@ -24,6 +24,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     specials: [],
     toppings: [],
+    showCart: false,
 
     Cart: {
       orderId: '',

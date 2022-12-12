@@ -26,7 +26,6 @@ section{
   background: linear-gradient(to right, white, #be162c);
   color: white;
 
-
 }
 
 #home{

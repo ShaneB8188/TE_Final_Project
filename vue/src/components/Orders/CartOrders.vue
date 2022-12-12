@@ -12,12 +12,12 @@
         Pizza Name: {{pizza.name}} <br>
         {{pizza.crust}} Crust, {{pizza.sauce}} Sauce, {{pizza.toppings.map(topping => topping.name).join(", ")}}
      </div>
-      
-      
-      <router-link :to="{ name: 'menu' }">Return to Menu</router-link>
-      <br>
+      <div class="bottomOption">
+      <!-- <button class="returnMenu">
+      <router-link :to="{ name: 'menu' }" @click="$store.state.showCart = !$store.state.showCart">Return to Menu</router-link>
+      </button><br> -->
       <button type="submit" class="checkoutBtn" onClick="return confirm('Confirm Order')" @click="createOrder()">Checkout</button>
-      
+      </div>
     
   </div>
   </div>
@@ -74,5 +74,24 @@ export default {
 </script>
 
 <style>
-
+.text-center {
+  display: inline;
+  justify-content: center;
+  
+}
+.isDelivery {
+  display: flex;
+  flex-direction: row;
+  
+  
+}
+.checkoutBtn {
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  justify-items: center;
+  
+}
 </style>
