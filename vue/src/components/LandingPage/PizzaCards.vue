@@ -8,7 +8,7 @@
         <p class="card-header-title">{{ pizza.name }}</p>
       </header>
       <figure class="image is-4by3">
-        <img src="\Assests\meaty.jfif" alt="Place Holder Image for Pizza" />
+        <img src="\Assests\pizza-pizza.jpg" alt="Place Holder Image for Pizza" />
       </figure>
       <div class="card-content">
         {{pizza.pizzaSize}}
