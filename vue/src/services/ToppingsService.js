@@ -3,11 +3,11 @@ import axios from "axios";
 export default {
 
     getAllToppings() {
-        return axios.get('/toppings')
+        return axios.get("/toppings/")
     },
 
     createToppings(topping) {
-        return axios.post('/toppings', topping)
+        return axios.post('/toppings/', topping)
     },
 
     getToppingsById(toppingId) {

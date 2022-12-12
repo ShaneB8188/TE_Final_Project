@@ -74,7 +74,7 @@
     </div>
 </div>
     <br>
-    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza(newPizza)"> Order </button>
+    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
       </div>
     <div id ="greenDiv"></div>
@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import OrderPizzaService from '../services/OrderPizzaService.js'
+// import OrderPizzaService from '../services/OrderPizzaService.js'
 export default {
   computed: {
 
@@ -93,6 +93,14 @@ export default {
            return topping;
          }
       })
+    },
+    pizzaPrice() {
+      let basePrice = 10;
+      let pizzaSum = 0;
+      this.newPizza.toppings.forEach(topping => {
+        pizzaSum = basePrice += topping.price;
+      });
+      return pizzaSum;
     }
   },
   data() {
@@ -156,26 +164,27 @@ export default {
         },
       ],
       newPizza: {
-        pizzaId: 1,
+        pizzaId: '',
         name: "",
         size: "",
         crust: "",
         sauce: "",
+        price: '',
         toppings: []
       },
     };
   },
   methods: {
-    createNewPizza(Pizza) {
-      const newPizza = { ...Pizza };
+    createNewPizza() {
+      const newPizza = this.newPizza;
 
-      newPizza.toppings = Pizza.toppings.map(toppingId => {
+      newPizza.toppings = this.newPizza.toppings.map(toppingId => {
         return this.toppings.find(topping => topping.toppingId === toppingId);
-      })
-
-      OrderPizzaService.addPizza(newPizza);
-      // this.$store.commit("ADD_TO_CART", newPizza);
-
+      });
+      newPizza.price = this.pizzaPrice;
+      // OrderPizzaService.addPizza(newPizza);
+      this.$store.commit('ADD_TO_CART', newPizza);
+      this.resetForm();
     },
     resetForm() {
       this.newPizza = {
@@ -183,7 +192,7 @@ export default {
         size: '',
         crust: '',
         sauce: '',
-        topping: [],
+        toppings: [],
       }
     }
   },

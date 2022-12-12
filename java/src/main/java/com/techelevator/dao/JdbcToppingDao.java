@@ -6,6 +6,8 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class JdbcToppingDao implements ToppingDao {
@@ -30,6 +32,18 @@ public class JdbcToppingDao implements ToppingDao {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<Toppings> getAllToppings() {
+        List<Toppings> list = new ArrayList<>();
+        String sql = "SELECT * FROM topping";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Toppings topping = mapRowToToppings(results);
+            list.add(topping);
+        }
+        return list;
     }
 
     /**

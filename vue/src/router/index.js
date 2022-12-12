@@ -10,7 +10,11 @@ import Orders from '../views/Orders.vue';
 import CustomPizza from '../views/CustomPizza.vue';
 import Checkout from '../views/Checkout.vue';
 import ToppingView from '../views/ToppingView.vue';
+<<<<<<< HEAD
 import ToppingsAvailability from '../views/ToppingsAvailability';
+=======
+import AddPizza from '../views/AddPizza.vue';
+>>>>>>> d589c94a793b27151010b28cc82a802410cf8a3a
 Vue.use(Router)
 
 /**
@@ -104,6 +108,13 @@ const router = new Router({
       meta: {
         requiresAuth: false
         // this needs to be true once login functionality is done
+      }},
+      {
+      path: "/addPizza",
+      name: "AddPizza",
+      component: AddPizza,
+      meta: {
+        requiresAuth: false
       }
     }
   ]

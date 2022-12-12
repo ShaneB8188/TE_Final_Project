@@ -3,6 +3,7 @@ package com.techelevator.model;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 

@@ -18,7 +18,7 @@
   <ul class="menu-list">
     <li>
       <ul>
-        <li><a>Add A Pizza to Menu</a></li>
+        <li><router-link :to="{name: 'AddPizza'}">Add A Pizza to Menu</router-link></li>
         <li><a>Update Pizza on Menu</a></li>
         <li><a>Remove Pizza From Menu</a></li>
         <li>
