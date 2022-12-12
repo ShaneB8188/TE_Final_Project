@@ -93,12 +93,12 @@ export default new Vuex.Store({
       specialsMod.push(specialsList);
       for (let i = 0; i < specialsMod[0].length; i++) {
         state.specials.push(specialsList[i]);
-      }
-    }
-    },
+      }},
+
     SET_TEMP_PIZZA(state, pizza) {
       state.tempSpecialtyPizza = pizza;
     },
+    
   },
   actions: {
     setToppings({ commit }) {
@@ -110,8 +110,7 @@ export default new Vuex.Store({
       SpecialPizzaService.getAllSpecialtyPizzas().then((response) => {
         commit('SET_SPECIALS_LIST', response.data);
       })
-    },
-
-  },
+    }
+  }
 })
 
