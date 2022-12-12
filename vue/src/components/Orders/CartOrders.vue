@@ -4,19 +4,18 @@
     
       <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
      
-      <p>Order Total: ${{this.order.price}}</p>
+      <h3>Order Total: ${{this.order.price}}</h3>
+      <label for="isDelivery">Delivery  </label>
+      <input type="checkbox" name="isDelivery" v-model="isDelivery">
+      <br>
      <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
-      <p>Pizza: {{pizza.name}}</p>
-      <div>Toppings: 
-        <p v-for="topping in pizza.toppings" :key="topping.toppingId">{{topping.name}}</p>
-      </div>
-      <p>Price: {{pizza.price}}</p>
-
-      <p>{{ pizza.size }} </p>
+        Pizza Name: {{pizza.name}} <br>
+        {{pizza.crust}} Crust, {{pizza.sauce}} Sauce, {{pizza.toppings.map(topping => topping.name).join(", ")}}
      </div>
       
       
       <router-link :to="{ name: 'menu' }">Return to Menu</router-link>
+      <br>
       <button type="submit" class="checkoutBtn" onClick="return confirm('Confirm Order')" @click="createOrder()">Checkout</button>
       
     
@@ -34,6 +33,7 @@ export default {
 
   data() {
     return {
+      isDelivery: false,
       order: {
         orderId: '',
         price: '',
@@ -54,6 +54,7 @@ export default {
     createOrder() {
      this.order = this.$store.state.Cart;
      this.order.orderStatus = "Pending";
+     this.$store.state.Cart.isDelivery = this.isDelivery;
     //  this.order.pizzas.forEach(pizza => {
     //    OrderPizzaService.addPizza(pizza);
     //  });
