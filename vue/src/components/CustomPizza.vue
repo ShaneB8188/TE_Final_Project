@@ -145,6 +145,7 @@ export default {
       });
       newPizza.price = this.pizzaPrice;
       this.$store.commit('ADD_TO_CART', newPizza);
+      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
     },
     resetForm() {
