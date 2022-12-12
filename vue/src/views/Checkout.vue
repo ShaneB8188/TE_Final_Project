@@ -1,3 +1,4 @@
+
 <template>
    <div>
      <cart-orders/>
@@ -6,6 +7,7 @@
 
 <script>
 import CartOrders from '../components/Orders/CartOrders.vue'
+
 
 export default {
   components: {
