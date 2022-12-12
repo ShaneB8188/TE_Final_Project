@@ -11,6 +11,7 @@ import CustomPizza from '../views/CustomPizza.vue';
 import Checkout from '../views/Checkout.vue';
 import ToppingView from '../views/ToppingView.vue';
 import AddPizza from '../views/AddPizza.vue';
+import AboutUs from '../views/AboutUs.vue'
 Vue.use(Router)
 
 /**
@@ -103,6 +104,15 @@ const router = new Router({
       component: AddPizza,
       meta: {
         requiresAuth: false
+      }
+    },
+
+    {
+      path:"/aboutUs",
+      name: "AboutUs",
+      component: AboutUs,
+      meta:{
+        requiresAuth:false
       }
     }
   ]
