@@ -67,7 +67,7 @@
     </div><div id="toppingList">
     Select which toppings you'd like
     <!-- change to topping in availableToppings once topping add functionality is complete -->
-    <div v-for="topping in toppings" :key="topping.name" >
+    <div v-for="topping in availableToppings" :key="topping.name" >
         <label for="PizzaTopping"> </label>
         <input :key="toppings.name" :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping" >
         <label :for="topping.name">{{topping.name}}</label>
@@ -103,7 +103,7 @@ export default {
   // currently does nothing until topping add functionality is added
     availableToppings() {
       return this.$store.state.toppings.filter(topping => {
-         if ( topping.isAvailable == true) {
+         if ( topping.available == true) {
            return topping;
          }
       })

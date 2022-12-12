@@ -19,7 +19,12 @@
         <!-- >&nbsp;|&nbsp; -->
         <router-link class="menu-items" v-bind:to="{ name: 'home' }"
           >Employee Dashboard</router-link
+        >&nbsp;|&nbsp;
+
+         <router-link class="menu-items" v-bind:to="{ name: 'AboutUs' }"
+          >About Us</router-link
         >
+
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
@@ -39,7 +44,8 @@ import HomeBanner from "@/components/HomeBanner.vue"
 
 // import Home from '@/views/Home';
 // import Menu from '@/views/Menu';
-
+// import ToppingService from '@/services/ToppingsService';
+// import SpecialPizzaService from '@/services/SpecialPizzaService'
 export default {
   name: "App",
   components: {

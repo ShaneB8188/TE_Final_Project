@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+
 import ToppingsService from '../services/ToppingsService';
 import SpecialPizzaService from '../services/SpecialPizzaService';
+
 
 Vue.use(Vuex)
 
@@ -19,6 +21,7 @@ if (currentToken != null) {
 }
 
 export default new Vuex.Store({
+  // plugins: [createPersistedState()],
   state: {
     token: currentToken || '',
     user: currentUser || {},
@@ -75,7 +78,24 @@ export default new Vuex.Store({
     ADD_TOPPING(state, topping) {
       state.toppings.push(topping);
     },
-    
+    UPDATE_TOPPING(state,topping){
+      let correctTopping = state.toppings.find(top => top.toppingId == topping.toppingId)
+      correctTopping.available = topping.available;
+    },
+    DELETE_TOPPING(state,id){
+      let newTopList = state.toppings.filter(top =>{
+        return top.id != id
+      });
+      state.toppings = newTopList;
+    },
+    UPDATE_CART_TOTAL(state) {
+      let sum = 0;
+      state.Cart.pizzas.forEach(pizza => {
+        sum += pizza.price;
+      });
+      state.Cart.price = sum;
+    },
+
     UPDATE_PIZZA_LIST(state, pizza) {
       state.specialtyPizza.push(pizza)
     },
