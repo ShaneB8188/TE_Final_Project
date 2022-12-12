@@ -82,8 +82,15 @@
 </template>
 
 <script>
+
 // import OrderPizzaService from '../services/OrderPizzaService.js'
 export default {
+  created() {
+    if (this.$store.state.toppings.length < 1){
+      this.$store.dispatch("setToppings");
+    }
+    this.toppings = this.$store.state.toppings;
+  },
   computed: {
 
   // currently does nothing until topping add functionality is added
@@ -106,62 +113,7 @@ export default {
   data() {
     return {
       toppings: [
-        {
-          name: "Cheese",
-          toppingId: 1,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Pepperoni",
-          toppingId: 2,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Basil",
-          toppingId: 3,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Black Olives",
-          toppingId: 4,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Sausage",
-          toppingId: 5,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Ham",
-          toppingId: 6,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
-        {
-          name: "Banana Peppers",
-          toppingId: 7,
-          price: 1,
-          isPremium: false,
-          isAvailable: true,
-          added: false
-        },
+        
       ],
       newPizza: {
         pizzaId: '',

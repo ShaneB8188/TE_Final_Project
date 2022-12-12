@@ -1,4 +1,7 @@
 <template>
+
+
+
   <section>
     <div>Pizza Restaurant Name</div>
     <!-- <div id="home">Home</div> -->
