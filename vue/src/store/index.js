@@ -40,6 +40,15 @@ export default new Vuex.Store({
       crust: '',
       sauce: '',
       toppings: []
+    }, 
+
+    tempSpecialtyPizza:{
+      pizzaId: '',
+      name: '',
+      size: '',
+      crust: '',
+      sauce: '',
+      toppings: []
     }
   },
   mutations: {
@@ -87,6 +96,10 @@ export default new Vuex.Store({
       }
     }
     },
+    SET_TEMP_PIZZA(state, pizza) {
+      state.tempSpecialtyPizza = pizza;
+    },
+  },
   actions: {
     setToppings({ commit }) {
       ToppingsService.getAllToppings().then((response) => {
