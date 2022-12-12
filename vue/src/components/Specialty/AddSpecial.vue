@@ -138,7 +138,7 @@
       <div id="toppingList">
         Select which toppings you'd like
         <!-- change to topping in availableToppings once topping add functionality is complete -->
-        <div v-for="topping in toppings" :key="topping.id">
+        <div v-for="topping in availableToppings" :key="topping.id">
           <label for="PizzaTopping"> </label>
           <input
             :id="`PizzaTopping${topping.name}`"
@@ -175,6 +175,7 @@ export default {
         }
       });
     },
+    
     pizzaPrice() {
       let basePrice = 10;
       let pizzaSum = 0;
