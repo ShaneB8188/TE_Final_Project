@@ -17,5 +17,7 @@ public interface SpecialtyDao {
 
     SpecialtyPizza addToppingsToPizza(List<Toppings> toppingsList, int pizzaId);
 
-    SpecialtyPizza updateSpecial(int pizzaId, String name, String pizzaSize, String crust, String sauce);
+    void removeAllToppings(int pizzaId);
+
+    SpecialtyPizza updateSpecial(String name, int pizzaId, String size, String crust, String sauce);
 }
