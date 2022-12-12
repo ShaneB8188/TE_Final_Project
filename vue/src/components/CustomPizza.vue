@@ -134,8 +134,8 @@ export default {
         return this.toppings.find(topping => topping.toppingId === toppingId);
       });
       newPizza.price = this.pizzaPrice;
-      // OrderPizzaService.addPizza(newPizza);
       this.$store.commit('ADD_TO_CART', newPizza);
+      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
     },
     resetForm() {
