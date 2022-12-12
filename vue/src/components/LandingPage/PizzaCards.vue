@@ -1,6 +1,9 @@
 <template>
-  <div class="pizza" id="body">
-    <div class="card" id="meat-lover">
+
+  
+  <router-link :to="{ name: 'customPizza' }" class="pizza" id="body">
+  
+    <div class="card" id="meat-lover" @click="populateSpecialPizzas">
       <header class="card-header">
         <p class="card-header-title">{{ pizza.name }}</p>
       </header>
@@ -22,7 +25,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -38,9 +41,20 @@ export default {
     }
   },
 
-  props: ['pizza'],
+  
+
+  props: [
+    'pizza'
+    ],
 
   components: {},
+
+  methods: {
+    populateSpecialtyPizzas() {
+      this.$store.specials = this.temp 
+      t
+    }
+  }
 };
 </script>
 

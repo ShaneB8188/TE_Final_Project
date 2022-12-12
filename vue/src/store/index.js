@@ -40,6 +40,15 @@ export default new Vuex.Store({
       crust: '',
       sauce: '',
       toppings: []
+    }, 
+
+    tempSpecialtyPizzas:{
+      pizzaId: '',
+      name: '',
+      size: '',
+      crust: '',
+      sauce: '',
+      toppings: []
     }
   },
   mutations: {
