@@ -99,6 +99,9 @@ export default new Vuex.Store({
     SET_TEMP_PIZZA(state, pizza) {
       state.tempSpecialtyPizza = pizza;
     },
+    SET_CART_TOTAL(state, price){
+      state.Cart.price = price;
+    }
     
   },
   actions: {
