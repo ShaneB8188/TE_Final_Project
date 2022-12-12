@@ -77,14 +77,16 @@ export default new Vuex.Store({
       state.specialtyPizza.push(pizza)
     },
     SET_TOPPINGS_LIST(state, toppingsList) {
+      state.toppings = [];
       let toppingsMod = [];
       toppingsMod.push(toppingsList);
-      for(let i = 0; i < toppingsMod[0].length; i++) {
-          state.toppings.push(toppingsList[i]);
+      for (let i = 0; i < toppingsMod[0].length; i++) {
+        state.toppings.push(toppingsList[i]);
       }
 
     },
     SET_SPECIALS_LIST(state, specialsList) {
+      state.specials = [];
       let specialsMod = [];
       specialsMod.push(specialsList);
       for (let i = 0; i < specialsMod[0].length; i++) {
