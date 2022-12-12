@@ -1,6 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from 'axios'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import axios from 'axios';
+import ToppingsService from '../services/ToppingsService';
+import SpecialPizzaService from '../services/SpecialPizzaService';
 
 Vue.use(Vuex)
 
@@ -20,6 +22,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    specials: [],
     toppings: [],
 
     Cart: {
@@ -29,6 +32,15 @@ export default new Vuex.Store({
       orderStatus: '',
       pizzas: []
     },
+
+    specialtyPizza: {
+      pizzaId: '',
+      name: '',
+      size: '',
+      crust: '',
+      sauce: '',
+      toppings: []
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -50,15 +62,50 @@ export default new Vuex.Store({
     ADD_TO_CART(state, pizza) {
       state.Cart.pizzas.push(pizza);
     },
-    ADD_TOPPING(state,topping) {
+    ADD_TOPPING(state, topping) {
       state.toppings.push(topping);
     },
-    UPDATE_CART_TOTAL(state){
+    UPDATE_CART_TOTAL(state) {
       let sum = 0;
-    state.Cart.pizzas.forEach(pizza => {
-      sum += pizza.price;
-    });
-    state.Cart.price = sum;
-    }
+      state.Cart.pizzas.forEach(pizza => {
+        sum += pizza.price;
+      });
+      state.Cart.price = sum;
+    },
+
+    UPDATE_PIZZA_LIST(state, pizza) {
+      state.specialtyPizza.push(pizza)
+    },
+    SET_TOPPINGS_LIST(state, toppingsList) {
+      state.toppings = [];
+      let toppingsMod = [];
+      toppingsMod.push(toppingsList);
+      for (let i = 0; i < toppingsMod[0].length; i++) {
+        state.toppings.push(toppingsList[i]);
+      }
+
+    },
+    SET_SPECIALS_LIST(state, specialsList) {
+      state.specials = [];
+      let specialsMod = [];
+      specialsMod.push(specialsList);
+      for (let i = 0; i < specialsMod[0].length; i++) {
+        state.specials.push(specialsList[i]);
+      }
+    },
+  },
+  actions: {
+    setToppings({ commit }) {
+      ToppingsService.getAllToppings().then((response) => {
+        commit('SET_TOPPINGS_LIST', response.data);
+      })
+    },
+    setSpecials({ commit }) {
+      SpecialPizzaService.getAllSpecialtyPizzas().then((response) => {
+        commit('SET_SPECIALS_LIST', response.data);
+      })
+    },
+
   },
 })
+

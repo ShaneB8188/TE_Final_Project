@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface SpecialtyDao {
 
+    List<SpecialtyPizza> getAllSpecials();
+
     SpecialtyPizza getSpecialById(int specialId);
 
     SpecialtyPizza createNewSpecial(String name, String pizzaSize, String crust, String sauce);
@@ -14,4 +16,8 @@ public interface SpecialtyDao {
     SpecialtyPizza getSpecialsPizzaWithToppings(int specialId);
 
     SpecialtyPizza addToppingsToPizza(List<Toppings> toppingsList, int pizzaId);
+
+    void removeAllToppings(int pizzaId);
+
+    SpecialtyPizza updateSpecial(String name, int pizzaId, String size, String crust, String sauce);
 }

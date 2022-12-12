@@ -6,7 +6,7 @@ import java.util.List;
 public class SpecialtyPizza {
     int pizzaId;
     String name;
-    String pizzaSize;
+    String size;
     String crust;
     String sauce;
     List<Toppings> toppings;
@@ -28,11 +28,11 @@ public class SpecialtyPizza {
     }
 
     public String getPizzaSize() {
-        return pizzaSize;
+        return size;
     }
 
-    public void setPizzaSize(String pizzaSize) {
-        this.pizzaSize = pizzaSize;
+    public void setPizzaSize(String size) {
+        this.size = size;
     }
 
     public String getCrust() {
