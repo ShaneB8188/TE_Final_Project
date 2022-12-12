@@ -74,7 +74,7 @@
     </div>
 </div>
     <br>
-    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza, resetForm"> Order </button>
+    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
       </div>
     <div id ="greenDiv"></div>
@@ -110,9 +110,9 @@ export default {
     },
     pizzaPrice() {
       let basePrice = 10;
-      let pizzaSum = 0;
+      let pizzaSum = basePrice;
       this.newPizza.toppings.forEach(topping => {
-        pizzaSum = basePrice += topping.price;
+        pizzaSum += topping.price;
       });
       return pizzaSum;
     }
@@ -140,11 +140,12 @@ export default {
     createNewPizza() {
       const newPizza = this.newPizza;
 
-      newPizza.toppings = this.newPizza.toppings.map(toppingId => {
-        return this.toppings.find(topping => topping.toppingId === toppingId);
-      });
+      // newPizza.toppings = this.newPizza.toppings.map(toppingId => {
+      //   return this.toppings.find(topping => topping.toppingId === toppingId);
+      // });
       newPizza.price = this.pizzaPrice;
       this.$store.commit('ADD_TO_CART', newPizza);
+      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
     },
     resetForm() {
