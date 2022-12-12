@@ -83,7 +83,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
     @Override
     public void removeAllToppings(int pizzaId) {
         String sql = "DELETE FROM specialty_pizza_toppings WHERE pizza_id = ?;";
-        jdbc.update(sql);
+        jdbc.update(sql, pizzaId);
     }
 
     @Override
