@@ -1,9 +1,11 @@
 
 
 <template>
-  <div id="app">
+
+  <div id="app"> <home-banner></home-banner>
     <div id="nav">
-      <div id="banner">
+    
+      <div id="banner"> 
         <button id="cart-btn" @click="$store.state.showCart = !$store.state.showCart">
           <div id="fa-icon">
             <font-awesome-icon icon="fas fa-shopping-cart" />
@@ -33,6 +35,8 @@
 </template>
 <script>
 import Checkout from "@/views/Checkout.vue";
+import HomeBanner from "@/components/HomeBanner.vue"
+
 // import Home from '@/views/Home';
 // import Menu from '@/views/Menu';
 
@@ -40,6 +44,7 @@ export default {
   name: "App",
   components: {
     Checkout,
+    HomeBanner,
   },
   methods: {},
   data() {
@@ -59,8 +64,8 @@ export default {
 }
 #cart-btn {
   display: flex;
-  justify-content: flex-end;
-  
+  flex-direction: column;
+  justify-content: center;
   margin:0;
   
   /* position: fixed; */
@@ -73,7 +78,7 @@ export default {
   border-radius: 4px;
   width: 350px;
   position: fixed;
-
+  
   top: 10px;
   right: 10px;
 }
