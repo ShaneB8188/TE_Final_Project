@@ -21,8 +21,9 @@ section{
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 10px;
+  margin-bottom: 20px;
   font-family: "Ubuntu", sans-serif;
-  font-size: 18px;
+  font-size: 30px;
   background: linear-gradient(to right, white, #be162c);
   color: white;
 
