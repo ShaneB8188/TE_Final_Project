@@ -72,6 +72,12 @@ export default new Vuex.Store({
       let correctTopping = state.toppings.find(top => top.toppingId == topping.toppingId)
       correctTopping.available = topping.available;
     },
+    DELETE_TOPPING(state,id){
+      let newTopList = state.toppings.filter(top =>{
+        return top.id != id
+      });
+      state.toppings = newTopList;
+    },
     UPDATE_CART_TOTAL(state) {
       let sum = 0;
       state.Cart.pizzas.forEach(pizza => {

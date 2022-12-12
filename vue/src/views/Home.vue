@@ -32,9 +32,9 @@
             </router-link>
           </li>
         <li>
-           <router-link :to="{name:'Toppings'}">
+           <!-- <router-link :to="{name:'Toppings delete'}">
           Remove Topping From Menu
-          </router-link>
+          </router-link> -->
           </li>
       </ul>
     </li>

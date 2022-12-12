@@ -12,6 +12,7 @@ import Checkout from '../views/Checkout.vue';
 import ToppingView from '../views/ToppingView.vue';
 import ToppingsAvailability from '../views/ToppingsAvailability';
 import AddPizza from '../views/AddPizza.vue';
+import ToppingsDelete from '../views/ToppingsDelete';
 Vue.use(Router)
 
 /**
@@ -112,6 +113,15 @@ const router = new Router({
       component: AddPizza,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/toppings/delete",
+      name: "Toppings delete",
+      component: ToppingsDelete,
+      meta: {
+        requiresAuth: false
+        // this needs to be true once login functionality is done
       }
     }
   ]

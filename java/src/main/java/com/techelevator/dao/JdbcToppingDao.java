@@ -71,6 +71,12 @@ public class JdbcToppingDao implements ToppingDao {
         return null;
     }
 
+    @Override
+    public void deleteTopping (int id) {
+        String sql ="delete from topping where topping_id = ?";
+        jdbcTemplate.update(sql,id);
+    }
+
 
     /**
      * Maps an SQLrowset query result to a Topping object. Must map all properties.
