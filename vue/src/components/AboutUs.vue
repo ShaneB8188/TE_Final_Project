@@ -5,7 +5,7 @@
         <p class="card-header-title">About Us</p>
       </header>
 
-      <div class="card-content">‘Organization Name’</div>
+      <div class="card-content" id="value">‘Organization Name’</div>
 
       <div class="card-content">
         The key to progress is much similar to the key to improving a pizza –
@@ -74,7 +74,18 @@ export default {};
 </script>
 
 <style>
+#value{
+    background: linear-gradient(to right, #27b055, #064d15);
+  color: white;
+}
+
 .card-content {
   justify-content: center;
 }
+
+header{
+    margin-bottom: 30px;
+}
+
+
 </style>

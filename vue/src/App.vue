@@ -17,7 +17,12 @@
         <!-- >&nbsp;|&nbsp; -->
         <router-link class="menu-items" v-bind:to="{ name: 'home' }"
           >Employee Dashboard</router-link
+        >&nbsp;|&nbsp;
+
+         <router-link class="menu-items" v-bind:to="{ name: 'AboutUs' }"
+          >About Us</router-link
         >
+
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
