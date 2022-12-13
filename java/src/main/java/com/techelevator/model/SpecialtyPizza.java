@@ -9,6 +9,7 @@ public class SpecialtyPizza {
     String size;
     String crust;
     String sauce;
+    String imageUrl;
     List<Toppings> toppings;
 
     public int getPizzaId() {
@@ -49,6 +50,22 @@ public class SpecialtyPizza {
 
     public void setSauce(String sauce) {
         this.sauce = sauce;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public List<Toppings> getToppings() {

@@ -102,6 +102,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
         special.setCrust(rowSet.getString("crust"));
         special.setSauce(rowSet.getString("sauce"));
         special.setPizzaSize(rowSet.getString("pizza_size"));
+        special.setImageUrl(rowSet.getString("image_url"));
         return special;
     }
 
