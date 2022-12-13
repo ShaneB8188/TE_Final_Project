@@ -23,22 +23,18 @@
         <input type="text" name="ZipCode" /><br />
       </form>
 
-      <router-link :to="{ name: 'menu' }"
-        >
-        
-        Return to Menu
-        <br />
-        <button
-          type="submit"
-          class="checkoutBtn"
-          onClick="return confirm('Confirm Order')"
-          @click="createOrder()"
-        >
-          Checkout
-        </button>
-      </router-link>
+      <router-link :to="{ name: 'menu' }" @click.native="$store.state.showCart = !$store.state.showCart">Return to Menu</router-link>
+      <br />
+      <button
+        type="submit"
+        class="checkoutBtn"
+        @click="createOrder()"
+      >
+        Checkout
+      </button>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -76,13 +72,15 @@ export default {
   },
   methods: {
     createOrder() {
-      this.$store.commit("SET_CART_TOTAL", this.cartTotal1());
-      this.order = this.$store.state.Cart;
-      this.order.orderStatus = "Pending";
-      this.$store.state.Cart.isDelivery = this.isDelivery;
-      OrderPizzaService.addOrder(this.order);
-      this.resetOrder();
-      this.$store.commit('TOGGLE_SHOW_CART')
+      if (confirm("Are you sure you're ready to place the order?")) {
+        this.$store.commit("SET_CART_TOTAL", this.cartTotal1());
+        this.order = this.$store.state.Cart;
+        this.order.orderStatus = "Pending";
+        this.$store.state.Cart.isDelivery = this.isDelivery;
+        OrderPizzaService.addOrder(this.order);
+        this.resetOrder();
+        this.$store.state.showCart = !this.$store.state.showCart;
+      }
     },
     resetOrder() {
       this.order = this.newOrder;
@@ -94,6 +92,9 @@ export default {
       });
       return sum;
     },
+    // modifyCart() {
+    //   this.$store.state.showCart = !this.$store.state.showCart;
+    // }
   },
 };
 </script>
@@ -109,8 +110,8 @@ export default {
 }
 .checkoutBtn {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
   justify-items: center;
 }
