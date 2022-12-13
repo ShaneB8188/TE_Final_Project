@@ -1,6 +1,6 @@
 <template>
   <div>
-      <home-banner/>
+      <!-- <home-banner/> -->
       <pizza-card />
       <menu-component />    
   </div>

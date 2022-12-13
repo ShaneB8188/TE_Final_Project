@@ -1,46 +1,14 @@
 
 
 <template>
-
-  <div id="app"> <home-banner></home-banner>
-    <div id="nav">
-    
-      <div id="banner"> 
-        <button id="cart-btn" @click="$store.state.showCart = !$store.state.showCart">
-          <div id="fa-icon">
-            <font-awesome-icon icon="fas fa-shopping-cart" />
-          </div>
-        </button>
-
-        <router-link class="menu-items" :to="{ name: 'menu' }">Menu</router-link
-        >&nbsp;|&nbsp;
-        <!-- <router-link class="menu-items" :to="{ name: 'checkout' }"
-          >Cart</router-link -->
-        <!-- >&nbsp;|&nbsp; -->
-        <router-link class="menu-items" v-bind:to="{ name: 'home' }"
-          >Employee Dashboard</router-link
-        >&nbsp;|&nbsp;
-
-         <router-link class="menu-items" v-bind:to="{ name: 'AboutUs' }"
-          >About Us</router-link
-        >
-
-        <router-link
-          v-bind:to="{ name: 'logout' }"
-          v-if="$store.state.token != ''"
-          >Logout</router-link
-        >
-      </div>
-
-      <checkout v-show="$store.state.showCart" />
-
-      <router-view></router-view>
-    </div>
+  <div id="app">
+    <home-banner></home-banner>
+    <router-view id="main-view"></router-view>
   </div>
 </template>
 <script>
-import Checkout from "@/views/Checkout.vue";
-import HomeBanner from "@/components/HomeBanner.vue"
+// import Checkout from "@/views/Checkout.vue";
+import HomeBanner from "@/components/HomeBanner.vue";
 
 // import Home from '@/views/Home';
 // import Menu from '@/views/Menu';
@@ -49,20 +17,21 @@ import HomeBanner from "@/components/HomeBanner.vue"
 export default {
   name: "App",
   components: {
-    Checkout,
+    // Checkout,
     HomeBanner,
   },
   methods: {},
   data() {
-    return {
-      
-    };
+    return {};
   },
-  
 };
 </script>
 <style>
-#banner {
+#main-view {
+  margin-top: 3rem;
+}
+
+/* #banner {
   position: fixed;
   display: flex;
   align-items: center;
@@ -74,7 +43,7 @@ export default {
   justify-content: center;
   margin:0;
   
-  /* position: fixed; */
+
   justify-content: center;
   width: 4em;
   background: linear-gradient(to right, #9fbcd6, #151d64);
@@ -97,5 +66,5 @@ export default {
 .menu-items:hover {
   cursor: pointer;
   color: red;
-}
+} */
 </style>
