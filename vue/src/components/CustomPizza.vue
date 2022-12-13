@@ -78,8 +78,10 @@
     <input :for="orderQuantity" type="text" v-model="orderQuantity">Quantity 
    <label :for="orderQuantity"> Quantity </label>
     <br>
-    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
+      <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
+    
+    
       </div>
     <div id ="greenDiv"></div>
   </form>

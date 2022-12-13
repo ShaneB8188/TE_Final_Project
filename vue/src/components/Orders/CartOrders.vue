@@ -23,16 +23,20 @@
         <input type="text" name="ZipCode" /><br />
       </form>
 
-      <router-link :to="{ name: 'menu' }">Return to Menu</router-link>
-      <br />
-      <button
-        type="submit"
-        class="checkoutBtn"
-        onClick="return confirm('Confirm Order')"
-        @click="createOrder()"
-      >
-        Checkout
-      </button>
+      <router-link :to="{ name: 'menu' }"
+        >
+        
+        Return to Menu
+        <br />
+        <button
+          type="submit"
+          class="checkoutBtn"
+          onClick="return confirm('Confirm Order')"
+          @click="createOrder() "
+        >
+          Checkout
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -48,7 +52,7 @@ export default {
         sum += pizza.price;
       });
       return sum;
-    }
+    },
   },
 
   data() {
@@ -78,6 +82,7 @@ export default {
       this.$store.state.Cart.isDelivery = this.isDelivery;
       OrderPizzaService.addOrder(this.order);
       this.resetOrder();
+      this.$store.commit('TOGGLE_SHOW_CART')
     },
     resetOrder() {
       this.order = this.newOrder;
@@ -88,7 +93,7 @@ export default {
         sum += pizza.price;
       });
       return sum;
-    }
+    },
   },
 };
 </script>
