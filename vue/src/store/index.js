@@ -43,6 +43,7 @@ export default new Vuex.Store({
       size: '',
       crust: '',
       sauce: '',
+      image_url: '',
       toppings: []
     }, 
 
@@ -52,6 +53,7 @@ export default new Vuex.Store({
       size: '',
       crust: '',
       sauce: '',
+      image_url: '',
       toppings: []
     }
   },

@@ -63,6 +63,7 @@ name varchar(50) DEFAULT 'Custom Pizza',
 pizza_size varchar(50) not null,
 crust varchar(50) not null,
 sauce varchar(50),
+image_url varchar(50),
 
 constraint pk_specialty_pizza_id primary key (pizza_id)
 );

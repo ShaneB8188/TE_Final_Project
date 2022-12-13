@@ -35,6 +35,7 @@
       </button>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -104,8 +105,8 @@ export default {
 }
 .checkoutBtn {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
   justify-items: center;
 }
