@@ -99,6 +99,7 @@ public class JdbcOrderDao implements OrderDao{
         order.setDate(rowSet.getTimestamp("order_time").toLocalDateTime());
         order.setDelivery(rowSet.getBoolean("isDelivery"));
         order.setPrice(rowSet.getBigDecimal("price"));
+        order.setOrderStatus(rowSet.getString("order_status"));
 
         return order;
     }
