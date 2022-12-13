@@ -27,15 +27,6 @@ public class SpecialtyPizza {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getPizzaSize() {
-        return size;
-    }
-
-    public void setPizzaSize(String size) {
-        this.size = size;
-    }
-
     public String getCrust() {
         return crust;
     }
@@ -74,5 +65,8 @@ public class SpecialtyPizza {
 
     public void setToppings(List<Toppings> toppings) {
         this.toppings = toppings;
+    }
+
+    public void setPizzaSize(String pizza_size) {
     }
 }

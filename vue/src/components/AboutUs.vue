@@ -65,7 +65,8 @@
         present expectations.” No issue how great we will be, we will dependably
         show signs of improvement.
       </div>
-
+    </div>
+  </div>
 </template>
 
 <script>

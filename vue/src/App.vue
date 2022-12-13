@@ -40,7 +40,8 @@
 import Checkout from "@/views/Checkout.vue";
 // import Home from '@/views/Home';
 // import Menu from '@/views/Menu';
-
+// import ToppingService from '@/services/ToppingsService';
+// import SpecialPizzaService from '@/services/SpecialPizzaService'
 export default {
   name: "App",
   components: {

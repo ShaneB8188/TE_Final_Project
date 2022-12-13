@@ -11,4 +11,8 @@ public interface ToppingDao {
     List<Toppings> getAllToppings();
 
     Toppings createTopping(String name, double price, boolean isPremium);
+
+    void updateToppingById(boolean check,int toppingId);
+
+    void deleteTopping(int id);
 }

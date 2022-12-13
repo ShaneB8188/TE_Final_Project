@@ -87,6 +87,16 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
     }
 
     @Override
+    public SpecialtyPizza updateSpecial(String name, int pizzaId, String size, String crust, String sauce, List<Toppings> toppingsList) {
+        return null;
+    }
+
+    @Override
+    public void deleteSpecial(int pizzaId) {
+
+    }
+
+    @Override
     public SpecialtyPizza updateSpecial(String name, int pizzaId, String size, String crust, String sauce) {
         String sql = "INSERT INTO specialty_pizzas(name, pizza_size, crust, sauce) VALUES (?, ?,?,?) WHERE pizza_id = ? RETURNING pizza_id;";
         Integer newPizzaId = jdbc.queryForObject(sql, Integer.class, name, size, crust, sauce, pizzaId);

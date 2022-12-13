@@ -138,7 +138,7 @@
       <div id="toppingList">
         Select which toppings you'd like
         <!-- change to topping in availableToppings once topping add functionality is complete -->
-        <div v-for="topping in toppings" :key="topping.id">
+        <div v-for="topping in availableToppings" :key="topping.id">
           <label for="PizzaTopping"> </label>
           <input
             :id="`PizzaTopping${topping.name}`"
@@ -170,11 +170,12 @@ export default {
     // currently does nothing until topping add functionality is added
     availableToppings() {
       return this.$store.state.toppings.filter((topping) => {
-        if (topping.isAvailable == true) {
+        if (topping.available == true) {
           return topping;
         }
       });
     },
+    
     pizzaPrice() {
       let basePrice = 10;
       let pizzaSum = 0;
@@ -186,6 +187,7 @@ export default {
   },
   data() {
     return {
+      testPizza: [],
       toppings: [],
       newPizza: {
         pizzaId: "",
@@ -217,7 +219,7 @@ export default {
       const newPizza = this.newPizza;
       const specialsList = this.$store.state.specials;
       const specialsMod = specialsList.filter((obj) => {
-        obj.name == newPizza.name;
+        return obj.name.toUpperCase() == newPizza.name.toUpperCase();
       });
       return specialsMod;
     },
@@ -226,12 +228,22 @@ export default {
     updatePizza() {
       const newPizza = this.newPizza;
       const specialsMod = this.filterPizza();
+      this.testPizza = specialsMod;
       if (specialsMod.length > 0) {
+        alert(newPizza);
         newPizza.pizzaId = specialsMod[0].pizzaId;
-        SpecialPizzaService.updateSpecialtyPizza(newPizza);
-        this.resetForm();
+        newPizza.toppings = this.newPizza.toppings.map((toppingId) => {
+          return this.toppings.find(
+            (topping) => topping.toppingId === toppingId
+          );
+        });
+        SpecialPizzaService.updateSpecialtyPizza(newPizza).then(() => {
+          this.resetForm();
+          this.$store.dispatch("setSpecials");
+        });
       } else {
         this.createNewPizza();
+        this.$store.dispatch("setSpecials");
       }
     },
     resetForm() {
