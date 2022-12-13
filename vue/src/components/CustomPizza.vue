@@ -71,8 +71,12 @@
         <label for="PizzaTopping"> </label>
         <input :key="toppings.name" :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping" >
         <label :for="topping.name">{{topping.name}}</label>
+       
+        
     </div>
 </div>
+    <input :for="orderQuantity" type="text" v-model="orderQuantity">Quantity 
+   <label :for="orderQuantity"> Quantity </label>
     <br>
     <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
@@ -119,15 +123,16 @@ export default {
   },
   data() {
     return {
+      orderQuantity: 1,
       toppings: [
         
       ],
       newPizza: {
         pizzaId: '',
         name: "",
-        size: "",
-        crust: "",
-        sauce: "",
+        size: "Large",
+        crust: "Regular",
+        sauce: "Red",
         price: '',
         toppings: []
       },
@@ -144,16 +149,18 @@ export default {
       //   return this.toppings.find(topping => topping.toppingId === toppingId);
       // });
       newPizza.price = this.pizzaPrice;
-      this.$store.commit('ADD_TO_CART', newPizza);
+      for (let i = 0; i < this.orderQuantity; i++) {
+              this.$store.commit('ADD_TO_CART', newPizza);
+      }
 //      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
     },
     resetForm() {
       this.newPizza = {
         name: '',
-        size: '',
-        crust: '',
-        sauce: '',
+        size: "Large",
+        crust: "Regular",
+        sauce: 'Red',
         toppings: [],
       }
     }
