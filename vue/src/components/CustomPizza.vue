@@ -94,9 +94,7 @@ export default {
     if(this.$store.state.tempSpecialtyPizza.pizzaId) {
         this.newPizza = this.$store.state.tempSpecialtyPizza;
         this.newPizza.toppings = this.$store.state.tempSpecialtyPizza.toppings;
-
       }
-
   },
   computed: {
 

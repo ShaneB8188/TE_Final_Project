@@ -8,7 +8,8 @@
       <input type="checkbox" name="isDelivery" v-model="isDelivery" />
       <br />
       <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
-        Pizza Name: {{ pizza.name }} <br />
+        <br>
+         Pizza Name: {{ pizza.name }} <br />
         {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
         {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
       </div>
