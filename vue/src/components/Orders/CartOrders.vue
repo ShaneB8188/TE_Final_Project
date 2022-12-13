@@ -32,7 +32,7 @@
           type="submit"
           class="checkoutBtn"
           onClick="return confirm('Confirm Order')"
-          @click="createOrder() "
+          @click="createOrder()"
         >
           Checkout
         </button>
