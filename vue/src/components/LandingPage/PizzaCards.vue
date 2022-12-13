@@ -11,7 +11,7 @@
         <img src="\Assests\pizza-pizza.jpg" alt="Place Holder Image for Pizza" />
       </figure>
       <div class="card-content">
-        {{pizza.pizzaSize}}
+        {{pizza.size}}
       </div>
       <div class = "card-content">
         {{pizza.crust}}
