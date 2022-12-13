@@ -48,7 +48,7 @@ export default {
         sum += pizza.price;
       });
       return sum;
-    }
+    },
   },
 
   data() {
