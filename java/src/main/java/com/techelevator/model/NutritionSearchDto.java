@@ -4,23 +4,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NutritionSearchDto {
 
-    @JsonProperty("search_expression")
-    private String searchExpression;
+    @JsonProperty("query")
+    private String query;
     private String timezone = "US/Eastern";
 
 
-    public String getSearchExpression() {
-        return searchExpression;
+    public String getQuery() {
+        return query;
     }
 
-    public void setSearch_expression(String searchExpression) {
-        this.searchExpression = searchExpression;
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     //Parameters: method=foods.search&search_expression=toast&format=json
     public String toString() {
         return "{" +
-                    "'query'=" + this.searchExpression + "\'," +
+                    "'query'=" + this.query + "\'," +
                     "'timezone'=" + "'US/Eastern'" + "\'," +
                 "}";
 
