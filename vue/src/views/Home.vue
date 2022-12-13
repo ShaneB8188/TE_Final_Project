@@ -45,6 +45,10 @@
 
 <script>
 export default {
+  created() {
+    this.$store.dispatch("setSpecials");
+    this.$store.dispatch("setToppings");
+  },
   name: "home",
 };
 </script>
