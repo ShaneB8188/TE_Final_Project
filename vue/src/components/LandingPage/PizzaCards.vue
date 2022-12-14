@@ -95,6 +95,8 @@ header:hover {
 header {
   background: linear-gradient(to right, #27b055, #064d15);
   color: white;
+  font-family: 'Arial', Arial, sans-serif;
+  font-size: 20px;
 }
 
 #meat-lover {
