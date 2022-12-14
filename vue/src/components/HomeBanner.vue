@@ -130,9 +130,9 @@ export default {
 #nav {
   background-color: #fff;
 }
-a {
+/* a {
   color: black;
-}
+} */
 /* .menu-items {
   color: black;
 }

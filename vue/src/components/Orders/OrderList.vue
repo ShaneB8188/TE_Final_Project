@@ -16,14 +16,15 @@
           <div class="content">
             ${{order.price}}
             <br>
-            Is this a Delivery: {{order.delivery}} <br>
+            Delivery? : {{order.delivery}} <br>
             </div>
             <label > Pending </label>
             <input type="radio" v-model="order.orderStatus" value="Pending">
             <label > Completed </label>
             <input type="radio" v-model="order.orderStatus" value="Completed">
-            {{order.pizzas}}
-          
+              <div v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+                {{pizza.name}}
+              </div>
             <br />
             
           
