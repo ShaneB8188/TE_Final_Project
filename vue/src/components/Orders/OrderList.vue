@@ -34,10 +34,14 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
           
             <br />
-            
+            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
+                Pizza Name: {{pizza.name}} <br>
+                Toppings: 
+                <br>
+              </div>
           
         </div>
         <footer class="card-footer">
@@ -74,10 +78,14 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
           
             <br />
-            
+            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
+                Pizza Name: {{pizza.name}} <br>
+                Toppings: 
+                <br>
+              </div>
           
         </div>
         <footer class="card-footer">
@@ -114,13 +122,14 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
           
             <br />
             
            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
                 Pizza Name: {{pizza.name}} <br>
                 Toppings: 
+                <br>
               </div>
         </div>
        
@@ -158,10 +167,14 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
           
             <br />
-            
+            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
+                Pizza Name: {{pizza.name}} <br>
+                Toppings: 
+                <br>
+              </div>
           
         </div>
         <footer class="card-footer">
