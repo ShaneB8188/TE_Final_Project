@@ -7,7 +7,7 @@
             <input type="checkbox" v-model="topping.available">
     </div>
     <!-- not sure how to tackle. should each button have a submit? ideally submit should submit them all but sending all of the toppings would be awkward -->
-    <button type="submit" @click.prevent="updateTopping(toppings)">Update these Toppings</button> 
+    <button type="submit" @click.prevent="updateTopping(toppings)" onClick="return alert('Toppings Updated')">Update these Toppings</button> 
     <!-- <button @click="clearForm">Clear form</button> -->
     </div>
     <div id="greenDiv"></div>

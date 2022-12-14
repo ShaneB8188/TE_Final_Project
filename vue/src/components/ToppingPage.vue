@@ -22,7 +22,7 @@
       <input type="checkbox" name="toppingAvailable" v-model="newTopping.available">
   </div>
   <div>
-      <button type="submit" @click.prevent="createNewTopping(newTopping)">Create this Topping</button>
+      <button type="submit" @click.prevent="createNewTopping(newTopping)" >Create this Topping</button>
       <button @click="clearForm">Clear form</button>
   </div>
   </div>
@@ -52,9 +52,15 @@ export default {
     },
     methods:{
         createNewTopping(Topping){
+            if(Topping.name == ''){
+               alert('Name of topping cannot be empty')
+            } else {
+            alert('Topping Created')   
             ToppingService.createToppings(Topping);
             this.$store.commit("ADD_TOPPING",Topping);
             this.toppings = this.$store.state.toppings;
+            
+            }
         },
         clearForm(){
             this.newTopping ={
