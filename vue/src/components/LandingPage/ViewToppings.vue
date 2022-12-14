@@ -36,10 +36,8 @@ header:hover{
 
 #create{
   text-align: center;
-  min-height: 500px;
+  min-height: 100%;
 }
 
-.content{
-  min-height: 100px;
-}
+
 </style>

@@ -34,15 +34,13 @@ export default {
 
 #create{
    background-color: #f3ebf6;
+   min-height: 100%;
 }
 #create:hover{
   cursor: pointer;
   background-color: rgba(252, 101, 101, 0.644);
 }
-.content {
-   min-height: 10vw;
 
-}
 
 #create-pizza{
     
@@ -53,13 +51,4 @@ header:hover{
  cursor: pointer;
   background-color: rgba(252, 101, 101, 0.644);
 }
-
-@media (min-width: 720px) {
-  .content{
-    min-height: 100px;
-  }
-
-}
-
-min
 </style>
