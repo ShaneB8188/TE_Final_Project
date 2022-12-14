@@ -80,6 +80,12 @@ public class JdbcOrderDao implements OrderDao{
     }
 
     @Override
+    public void deleteOrder(int orderId) {
+        String sql = "Delete from order where order_id = ?";
+        jdbcTemplate.update(sql,orderId);
+    }
+
+    @Override
     public Order getOrderWithPizza(int orderId) {
         Order order = new Order();
         ArrayList<Pizza> pizzaArrayList = new ArrayList<>();

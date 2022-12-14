@@ -17,19 +17,28 @@
             ${{order.price}}
             <br>
             Is this a Delivery: {{order.delivery}} <br>
+            </div>
+            <label > Pending </label>
+            <input type="radio" v-model="order.orderStatus" value="Pending">
+            <label > Completed </label>
+            <input type="radio" v-model="order.orderStatus" value="Completed">
             {{order.pizzas}}
           
             <br />
             
-          </div>
+          
         </div>
         <footer class="card-footer">
           
-          <a href="#" class="card-footer-item">Edit</a>
+          
           <a href="#" class="card-footer-item">Delete</a>
         </footer>
       </div>
+
     </div>
+    
+    <button type="button"  @click="saveOrderChanges()">Save Changes</button>
+    
   </div>
 </template>
 
@@ -45,19 +54,34 @@ export default {
     activeOrders(){
       return this.orders.filter(order => {
          return order.orderStatus == 'Pending'
-           
-      
       })
     }
+  },
+  methods: {
+    saveOrderChanges() {
+      // call pizzaOrderService to update DB as data is being pulled from db so updating the db will complete functionality
+      this.orders.forEach(order => {
+          OrderPizzaService.updateOrderStatus(order.orderId,order.orderStatus)
+      });
+      alert("Orders Updated");
+    },
+    
   },
   created() {
     OrderPizzaService.getAllOrders().then((response) => {
       this.orders = response.data;
     });
-    // need to manually add pizzas to orders otherwise pizzas in orders are null 
+    
   },
 };
 </script>
 
 <style>
+#saveOrderChanges{
+  /* position: fixed;
+  z-index: 3;
+  display: flex;
+  align-content: flex-end; */
+  
+}
 </style>
