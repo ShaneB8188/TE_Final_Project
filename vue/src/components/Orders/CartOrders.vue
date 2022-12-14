@@ -9,10 +9,12 @@
       <br />
       <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
         <br>
-         Pizza Name: {{ pizza.name }} <br />
+         Pizza Name: {{ pizza.name }} &nbsp; <button class="delete" @click="deleteFromCart(pizza.pizzaId)"></button>
+         <br>
         {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
         {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
-        <button class="delete" @click="deleteFromCart(pizza.pizzaId)"></button>
+        <div class="is-divider"></div>
+        
       </div>
       <form v-show="isDelivery">
         <label for="Address">Street Address for Delivery</label> <br />
@@ -128,5 +130,10 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   justify-items: center;
+}
+
+.delete {
+  color: crimson;
+  background-color: rgb(212, 92, 116);
 }
 </style>
