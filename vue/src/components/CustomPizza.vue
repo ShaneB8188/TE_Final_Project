@@ -74,6 +74,11 @@
        
         
     </div>
+      <div>
+        <div>Order Total: ${{pizzaTotal}}</div>
+    </div>
+
+
 </div>
     <input :for="orderQuantity" type="text" v-model="orderQuantity">Quantity 
    <label :for="orderQuantity"> Quantity </label>
@@ -105,6 +110,7 @@ export default {
 
   },
   computed: {
+  
 
   // currently does nothing until topping add functionality is added
     availableToppings() {
@@ -116,12 +122,24 @@ export default {
     },
     pizzaPrice() {
       let basePrice = 10;
+      if(this.newPizza.size === 'Small'){
+        basePrice = 7.50; 
+      }
+      else if(this.newPizza.size === 'Large'){
+        basePrice = 12.50;
+      }
+      else if (this.newPizza.size === 'Extra Large'){
+        basePrice = 15.00;
+      }
       let pizzaSum = basePrice;
       this.newPizza.toppings.forEach(topping => {
         pizzaSum += topping.price;
-      });
+     });
       return pizzaSum;
-    }
+    },
+    pizzaTotal() {
+         return this.orderQuantity * this.pizzaPrice;
+    },
   },
   data() {
     return {
@@ -135,14 +153,11 @@ export default {
         size: "Large",
         crust: "Regular",
         sauce: "Red",
-        price: '',
+        price: "",
         toppings: []
       },
     };
   },
-
-  
-
   methods: {
     createNewPizza() {
       const newPizza = this.newPizza;
@@ -165,9 +180,8 @@ export default {
         sauce: 'Red',
         toppings: [],
       }
-    }
-  },
-  
+    },
+  },  
 };
 </script>
 
