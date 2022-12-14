@@ -106,7 +106,7 @@
           <div class="content">
             ${{order.price}}
             <br>
-            Is this a Delivery: {{order.delivery}} <br>
+            Delivery? : {{order.delivery}} <br>
             </div>
             <label > Pending </label>
             <input type="radio" v-model="order.orderStatus" value="Pending">
@@ -118,8 +118,12 @@
           
             <br />
             
-          
+           <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+                Pizza Name: {{pizza.name}} <br>
+                Toppings: 
+              </div>
         </div>
+       
         <footer class="card-footer">
           
           
@@ -218,10 +222,13 @@ export default {
   created() {
     OrderPizzaService.getAllOrders().then((response) => {
       this.orders = response.data;
+    
+      this.orders.forEach(order => {
+        OrderPizzaService.getPizzasByOrderId(order.orderId).then(orderResponse => {
+          order.pizzas = orderResponse.data.pizzas;
+        })
+      })
     });
-    this.orders.forEach(order => {
-      order.pizzas = OrderPizzaService.getPizzasByOrderId(order.orderId);
-    })
   },
 };
 </script>

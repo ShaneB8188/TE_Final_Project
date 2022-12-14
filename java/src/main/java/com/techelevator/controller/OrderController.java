@@ -48,8 +48,8 @@ public class OrderController {
   }
 
   @RequestMapping(path = "/orders/{id}", method = RequestMethod.GET)
-    public Order getOrderById (int id) {
-      return orderDao.getOrderById(id);
+    public Order getOrderById (@PathVariable int id) {
+      return orderDao.getOrderWithPizza(id);
   }
 
   @RequestMapping(path = "/orders/{id}", method = RequestMethod.PUT)
