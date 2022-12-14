@@ -31,7 +31,7 @@ public class PizzaController {
     }
 
     @RequestMapping (path= "/pizza/{id}", method = RequestMethod.GET)
-    public Pizza getPizzaById (int pizzaId) {
+    public Pizza getPizzaById (@PathVariable int pizzaId) {
         return pizzaDao.getPizzaById(pizzaId);
     }
     //update pizza controller method

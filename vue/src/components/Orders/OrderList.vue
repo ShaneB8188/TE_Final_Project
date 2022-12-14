@@ -71,6 +71,9 @@ export default {
     OrderPizzaService.getAllOrders().then((response) => {
       this.orders = response.data;
     });
+    this.orders.forEach(order => {
+      order.pizzas = OrderPizzaService.getPizzasByOrderId(order.orderId);
+    })
   },
 };
 </script>

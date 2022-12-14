@@ -31,7 +31,7 @@
 
       <div class="spacer"></div>
 
-      <div id="pizza-name-title">Speziata's Pizzaeria</div>
+      <div id="pizza-name-title">Speziata's Pizzeria</div>
     </div>
 
     <checkout v-show="$store.state.showCart" id="checkout" />
