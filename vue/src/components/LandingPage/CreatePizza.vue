@@ -31,8 +31,21 @@ export default {
 
 <style>
 
+
 #create{
-  background-color: #f3ebf6;
+   background-color: #f3ebf6;
+}
+#create:hover{
+  cursor: pointer;
+  background-color: rgba(252, 101, 101, 0.644);
+}
+.content {
+   min-height: 10vw;
+
+}
+
+#create-pizza{
+    
   text-align: center;
   
 }
@@ -40,4 +53,13 @@ header:hover{
  cursor: pointer;
   background-color: rgba(252, 101, 101, 0.644);
 }
+
+@media (min-width: 720px) {
+  .content{
+    min-height: 100px;
+  }
+
+}
+
+min
 </style>

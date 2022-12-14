@@ -33,4 +33,13 @@ header:hover{
  cursor: pointer;
   background-color: rgba(252, 101, 101, 0.644);
 }
+
+#create{
+  text-align: center;
+  min-height: 500px;
+}
+
+.content{
+  min-height: 100px;
+}
 </style>
