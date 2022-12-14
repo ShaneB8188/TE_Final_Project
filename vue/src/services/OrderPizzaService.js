@@ -15,7 +15,7 @@ export default {
     addOrder(order) {
         return axios.post('/orders',order);
     },
-    updateOrderStatus(id,orderDto) {
-        return axios.put(`/orders/${id}`,orderDto);
+    updateOrderStatus(id, orderStatus) {
+        return axios.put(`/orders/${id}`,{orderStatus} );
     }
 }

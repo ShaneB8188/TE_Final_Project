@@ -61,7 +61,7 @@ export default {
     saveOrderChanges() {
       // call pizzaOrderService to update DB as data is being pulled from db so updating the db will complete functionality
       this.orders.forEach(order => {
-          OrderPizzaService.updateOrderStatus(order.orderId,order.orderStatus)
+          OrderPizzaService.updateOrderStatus(order.orderId, order.orderStatus)
       });
       alert("Orders Updated");
     },
@@ -71,7 +71,6 @@ export default {
     OrderPizzaService.getAllOrders().then((response) => {
       this.orders = response.data;
     });
-    
   },
 };
 </script>
