@@ -100,6 +100,7 @@ header {
 #meat-lover {
   grid-area: meat;
   background-color: #f3ebf6;
+  min-height: 100%;
 }
 
 #meat-lover:hover {

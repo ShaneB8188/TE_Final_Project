@@ -6,9 +6,10 @@ import axios from 'axios'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faHome, faCircleInfo, faHotel, faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCartShopping)
+
+library.add(faCartShopping, faHome, faCircleInfo, faHotel, faBars, faRightFromBracket)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

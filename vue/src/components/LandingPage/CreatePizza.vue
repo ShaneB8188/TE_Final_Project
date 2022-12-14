@@ -31,8 +31,19 @@ export default {
 
 <style>
 
+
 #create{
-  background-color: #f3ebf6;
+   background-color: #f3ebf6;
+   min-height: 100%;
+}
+#create:hover{
+  cursor: pointer;
+  background-color: rgba(252, 101, 101, 0.644);
+}
+
+
+#create-pizza{
+    
   text-align: center;
   
 }

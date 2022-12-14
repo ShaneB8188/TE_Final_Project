@@ -5,7 +5,7 @@
         <p class="card-header-title">About Us</p>
       </header>
 
-      <div class="card-content" id="value">‘Organization Name’</div>
+      <div class="card-content" id="name">Speziata's Pizzaeria Values</div>
 
       <div class="card-content">
         The key to progress is much similar to the key to improving a pizza –
@@ -24,6 +24,7 @@
         birthday, work festivity or basically an incredible supper. It’s our
         objective to ensure you generally have the best elements for each event.
       </div>
+      
 
       <div class="card-content" id="value">Core interest</div>
 
@@ -74,17 +75,24 @@ export default {};
 </script>
 
 <style>
+
+#name{
+  font-size: 30px;
+  background: linear-gradient(to right, #27b055, #064d15);
+    margin-top: 0px;
+    margin-right: 0px;
+    color: white;
+}
+
 #value{
     background: linear-gradient(to right, #27b055, #064d15);
   color: white;
+
+  
 }
 
 .card-content {
   justify-content: center;
-}
-
-header{
-    margin-bottom: 30px;
 }
 
 
