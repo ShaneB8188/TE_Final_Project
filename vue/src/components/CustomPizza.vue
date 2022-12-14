@@ -127,7 +127,7 @@ export default {
       if (this.newPizza.size == 'ExLarge'){
         pizzaSum = pizzaSum * 1.8;
       }
-      return pizzaSum.toFixed(2);
+      return parseFloat(pizzaSum.toFixed(2));
     },
   },
   data() {
