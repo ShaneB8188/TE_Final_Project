@@ -28,6 +28,9 @@
         v-if="$store.state.token != ''"
         >Logout</router-link
       >
+
+      <div class="spacer"></div>
+
       <div id="pizza-name-title">Pizza Restaurant Name</div>
     </div>
 
@@ -46,6 +49,9 @@ export default {
 </script>
 
 <style>
+.spacer {
+  flex-grow: 1;
+}
 #checkout {
   margin-top: 3rem;
 }

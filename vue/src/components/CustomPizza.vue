@@ -165,7 +165,9 @@ export default {
       // });
       newPizza.price = this.pizzaPrice;
       for (let i = 0; i < this.orderQuantity; i++) {
-              this.$store.commit('ADD_TO_CART', newPizza);
+              const newPizzaObj = {...newPizza}
+              newPizzaObj.pizzaId += i;
+              this.$store.commit('ADD_TO_CART', newPizzaObj);
       }
 //      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
@@ -183,7 +185,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 button {
   
   align-content: space-around;
