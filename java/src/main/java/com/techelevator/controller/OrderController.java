@@ -53,7 +53,7 @@ public class OrderController {
   }
 
   @RequestMapping(path = "/orders/{id}", method = RequestMethod.PUT)
-    public Order updateOrder(int id, OrderStatusUpdateDto update) {
+    public Order updateOrder(@PathVariable int id, @RequestBody OrderStatusUpdateDto update) {
       return orderDao.updateOrderStatus(id,update);
   }
   @RequestMapping(path = "/orders/", method = RequestMethod.DELETE)
