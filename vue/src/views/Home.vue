@@ -6,9 +6,9 @@
   <ul class="menu-list">
     <li>
       <ul>
-        <li><a>Open All Open Orders</a></li>
-        <li><a>Update Order Status</a></li>
-        <li><a>View All Orders</a></li>
+        <router-link :to="{name: 'Orders'}">
+        View and Edit all Orders
+        </router-link>
       </ul>
     </li>
   </ul>

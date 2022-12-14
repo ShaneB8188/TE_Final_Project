@@ -32,7 +32,7 @@ export default new Vuex.Store({
     Cart: {
       orderId: '',
       price: '',
-      isDelivery: false,
+      delivery: false,
       orderStatus: '',
       pizzas: []
     },

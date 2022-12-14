@@ -21,4 +21,6 @@ public interface OrderDao {
     Order insertPizzasIntoOrder(ArrayList<Pizza> pizzaArrayList, int orderId);
 
     Order getOrderWithPizza(int orderId);
+
+    void deleteOrder(int orderId);
 }

@@ -56,4 +56,8 @@ public class OrderController {
     public Order updateOrder(int id, OrderStatusUpdateDto update) {
       return orderDao.updateOrderStatus(id,update);
   }
+  @RequestMapping(path = "/orders/", method = RequestMethod.DELETE)
+  public void deleteOrder(int orderId) {
+    orderDao.deleteOrder(orderId);
+  }
 }
