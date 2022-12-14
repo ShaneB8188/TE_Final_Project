@@ -8,7 +8,7 @@
         <figure class="image is-4by3">
           <img
             class="pizza-photo"
-            src="\Assests\create.jfif"
+            src="\Assests\create-pizza.jpg"
             alt="Place Holder Image for Pizza"
           />
         </figure>
