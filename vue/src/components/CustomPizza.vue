@@ -81,7 +81,7 @@
 
 </div>
     <input :for="orderQuantity" type="text" v-model="orderQuantity">Quantity 
-   <label :for="orderQuantity"> Quantity </label>
+   <label :for="orderQuantity"></label>
     <br>
       <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
@@ -105,9 +105,7 @@ export default {
     if(this.$store.state.tempSpecialtyPizza.pizzaId) {
         this.newPizza = this.$store.state.tempSpecialtyPizza;
         this.newPizza.toppings = this.$store.state.tempSpecialtyPizza.toppings;
-
       }
-
   },
   computed: {
   
@@ -150,7 +148,7 @@ export default {
       newPizza: {
         pizzaId: '',
         name: "",
-        size: "Large",
+        size: "Medium",
         crust: "Regular",
         sauce: "Red",
         price: "",
@@ -175,7 +173,7 @@ export default {
     resetForm() {
       this.newPizza = {
         name: '',
-        size: "Large",
+        size: "Medium",
         crust: "Regular",
         sauce: 'Red',
         toppings: [],

@@ -44,15 +44,26 @@
 
 
 <script>
+// import { component } from 'vue/types/umd';
+// import HomeBanner from '@/components/HomeBanner.vue';
 export default {
+  created() {
+    this.$store.dispatch("setSpecials");
+    this.$store.dispatch("setToppings");
+  },
   name: "home",
+  components: {
+    // homeBanner,
+  },
 };
+  
 </script>
 
 <style>
 .menu{
   display: flex;
   flex-direction: column;
+  position: sticky;
   width: 18%;
   background-color: #f3ebf6;
   font-family: "Ubuntu", sans-serif;

@@ -8,9 +8,11 @@
       <input type="checkbox" name="isDelivery" v-model="isDelivery" />
       <br />
       <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
-        Pizza Name: {{ pizza.name }} <br />
+        <br>
+         Pizza Name: {{ pizza.name }} <br />
         {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
         {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
+        <button class="delete" @click="deleteFromCart(pizza.pizzaId)"></button>
       </div>
       <form v-show="isDelivery">
         <label for="Address">Street Address for Delivery</label> <br />
@@ -23,22 +25,20 @@
         <input type="text" name="ZipCode" /><br />
       </form>
 
-      <router-link :to="{ name: 'menu' }"
-        >
-        
-        Return to Menu
-        <br />
-        <button
-          type="submit"
-          class="checkoutBtn"
-          onClick="return confirm('Confirm Order')"
-          @click="createOrder()"
-        >
-          Checkout
-        </button>
-      </router-link>
+      <router-link :to="{ name: 'menu' }" @click.native="$store.state.showCart = !$store.state.showCart">Return to Menu</router-link>
+      <br />
+
+      <router-link :to="{ name: 'menu' }"></router-link>
+      <button
+        type="submit"
+        class="checkoutBtn"
+        @click="createOrder()"
+      >
+        Checkout
+      </button>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -72,17 +72,29 @@ export default {
         orderStatus: "",
         pizzas: [],
       },
+      filteredCart: []
     };
   },
   methods: {
     createOrder() {
-      this.$store.commit("SET_CART_TOTAL", this.cartTotal1());
-      this.order = this.$store.state.Cart;
-      this.order.orderStatus = "Pending";
-      this.$store.state.Cart.isDelivery = this.isDelivery;
-      OrderPizzaService.addOrder(this.order);
-      this.resetOrder();
-      this.$store.commit('TOGGLE_SHOW_CART')
+      if (confirm("Are you sure you're ready to place the order?")) {
+        this.$store.commit("SET_CART_TOTAL", this.cartTotal1());
+        this.order = this.$store.state.Cart;
+        this.order.orderStatus = "Pending";
+        this.$store.state.Cart.isDelivery = this.isDelivery;
+        OrderPizzaService.addOrder(this.order);
+        this.resetOrder();
+        this.$store.state.showCart = !this.$store.state.showCart;
+      }
+    },
+    deleteFromCart(id){
+      this.filteredCart = this.$store.state.Cart.pizzas.filter(pizza => {
+        if (pizza.pizzaId != id){
+          return pizza;
+        }
+      });
+      this.$store.state.Cart.pizzas = this.filteredCart;
+
     },
     resetOrder() {
       this.order = this.newOrder;
@@ -94,6 +106,9 @@ export default {
       });
       return sum;
     },
+    // modifyCart() {
+    //   this.$store.state.showCart = !this.$store.state.showCart;
+    // }
   },
 };
 </script>
@@ -109,8 +124,8 @@ export default {
 }
 .checkoutBtn {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
   justify-items: center;
 }
