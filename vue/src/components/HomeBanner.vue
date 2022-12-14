@@ -1,36 +1,60 @@
 <template>
+
   <div id="section-banner">
+    &nbsp;&nbsp;
     <div id="banner">
+      &nbsp;&nbsp;
       <button
-        id="cart-btn"
+        class="fa-icon-btn"
         @click="$store.state.showCart = !$store.state.showCart"
       >
-        <div id="fa-icon">
-          <font-awesome-icon icon="fas fa-shopping-cart" />
+        <div class="fa-icon">
+          <font-awesome-icon icon="fas fa-shopping-cart" />Cart
         </div>
       </button>
-      <div id="menu-icon">
-        <font-awesome-icon icon="fa-solid fa-bars" />
-        <router-link class="menu-items" :to="{ name: 'menu' }">Menu</router-link
-        >&nbsp;|&nbsp;
+      &nbsp;&nbsp;
+      <div id="fa-icon">
+        <button class="fa-icon-btn">
+          <font-awesome-icon icon="fa fa-bars" />
+          <router-link class="menu-items" :to="{ name: 'menu' }">
+            Menu</router-link
+          >&nbsp;&nbsp;
+        </button>
       </div>
       <!-- <router-link class="menu-items" :to="{ name: 'checkout' }"
           >Cart</router-link -->
       <!-- >&nbsp;|&nbsp; -->
+      &nbsp;&nbsp;
+      <div class="fa-icon">
+        <button class="fa-icon-btn">
+          <font-awesome-icon icon="fas fa-circle-info" />
+
+          <router-link class="menu-items" v-bind:to="{ name: 'AboutUs' }"
+            >About Us</router-link
+          >
+        </button>
+      </div>
+      &nbsp;&nbsp;
+
       <router-link class="menu-items" v-bind:to="{ name: 'home' }"
-        >Employee Dashboard</router-link
-      >&nbsp;|&nbsp;
-
-      <router-link class="menu-items" v-bind:to="{ name: 'AboutUs' }"
-        >About Us</router-link
-      >
-
-      <router-link
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >
-
+        ><button class="fa-icon-btn">
+          <div >
+            <span class="icon">
+              <font-awesome-icon icon="fas fa-hotel" />
+            </span>
+            <span>Home</span>
+          </div>
+        </button></router-link
+      >&nbsp;&nbsp;
+      <div class="fa-icon">
+        <router-link
+          v-bind:to="{ name: 'logout' }"
+          v-if="$store.state.token != ''"
+          ><button class="fa-icon-btn">
+            Logout
+            <font-awesome-icon icon="fas fa-right-from-bracket" /></button
+        ></router-link>
+      </div>
       <div class="spacer"></div>
 
       <div id="pizza-name-title">Pizza Restaurant Name</div>
@@ -62,26 +86,32 @@ export default {
   margin: 10px;
 }
 #banner {
-  background: linear-gradient(to right, white, #be162c);
+  background: linear-gradient(to right, rgb(241, 227, 227), #be162c);
   color: white;
   z-index: 2;
   position: fixed;
   top: 0;
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
+
   /* justify-content: space-around; */
   height: 2.5rem;
   width: 100vw;
 }
-#cart-btn {
+.fa-icon-btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
+  align-items: center;
   margin: 0;
-
-  justify-content: center;
+  width: 20%;
+  height: 2.5rem;
+  cursor: pointer;
   width: 4em;
-  background: linear-gradient(to right, #9fbcd6, #151d64);
+  color: black;
+  /* background: linear-gradient(to right, #9fbcd6, #151d64); */
 }
 .checkout {
   border: red;
@@ -95,13 +125,16 @@ export default {
 #nav {
   background-color: #fff;
 }
-.menu-items {
+a {
+  color: black;
+}
+/* .menu-items {
   color: black;
 }
 .menu-items:hover {
   cursor: pointer;
   color: red;
-}
+} */
 /* #pizza-name-title {
  justify-items: end;
  justify-content: end;
