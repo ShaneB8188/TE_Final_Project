@@ -100,9 +100,7 @@ export default {
     if(this.$store.state.tempSpecialtyPizza.pizzaId) {
         this.newPizza = this.$store.state.tempSpecialtyPizza;
         this.newPizza.toppings = this.$store.state.tempSpecialtyPizza.toppings;
-
       }
-
   },
   computed: {
 
@@ -120,8 +118,17 @@ export default {
       this.newPizza.toppings.forEach(topping => {
         pizzaSum += topping.price;
       });
-      return pizzaSum;
-    }
+      if (this.newPizza.size == 'Medium'){
+        pizzaSum = pizzaSum * 1.2;
+      }
+      if (this.newPizza.size == 'Large'){
+        pizzaSum = pizzaSum * 1.5;
+      }
+      if (this.newPizza.size == 'ExLarge'){
+        pizzaSum = pizzaSum * 1.8;
+      }
+      return pizzaSum.toFixed(2);
+    },
   },
   data() {
     return {
