@@ -108,7 +108,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+  color:black;
   align-items: center;
   margin: 0;
   width: 20%;
