@@ -30,6 +30,12 @@ export default {
 </script>
 
 <style>
+
+#create{
+  background-color: #f3ebf6;
+  text-align: center;
+  
+}
 header:hover{
  cursor: pointer;
   background-color: rgba(252, 101, 101, 0.644);
