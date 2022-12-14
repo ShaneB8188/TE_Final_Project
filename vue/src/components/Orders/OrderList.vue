@@ -65,6 +65,7 @@ export default {
       });
       alert("Orders Updated");
     },
+    deleteOrder() {}
     
   },
   created() {
