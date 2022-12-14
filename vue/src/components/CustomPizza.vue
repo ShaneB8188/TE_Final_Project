@@ -97,6 +97,7 @@
 // import OrderPizzaService from '../services/OrderPizzaService.js'
 export default {
   created() {
+    
     if (this.$store.state.toppings.length < 1){
       this.$store.dispatch("setToppings");
     }
@@ -155,6 +156,7 @@ export default {
   },
   methods: {
     createNewPizza() {
+      if (confirm("Are you sure you want to add this to your cart?")) {
       const newPizza = this.newPizza;
       newPizza.price = this.pizzaPrice;
       for (let i = 0; i < this.orderQuantity; i++) {
@@ -164,6 +166,7 @@ export default {
       }
 //      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
+      }
     },
     resetForm() {
       this.newPizza = {
