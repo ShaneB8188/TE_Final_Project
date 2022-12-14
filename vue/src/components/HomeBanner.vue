@@ -28,7 +28,7 @@
         v-if="$store.state.token != ''"
         >Logout</router-link
       >
-      <div id="pizza-name-title">Pizza Restaurant Name</div>
+      <div id="pizza-name-title">Speziata's Pizzeria</div>
     </div>
 
     <checkout v-show="$store.state.showCart" id="checkout" />
