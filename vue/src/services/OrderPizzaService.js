@@ -8,7 +8,7 @@ export default {
     getAllOrders() {
         return axios.get('/orders/');
     },
-    getOrderById(orderId) {
+    getPizzasByOrderId(orderId) {
         return axios.get(`/orders/${orderId}`);
     },
 
