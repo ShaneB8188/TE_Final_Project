@@ -71,11 +71,22 @@
         <label for="PizzaTopping"> </label>
         <input :key="toppings.name" :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping" >
         <label :for="topping.name">{{topping.name}}</label>
+       
+        
     </div>
+      <div>
+        <div>Order Total: ${{pizzaTotal}}</div>
+    </div>
+
+
 </div>
+    <input :for="orderQuantity" type="text" v-model="orderQuantity">Quantity 
+   <label :for="orderQuantity"></label>
     <br>
-    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza" onClick="return confirm ('Pizza Added To Cart')"> Order </button>
+    <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza" onClick="return Alert ('Pizza Added To Cart')"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
+    
+    
       </div>
     <div id ="greenDiv"></div>
   </form>
@@ -94,9 +105,7 @@ export default {
     if(this.$store.state.tempSpecialtyPizza.pizzaId) {
         this.newPizza = this.$store.state.tempSpecialtyPizza;
         this.newPizza.toppings = this.$store.state.tempSpecialtyPizza.toppings;
-
       }
-
   },
   computed: {
     availableToppings() {
@@ -108,55 +117,68 @@ export default {
     },
     pizzaPrice() {
       let basePrice = 10;
+      if(this.newPizza.size === 'Small'){
+        basePrice = 7.50; 
+      }
+      else if(this.newPizza.size === 'Large'){
+        basePrice = 12.50;
+      }
+      else if (this.newPizza.size === 'Extra Large'){
+        basePrice = 15.00;
+      }
       let pizzaSum = basePrice;
       this.newPizza.toppings.forEach(topping => {
         pizzaSum += topping.price;
-      });
+     });
       return pizzaSum;
-    }
+    },
+    pizzaTotal() {
+         return this.orderQuantity * this.pizzaPrice;
+    },
   },
   data() {
     return {
+      orderQuantity: 1,
       toppings: [
         
       ],
       newPizza: {
         pizzaId: '',
         name: "",
-        size: "",
-        crust: "",
-        sauce: "",
-        price: '',
+        size: "Medium",
+        crust: "Regular",
+        sauce: "Red",
+        price: "",
         toppings: []
       },
     };
   },
-
-  
-
   methods: {
     createNewPizza() {
       const newPizza = this.newPizza;
       newPizza.price = this.pizzaPrice;
-     
-      this.$store.commit('ADD_TO_CART', newPizza);
+      for (let i = 0; i < this.orderQuantity; i++) {
+              const newPizzaObj = {...newPizza}
+              newPizzaObj.pizzaId += i;
+              this.$store.commit('ADD_TO_CART', newPizzaObj);
+      }
+//      this.$store.commit('UPDATE_CART_TOTAL');
       this.resetForm();
     },
     resetForm() {
       this.newPizza = {
         name: '',
-        size: '',
-        crust: '',
-        sauce: '',
+        size: "Medium",
+        crust: "Regular",
+        sauce: 'Red',
         toppings: [],
       }
-    }
-  },
-  
+    },
+  },  
 };
 </script>
 
-<style>
+<style scoped>
 button {
   
   align-content: space-around;

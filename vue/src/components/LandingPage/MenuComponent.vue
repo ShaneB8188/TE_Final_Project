@@ -7,17 +7,20 @@
       v-bind:pizza="pizza"
       id="pizza"
     />
+    <view-toppings id="view-toppings"/>
   </div>
 </template>
 
 <script>
 import PizzaCards from "./PizzaCards.vue";
 import CreatePizza from "./CreatePizza.vue";
+import ViewToppings from "./ViewToppings.vue";
 // import SpecialPizzaService from '@/services/SpecialPizzaService.js'
 export default {
   components: {
     PizzaCards,
     CreatePizza,
+    ViewToppings,
   },
   pizzas: [],
   toppings: [],

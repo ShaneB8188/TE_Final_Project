@@ -129,6 +129,9 @@ export default new Vuex.Store({
     },
     SET_CART_TOTAL(state, price){
       state.Cart.price = price;
+    },
+    TOGGLE_SHOW_CART(state){
+      state.showCart = !state.showCart
     }
     
   },

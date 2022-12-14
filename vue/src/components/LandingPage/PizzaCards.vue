@@ -11,22 +11,24 @@
       <figure class="image is-4by3">
         <img :src="getImg" alt="Place Holder Image for Pizza" />
       </figure>
-      <div class="card-content">
-        {{ pizza.pizzaSize }}
+      <div class="card-content" id="size">
+        {{pizza.size}}
       </div>
-      <div class="card-content">
-        {{ pizza.crust }}
+      <div class="card-content" id="size">
+        Crust Style:  {{ pizza.crust }}
       </div>
-      <div class="card-content">
-        {{ pizza.sauce }}
+      <div class="card-content" id="size">
+        
+         Sauce:   {{ pizza.sauce }}
       </div>
-      <div class="card-content" id="toppings">
+      <div class="card-content" id="topping">
+        <div class="card-content">Toppings:</div>
         <div
-          class="content"
+          class="card-content"
           v-for="topping in pizza.toppings"
           v-bind:key="topping.name"
         >
-          {{ topping.name }}
+         {{ topping.name }}
         </div>
       </div>
     </div>
@@ -68,6 +70,23 @@ export default {
 </script>
 
 <style>
+
+.card-content{
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  padding: 0px;
+  margin-left: 0px;
+
+}
+
+#size.card-content{
+  justify-content: center;
+
+  
+
+}
+
 header:hover {
   cursor: pointer;
   background-color: rgba(252, 101, 101, 0.644);

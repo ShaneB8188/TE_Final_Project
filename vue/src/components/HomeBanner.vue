@@ -28,7 +28,10 @@
         v-if="$store.state.token != ''"
         >Logout</router-link
       >
-      <div id="pizza-name-title">Pizza Restaurant Name</div>
+
+      <div class="spacer"></div>
+
+      <div id="pizza-name-title">Speziata's Pizzaeria</div>
     </div>
 
     <checkout v-show="$store.state.showCart" id="checkout" />
@@ -46,6 +49,14 @@ export default {
 </script>
 
 <style>
+#pizza-name-title{
+  font-size: 35px;
+  margin-right: 90px;
+}
+
+.spacer {
+  flex-grow: 1;
+}
 #checkout {
   margin-top: 3rem;
 }

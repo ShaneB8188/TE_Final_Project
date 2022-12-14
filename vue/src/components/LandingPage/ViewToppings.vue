@@ -1,21 +1,20 @@
 <template>
   <div>
-    <router-link id="create" :to="{ name: 'customPizza' }">
+    <router-link id="create" :to="{ name: 'ToppingNutrition' }">
       <div class="card" id="create">
         <header class="card-header">
-          <p class="card-header-title">Create Your Own Pizza</p>
+          <p class="card-header-title">Nutritional Information</p>
         </header>
         <figure class="image is-4by3">
           <img
             class="pizza-photo"
-            src="\Assests\create-pizza.jpg"
+            src="\Assests\toppings.png"
             alt="Place Holder Image for Pizza"
           />
         </figure>
         <div class="card-content">
           <div class="content">
-            Customize your pizza how you like with any number of cheeses,
-            toppings, sauce, and crust
+            Find out more about our delicious, healthy toppings.
           </div>
         </div>
       </div>
@@ -30,12 +29,6 @@ export default {
 </script>
 
 <style>
-
-#create{
-  background-color: #f3ebf6;
-  text-align: center;
-  
-}
 header:hover{
  cursor: pointer;
   background-color: rgba(252, 101, 101, 0.644);
