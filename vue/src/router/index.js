@@ -36,7 +36,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -98,7 +98,7 @@ const router = new Router({
       name: "Toppings",
       component: ToppingView,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
         // this needs to be true once login functionality is done
       }
     },
@@ -107,7 +107,7 @@ const router = new Router({
       name: "Toppings avail",
       component: ToppingsAvailability,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
         // this needs to be true once login functionality is done
       }},
       {
@@ -123,7 +123,7 @@ const router = new Router({
       name: "Toppings delete",
       component: ToppingsDelete,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
         // this needs to be true once login functionality is done
       }
     },
@@ -132,7 +132,7 @@ const router = new Router({
       name: "DeleteSpecial",
       component: DeleteSpecial,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
