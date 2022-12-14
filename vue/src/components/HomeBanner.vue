@@ -9,9 +9,11 @@
           <font-awesome-icon icon="fas fa-shopping-cart" />
         </div>
       </button>
-      <div id="menu-icon"> <font-awesome-icon icon="fa-solid fa-bars" />
-      <router-link class="menu-items" :to="{ name: 'menu' }">Menu</router-link
-      >&nbsp;|&nbsp;</div>
+      <div id="menu-icon">
+        <font-awesome-icon icon="fa-solid fa-bars" />
+        <router-link class="menu-items" :to="{ name: 'menu' }">Menu</router-link
+        >&nbsp;|&nbsp;
+      </div>
       <!-- <router-link class="menu-items" :to="{ name: 'checkout' }"
           >Cart</router-link -->
       <!-- >&nbsp;|&nbsp; -->
@@ -28,6 +30,7 @@
         v-if="$store.state.token != ''"
         >Logout</router-link
       >
+
       <div id="pizza-name-title">Pizza Restaurant Name</div>
     </div>
 
@@ -46,6 +49,11 @@ export default {
 </script>
 
 <style>
+#banner > #pizza-name-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 #checkout {
   margin-top: 3rem;
 }
@@ -57,11 +65,11 @@ export default {
   background: linear-gradient(to right, white, #be162c);
   color: white;
   z-index: 2;
-
   position: fixed;
   top: 0;
   display: flex;
   align-items: center;
+  /* justify-content: space-around; */
   height: 2.5rem;
   width: 100vw;
 }
@@ -69,8 +77,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin:0;
-  
+  margin: 0;
+
   justify-content: center;
   width: 4em;
   background: linear-gradient(to right, #9fbcd6, #151d64);
@@ -80,7 +88,7 @@ export default {
   border-radius: 4px;
   width: 350px;
   position: fixed;
-  
+
   top: 10px;
   right: 10px;
 }
