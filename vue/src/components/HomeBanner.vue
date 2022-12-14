@@ -1,5 +1,4 @@
 <template>
-
   <div id="section-banner">
     &nbsp;&nbsp;
     <div id="banner">
@@ -12,12 +11,11 @@
           <font-awesome-icon icon="fas fa-shopping-cart" />Cart
         </div>
       </button>
-      &nbsp;&nbsp;
+      <!-- &nbsp;&nbsp; -->
       <div id="fa-icon">
         <button class="fa-icon-btn">
           <font-awesome-icon icon="fa fa-bars" />
-          <router-link class="menu-items" :to="{ name: 'menu' }">
-            Menu</router-link
+          <router-link class="menu-items" :to="{ name: 'menu' }">  Menu</router-link
           >&nbsp;&nbsp;
         </button>
       </div>
@@ -30,7 +28,7 @@
           <font-awesome-icon icon="fas fa-circle-info" />
 
           <router-link class="menu-items" v-bind:to="{ name: 'AboutUs' }"
-            >About Us</router-link
+            > About Us</router-link
           >
         </button>
       </div>
@@ -38,11 +36,11 @@
 
       <router-link class="menu-items" v-bind:to="{ name: 'home' }"
         ><button class="fa-icon-btn">
-          <div >
+          <div>
             <span class="icon">
-              <font-awesome-icon icon="fas fa-hotel" />
+              <font-awesome-icon icon="fas fa-hotel" /> Home
             </span>
-            <span>Home</span>
+            
           </div>
         </button></router-link
       >&nbsp;&nbsp;
@@ -51,9 +49,10 @@
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
           ><button class="fa-icon-btn">
+            <font-awesome-icon icon="fas fa-right-from-bracket" />
             Logout
-            <font-awesome-icon icon="fas fa-right-from-bracket" /></button
-        ></router-link>
+          </button></router-link
+        >
       </div>
       <div class="spacer"></div>
 
@@ -75,7 +74,7 @@ export default {
 </script>
 
 <style>
-#pizza-name-title{
+#pizza-name-title {
   font-size: 35px;
   margin-right: 90px;
 }
@@ -97,26 +96,38 @@ export default {
   position: fixed;
   top: 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-
+  width: 50%;
+  
   /* justify-content: space-around; */
   height: 2.5rem;
   width: 100vw;
 }
+.fa-icon {
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 3rem;
+}
 .fa-icon-btn {
   display: flex;
-  flex-direction: column;
+  
   justify-content: center;
-  color:black;
+  flex-direction: row;
+  font: icon;
+  align-items: center;
+  align-content: center;
+  color: black;
   align-items: center;
   margin: 0;
-  width: 20%;
+
+  /* width: 20%; */
   height: 2.5rem;
   cursor: pointer;
   width: 4em;
   color: black;
-  /* background: linear-gradient(to right, #9fbcd6, #151d64); */
+  background: linear-gradient(to right, #c5d3e0, #a0b3b6);
 }
 .checkout {
   border: red;
