@@ -12,6 +12,7 @@
          Pizza Name: {{ pizza.name }} <br />
         {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
         {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
+        <button class="delete" @click="deleteFromCart(pizza.pizzaId)"></button>
       </div>
       <form v-show="isDelivery">
         <label for="Address">Street Address for Delivery</label> <br />
@@ -69,6 +70,7 @@ export default {
         orderStatus: "",
         pizzas: [],
       },
+      filteredCart: []
     };
   },
   methods: {
@@ -82,6 +84,15 @@ export default {
         this.resetOrder();
         this.$store.state.showCart = !this.$store.state.showCart;
       }
+    },
+    deleteFromCart(id){
+      this.filteredCart = this.$store.state.Cart.pizzas.filter(pizza => {
+        if (pizza.pizzaId != id){
+          return pizza;
+        }
+      });
+      this.$store.state.Cart.pizzas = this.filteredCart;
+
     },
     resetOrder() {
       this.order = this.newOrder;
