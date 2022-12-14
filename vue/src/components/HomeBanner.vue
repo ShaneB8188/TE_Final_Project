@@ -49,6 +49,11 @@ export default {
 </script>
 
 <style>
+#pizza-name-title{
+  font-size: 35px;
+  margin-right: 90px;
+}
+
 .spacer {
   flex-grow: 1;
 }
