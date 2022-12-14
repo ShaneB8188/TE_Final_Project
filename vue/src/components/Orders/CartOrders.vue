@@ -8,9 +8,11 @@
       <input type="checkbox" name="isDelivery" v-model="isDelivery" />
       <br />
       <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
-        Pizza Name: {{ pizza.name }} <br />
+        <br>
+         Pizza Name: {{ pizza.name }} <br />
         {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
         {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
+        <button class="delete" @click="deleteFromCart(pizza.pizzaId)"></button>
       </div>
       <form v-show="isDelivery">
         <label for="Address">Street Address for Delivery</label> <br />
@@ -25,6 +27,8 @@
 
       <router-link :to="{ name: 'menu' }" @click.native="$store.state.showCart = !$store.state.showCart">Return to Menu</router-link>
       <br />
+
+      <router-link :to="{ name: 'menu' }"></router-link>
       <button
         type="submit"
         class="checkoutBtn"
@@ -48,7 +52,7 @@ export default {
         sum += pizza.price;
       });
       return sum;
-    }
+    },
   },
 
   data() {
@@ -68,6 +72,7 @@ export default {
         orderStatus: "",
         pizzas: [],
       },
+      filteredCart: []
     };
   },
   methods: {
@@ -81,6 +86,15 @@ export default {
         this.resetOrder();
         this.$store.state.showCart = !this.$store.state.showCart;
       }
+    },
+    deleteFromCart(id){
+      this.filteredCart = this.$store.state.Cart.pizzas.filter(pizza => {
+        if (pizza.pizzaId != id){
+          return pizza;
+        }
+      });
+      this.$store.state.Cart.pizzas = this.filteredCart;
+
     },
     resetOrder() {
       this.order = this.newOrder;

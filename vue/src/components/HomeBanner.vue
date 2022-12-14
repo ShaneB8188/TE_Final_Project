@@ -31,6 +31,8 @@
         >Logout</router-link
       >
 
+      <div class="spacer"></div>
+
       <div id="pizza-name-title">Pizza Restaurant Name</div>
     </div>
 
@@ -49,10 +51,8 @@ export default {
 </script>
 
 <style>
-#banner > #pizza-name-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+.spacer {
+  flex-grow: 1;
 }
 #checkout {
   margin-top: 3rem;

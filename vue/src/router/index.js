@@ -15,6 +15,7 @@ import AddPizza from '../views/AddPizza.vue';
 import ToppingsDelete from '../views/ToppingsDelete';
 import DeleteSpecial from '../views/DestroyPizza.vue';
 import AboutUs from '../views/AboutUs.vue';
+import ToppingNutrition from '../views/ToppingNutrition.vue';
 Vue.use(Router)
 
 /**
@@ -138,6 +139,14 @@ const router = new Router({
       path: "/aboutUs",
       name: "AboutUs",
       component: AboutUs,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/toppingNutrition",
+      name: 'ToppingNutrition',
+      component: ToppingNutrition,
       meta: {
         requiresAuth: false
       }

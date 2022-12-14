@@ -43,6 +43,7 @@
               autocomplete="off"
               required
               value="Large"
+              checked="checked"
             />
             <label for="pizzaSizeLarge">Large</label>
           </div>
@@ -70,6 +71,7 @@
             autocomplete="off"
             required
             value="Regular"
+            checked="checked"
           />
           <label for="pizzaCrustReg">Regular</label>
         </div>
@@ -119,6 +121,7 @@
             autocomplete="off"
             required
             value="White"
+            checked="checked"
           />
           <label for="pizzaSauceWhite">White</label>
         </div>
@@ -192,9 +195,9 @@ export default {
       newPizza: {
         pizzaId: "",
         name: "",
-        size: "",
-        crust: "",
-        sauce: "",
+        size: "Large",
+        crust: "Regular",
+        sauce: "Red",
         price: "",
         toppings: [],
       },
@@ -248,11 +251,12 @@ export default {
     },
     resetForm() {
       this.newPizza = {
-        pizzaId: -1,
+        pizzaId: "",
         name: "",
-        size: "",
-        crust: "",
-        sauce: "",
+        size: "Large",
+        crust: "Regular",
+        sauce: "Red",
+        price: "",
         toppings: [],
       };
     },
@@ -260,7 +264,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 button {
   align-content: space-around;
 
