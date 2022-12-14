@@ -74,9 +74,14 @@
        
         
     </div>
+      <div>
+        <div>Order Total: ${{pizzaTotal}}</div>
+    </div>
+
+
 </div>
     <input :for="orderQuantity" type="text" v-model="orderQuantity">Quantity 
-   <label :for="orderQuantity"> Quantity </label>
+   <label :for="orderQuantity"></label>
     <br>
       <button type="submit" class="btn btn-submit" @click.prevent="createNewPizza"> Order </button>
     <button type="button" class="btn btn-cancel" @click="resetForm"> Clear Choices </button>
@@ -103,6 +108,7 @@ export default {
       }
   },
   computed: {
+  
 
   // currently does nothing until topping add functionality is added
     availableToppings() {
@@ -114,20 +120,23 @@ export default {
     },
     pizzaPrice() {
       let basePrice = 10;
+      if(this.newPizza.size === 'Small'){
+        basePrice = 7.50; 
+      }
+      else if(this.newPizza.size === 'Large'){
+        basePrice = 12.50;
+      }
+      else if (this.newPizza.size === 'Extra Large'){
+        basePrice = 15.00;
+      }
       let pizzaSum = basePrice;
       this.newPizza.toppings.forEach(topping => {
         pizzaSum += topping.price;
-      });
-      if (this.newPizza.size == 'Medium'){
-        pizzaSum = pizzaSum * 1.2;
-      }
-      if (this.newPizza.size == 'Large'){
-        pizzaSum = pizzaSum * 1.5;
-      }
-      if (this.newPizza.size == 'ExLarge'){
-        pizzaSum = pizzaSum * 1.8;
-      }
-      return pizzaSum.toFixed(2);
+     });
+      return pizzaSum;
+    },
+    pizzaTotal() {
+         return this.orderQuantity * this.pizzaPrice;
     },
   },
   data() {
@@ -139,17 +148,14 @@ export default {
       newPizza: {
         pizzaId: '',
         name: "",
-        size: "Large",
+        size: "Medium",
         crust: "Regular",
         sauce: "Red",
-        price: '',
+        price: "",
         toppings: []
       },
     };
   },
-
-  
-
   methods: {
     createNewPizza() {
       const newPizza = this.newPizza;
@@ -167,14 +173,13 @@ export default {
     resetForm() {
       this.newPizza = {
         name: '',
-        size: "Large",
+        size: "Medium",
         crust: "Regular",
         sauce: 'Red',
         toppings: [],
       }
-    }
-  },
-  
+    },
+  },  
 };
 </script>
 
