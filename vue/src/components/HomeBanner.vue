@@ -108,7 +108,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+  color:black;
   align-items: center;
   margin: 0;
   width: 20%;
@@ -130,9 +130,9 @@ export default {
 #nav {
   background-color: #fff;
 }
-a {
+/* a {
   color: black;
-}
+} */
 /* .menu-items {
   color: black;
 }
