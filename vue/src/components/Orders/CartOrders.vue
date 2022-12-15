@@ -37,7 +37,8 @@
           </div>
         </div>
       </div>
-
+</div>
+<div>
       <form v-show="isDelivery">
         <label for="Address">Street Address for Delivery</label> <br />
         <input type="text" name="Address" /><br />
@@ -193,7 +194,6 @@ form {
   margin-left: 15%;
   margin-right: 15%;
   flex-wrap: none;
-  min-height: 50%;
 
   box-shadow: 1px 1px 2.5px 2.5px rgba(192, 227, 250, 0.884);
 }
