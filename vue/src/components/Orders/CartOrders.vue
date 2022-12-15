@@ -3,29 +3,33 @@
     <div id="flex-box" class="text-center">
       <div class=""></div>
 
-      <h1
-        id="cart"
-        class="h3 mb-3 font-w eight-normal has-text-white"
-        align="center"
-      >
-        Cart
-      </h1>
-      <h3 id="flexbox-total" class="has-text-white">Order Total: ${{ cartTotal }}</h3>
-      <label class="has-text-white" id="flexbox-delivery" for="isDelivery">Delivery </label>
-      <input id="flexbox-delivery" type="checkbox" name="isDelivery" v-model="isDelivery" />
+      <h1 id="cart" class="h3 mb-3 font-w eight-normal" align="center">Cart</h1>
+      <h3 id="flexbox-total">Order Total: ${{ cartTotal }}</h3>
+
+      <div id="flexbox-delivery">
+        <label for="isDelivery">Delivery? &nbsp;</label>
+        <input type="checkbox" name="isDelivery" v-model="isDelivery" />
+      </div>
+
       <br />
+
       <div id="flexbox">
         <div id="pizza-for" class="card-content">
           <div class="spacer">
-            <div id="flexbox-pizza" v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
+            <div
+              id="flexbox-pizza"
+              v-for="pizza in $store.state.Cart.pizzas"
+              :key="pizza.pizzaId"
+            >
               <br />
               Pizza Name: {{ pizza.name }} &nbsp;
-              
+
               <br />
               {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
               {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
               <div class="is-divider"></div>
-              <button id="flexbox-remove"
+              <button
+                id="flexbox-remove"
                 class="delete"
                 @click="deleteFromCart(pizza.pizzaId)"
               ></button>
@@ -44,18 +48,21 @@
         <label for="ZipCode">ZipCode</label><br />
         <input type="text" name="ZipCode" /><br />
       </form>
+      <div id="flex-menu">
+        <router-link
+          :to="{ name: 'menu' }"
+          @click.native="$store.state.showCart = !$store.state.showCart"
+          >Return to Menu</router-link
+        >
+      </div>
 
-      <router-link
-        :to="{ name: 'menu' }"
-        @click.native="$store.state.showCart = !$store.state.showCart"
-        >Return to Menu</router-link
-      >
       <br />
-
-      <router-link :to="{ name: 'menu' }"></router-link>
-      <button type="submit" class="checkoutBtn" @click="createOrder()">
-        Checkout
-      </button>
+      <div id="flexbox-checkout">
+        <router-link :to="{ name: 'menu' }"></router-link>
+        <button type="submit" class="checkoutBtnB" @click="createOrder()">
+          Checkout
+        </button>
+      </div>
     </div>
   </div>
   <!-- </div> -->
@@ -133,44 +140,66 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#flex-menu {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+#cart {
+  font-weight: 700;
+  font-size: 26px;
+}
+#flexbox-checkout {
+  display: flex;
+  justify-content: center;
+}
+form {
+  text-align: center;
+}
+
 #flexbox {
   display: flex;
   flex-direction: column;
 
- justify-self: center;
- justify-content: space-around;
+  justify-self: center;
+  justify-content: space-around;
 }
-#flexbox-remove{
-display: flex;
-justify-content: flex-end;
-align-items: center;
-}
-
-#flexbox-total{
+#flexbox-remove {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
-#flexbox-delivery{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
+#flexbox-total {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-#flexbox-pizza{
+#flexbox-delivery {
+  display: flex;
+  justify-content: center;
+}
+#flexbox-pizza {
   display: flex;
   justify-content: space-between;
+  
   align-items: center;
   background-color: white;
   border-radius: 5px;
-  min-width: 100%;
-  
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 15%;
+  margin-right: 15%;
+  flex-wrap: none;
+  min-height: 50%;
 
+  box-shadow: 1px 1px 2.5px 2.5px rgba(192, 227, 250, 0.884);
 }
 
 .contenty {
-  background: linear-gradient(to right, #27b055, #064d15);
+  background: white;
 }
 
 h3 {
@@ -185,12 +214,26 @@ h3 {
   display: flex;
   flex-direction: row;
 }
-.checkoutBtn {
-  display: flex;
-  flex-direction: row;
+.checkoutBtnB {
+  align-content: space-around;
+
+  width: 50%;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #27b055, #064d15);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   align-items: center;
-  justify-content: space-evenly;
-  justify-items: center;
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 24px;
 }
 
 .delete {
