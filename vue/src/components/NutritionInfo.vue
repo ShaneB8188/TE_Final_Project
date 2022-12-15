@@ -1,7 +1,8 @@
 <template>
   <div>
     <div>
-      <h2 id="topping-name">Topping: {{ topping.name }}</h2>
+      <h2 id="topping-name">
+        Topping: {{ topping.name }}</h2>
     </div>
     <div>
       <p>
@@ -54,25 +55,19 @@ import NutritionService from "../services/NutritionService.js";
 
 export default {
   created() {
-    NutritionService.getToppingNutrition(this.topping.name).then((response) => {
+     NutritionService.getToppingNutrition(this.topping.name).then((response) => {
       this.nutrition = response.data;
-    });
+    }).then(this.nutritionPuller);
   },
   data() {
     return {
       nutrition: [],
-      nutrition1: [],
-      refresh: this.nutritionPull(),
+      nutritionPull: [],
     };
   },
-  computed: {
-    nutritionPull() {
-      return this.nutrition["foods"][0];
-    },
-  },
-  watch: {
-    computedData() {
-      this.nutrition1 = this.nutritionPull;
+  methods: {
+    nutritionPuller() {
+      this.nutritionPull = this.nutrition["foods"][0];
     },
   },
   props: ["topping"],

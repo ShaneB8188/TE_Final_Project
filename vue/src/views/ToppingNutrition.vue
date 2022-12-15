@@ -1,17 +1,16 @@
 <template>
   <div>
-      <nutrition-list />
+    <nutrition-list />
   </div>
 </template>
 
 <script>
-import NutritionList from '../components/NutritionList.vue';
+import NutritionList from "../components/NutritionList.vue";
 
 export default {
-    components: {
-        NutritionList
-    }
-
+  components: {
+    NutritionList,
+  }
 };
 </script>
 
