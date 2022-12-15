@@ -14,6 +14,4 @@ public class NutritionResponseDto {
     public void setFoods(List<NutritionResponseFood> food) {
         this.foods = food;
     }
-
-    private NutritionResponseFood getName()
 }

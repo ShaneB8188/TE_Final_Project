@@ -1,21 +1,38 @@
 <template>
   <div class="content">
-    <div id="login" class="text-center">
-      <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
+    <div id="flex-box" class="text-center">
+      <div class=""></div>
 
-      <h3>Order Total: ${{ cartTotal }}</h3>
+      <h1
+        id="cart"
+        class="h3 mb-3 font-w eight-normal has-text-white"
+        align="center"
+      >
+        Cart
+      </h1>
+      <h3 class="has-text-white">Order Total: ${{ cartTotal }}</h3>
       <label for="isDelivery">Delivery </label>
       <input type="checkbox" name="isDelivery" v-model="isDelivery" />
       <br />
-      <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
-        <br>
-         Pizza Name: {{ pizza.name }} &nbsp; <button class="delete" @click="deleteFromCart(pizza.pizzaId)"></button>
-         <br>
-        {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
-        {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
-        <div class="is-divider"></div>
-        
+      <div id="flexbox">
+        <div id="pizza-for" class="card-content">
+          <div class="spacer">
+            <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
+              <br />
+              Pizza Name: {{ pizza.name }} &nbsp;
+              <button
+                class="delete"
+                @click="deleteFromCart(pizza.pizzaId)"
+              ></button>
+              <br />
+              {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
+              {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
+              <div class="is-divider"></div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <form v-show="isDelivery">
         <label for="Address">Street Address for Delivery</label> <br />
         <input type="text" name="Address" /><br />
@@ -27,15 +44,15 @@
         <input type="text" name="ZipCode" /><br />
       </form>
 
-      <router-link :to="{ name: 'menu' }" @click.native="$store.state.showCart = !$store.state.showCart">Return to Menu</router-link>
+      <router-link
+        :to="{ name: 'menu' }"
+        @click.native="$store.state.showCart = !$store.state.showCart"
+        >Return to Menu</router-link
+      >
       <br />
 
       <router-link :to="{ name: 'menu' }"></router-link>
-      <button
-        type="submit"
-        class="checkoutBtn"
-        @click="createOrder()"
-      >
+      <button type="submit" class="checkoutBtn" @click="createOrder()">
         Checkout
       </button>
     </div>
@@ -74,7 +91,7 @@ export default {
         orderStatus: "",
         pizzas: [],
       },
-      filteredCart: []
+      filteredCart: [],
     };
   },
   methods: {
@@ -89,14 +106,13 @@ export default {
         this.$store.state.showCart = !this.$store.state.showCart;
       }
     },
-    deleteFromCart(id){
-      this.filteredCart = this.$store.state.Cart.pizzas.filter(pizza => {
-        if (pizza.pizzaId != id){
+    deleteFromCart(id) {
+      this.filteredCart = this.$store.state.Cart.pizzas.filter((pizza) => {
+        if (pizza.pizzaId != id) {
           return pizza;
         }
       });
       this.$store.state.Cart.pizzas = this.filteredCart;
-
     },
     resetOrder() {
       this.order = this.newOrder;
@@ -116,6 +132,30 @@ export default {
 </script>
 
 <style>
+.flex {
+  display: flex;
+}
+
+.spacer {
+  margin: 40px;
+}
+
+#flexbox {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+.content {
+  background: linear-gradient(to right, #27b055, #064d15);
+}
+
+h3 {
+  color: white;
+}
+
 .text-center {
   display: inline;
   justify-content: center;
@@ -135,5 +175,8 @@ export default {
 .delete {
   color: crimson;
   background-color: rgb(212, 92, 116);
+}
+
+h1 {
 }
 </style>
