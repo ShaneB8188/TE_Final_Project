@@ -30,9 +30,9 @@ public class PizzaController {
         return returnPizza;
     }
 
-    @RequestMapping (path= "/pizza/{id}", method = RequestMethod.GET)
+    @RequestMapping (path= "/pizza/{pizzaId}", method = RequestMethod.GET)
     public Pizza getPizzaById (@PathVariable int pizzaId) {
-        return pizzaDao.getPizzaById(pizzaId);
+        return pizzaDao.getPizzaWithToppings(pizzaId);
     }
     //update pizza controller method
 //    @RequestMapping (path= "/pizzas/{id}" method = RequestMethod.PUT)

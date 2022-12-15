@@ -34,10 +34,17 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
           
             <br />
-            
+            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
+                Pizza Name: {{pizza.name}} <br>
+                Toppings: 
+                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
+                   {{topping.name}}
+                </div>
+                <br>
+              </div>
           
         </div>
         <footer class="card-footer">
@@ -74,10 +81,17 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
           
             <br />
-            
+            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
+                Pizza Name: {{pizza.name}} <br>
+                Toppings: 
+                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
+                   {{topping.name}}
+                </div>
+                <br>
+              </div>
           
         </div>
         <footer class="card-footer">
@@ -114,13 +128,17 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
           
             <br />
             
            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
                 Pizza Name: {{pizza.name}} <br>
                 Toppings: 
+                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
+                   {{topping.name}}
+                </div>
+                <br>
               </div>
         </div>
        
@@ -158,10 +176,18 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
           
             <br />
-            
+            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
+                Pizza Name: {{pizza.name}} <br>
+                Toppings: 
+                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
+                   {{topping.name}}
+                </div>
+                
+                <br>
+              </div>
           
         </div>
         <footer class="card-footer">
@@ -181,6 +207,7 @@
 
 <script>
 import OrderPizzaService from "@/services/OrderPizzaService";
+import PizzaService from "@/services/PizzaService";
 export default {
   data() {
     return {
@@ -226,6 +253,12 @@ export default {
       this.orders.forEach(order => {
         OrderPizzaService.getPizzasByOrderId(order.orderId).then(orderResponse => {
           order.pizzas = orderResponse.data.pizzas;
+
+          order.pizzas.forEach(pizza => {
+            PizzaService.getToppingsByPizzaId(pizza.pizzaId).then(pizzaResponse => {
+              pizza.toppings = pizzaResponse.data.toppings;
+            })
+          })
         })
       })
     });
