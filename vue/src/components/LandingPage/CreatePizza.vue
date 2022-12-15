@@ -35,6 +35,7 @@ export default {
 #create{
    background-color: #f3ebf6;
    min-height: 100%;
+   min-width: 100%;
 }
 #create:hover{
   cursor: pointer;
