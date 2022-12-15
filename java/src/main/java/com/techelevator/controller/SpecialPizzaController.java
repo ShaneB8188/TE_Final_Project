@@ -45,6 +45,8 @@ public class SpecialPizzaController {
     @RequestMapping(path= API_BASE + "/{pizzaId}", method=RequestMethod.PUT)
     public SpecialtyPizza updateSpecialtyPizza(@RequestBody SpecialtyPizza newPizza, @PathVariable int pizzaId){
         SpecialtyPizza createdPizza = SpecialtyDao.updateSpecial(newPizza.getName(), newPizza.getPizzaId(), newPizza.getSize(), newPizza.getCrust(), newPizza.getSauce(), newPizza.getToppings());
+        SpecialtyDao.removeAllToppings(pizzaId);
+        SpecialtyDao.addToppingsToPizza(newPizza.getToppings(), pizzaId);
         return createdPizza;
     }
 

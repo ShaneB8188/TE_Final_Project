@@ -199,6 +199,7 @@ export default {
         crust: "Regular",
         sauce: "Red",
         price: "",
+        ImageUrl: "",
         toppings: [],
       },
     };
@@ -258,6 +259,7 @@ export default {
         crust: "Regular",
         sauce: "Red",
         price: "",
+        imageUrl: "",
         toppings: [],
       };
     },
