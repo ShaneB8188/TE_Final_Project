@@ -11,49 +11,49 @@
           <font-awesome-icon icon="fas fa-shopping-cart" />Cart
         </div>
       </button>
-      <!-- &nbsp;&nbsp; -->
-      <div id="fa-icon">
-        <button class="fa-icon-btn">
-          <font-awesome-icon icon="fa fa-bars" />
-          <router-link class="menu-items" :to="{ name: 'menu' }">  Menu</router-link
-          >&nbsp;&nbsp;
-        </button>
-      </div>
+
+      <button class="fa-icon-btn" @click="$router.push({ name: 'menu' })">
+        <div class="fa-icon">
+          <font-awesome-icon icon="fa fa-bars" />&nbsp;Menu
+          <!-- <router-link class="menu-items" :to="{ name: 'menu' }">Menu</router-link
+          >&nbsp;&nbsp; -->
+        </div>
+      </button>
+        
+      
       <!-- <router-link class="menu-items" :to="{ name: 'checkout' }"
           >Cart</router-link -->
       <!-- >&nbsp;|&nbsp; -->
-      &nbsp;&nbsp;
-      <div class="fa-icon">
-        <button class="fa-icon-btn">
-          <font-awesome-icon icon="fas fa-circle-info" />
-
-          <router-link class="menu-items" v-bind:to="{ name: 'AboutUs' }"
+      <button class="fa-icon-btn" @click="$router.push({ name: 'AboutUs' })">
+        <div class="fa-icon">
+          <font-awesome-icon icon="fas fa-circle-info" />&nbsp;About Us
+          <!-- <router-link class="menu-items" v-bind:to="{ name: 'AboutUs' }"
             > About Us</router-link
-          >
-        </button>
-      </div>
-      &nbsp;&nbsp;
+          > -->
+        </div>
+      </button>
 
-      <router-link class="menu-items" v-bind:to="{ name: 'home' }"
-        ><button class="fa-icon-btn">
-          <div>
-            <span class="icon">
-              <font-awesome-icon icon="fas fa-hotel" /> Home
-            </span>
-            
-          </div>
-        </button></router-link
-      >&nbsp;&nbsp;
-      <div class="fa-icon">
-        <router-link
+      <!-- <router-link class="menu-items" v-bind:to="{ name: 'home' }"> -->
+      <button class="fa-icon-btn" @click="$router.push({ name: 'home' })">
+        <div class="fa-icon">
+          <font-awesome-icon icon="fas fa-hotel" />&nbsp;Home
+        </div>
+      </button>
+
+      <!-- </router-link>&nbsp;&nbsp; -->
+      <button class="fa-icon-btn" @click="$router.push({ name: 'logout' })"  v-if="$store.state.token != ''">
+        <div class="fa-icon">
+          <font-awesome-icon icon="fas fa-right-from-bracket" />&nbsp;Logout
+        </div>
+        <!-- <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
           ><button class="fa-icon-btn">
             <font-awesome-icon icon="fas fa-right-from-bracket" />
             Logout
           </button></router-link
-        >
-      </div>
+        > -->
+      </button>
       <div class="spacer"></div>
 
       <div id="pizza-name-title">Speziata's Pizzeria</div>
@@ -108,26 +108,28 @@ export default {
   color: black;
   display: flex;
   justify-content: center;
-  width: 3rem;
+  /* width: 3rem; */
 }
 .fa-icon-btn {
   display: flex;
-  
+  min-width: 100px;
+  width: 100px;
   justify-content: center;
   flex-direction: row;
   font: icon;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   align-items: center;
   align-content: center;
   color: black;
   align-items: center;
   margin: 0;
-
+border-radius: 4px;
   /* width: 20%; */
   height: 2.5rem;
   cursor: pointer;
   width: 4em;
   color: black;
-  background: linear-gradient(to right, #c5d3e0, #a0b3b6);
+  background: linear-gradient(to right, #5dbea3, #5adbb5);
 }
 .checkout {
   border: red;
