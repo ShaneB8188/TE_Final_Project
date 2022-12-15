@@ -199,7 +199,7 @@ export default {
         crust: "Regular",
         sauce: "Red",
         price: "",
-        image_url: "@/Assets/cheese-za.jpg",
+        ImageUrl: "",
         toppings: [],
       },
     };
@@ -260,6 +260,7 @@ export default {
         crust: "Regular",
         sauce: "Red",
         price: "",
+        imageUrl: "",
         toppings: [],
       };
     },
