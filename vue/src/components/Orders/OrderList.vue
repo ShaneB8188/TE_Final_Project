@@ -42,8 +42,19 @@
             <input type="radio" v-model="order.orderStatus" value="Completed">
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-            {{order.pizzas}}
+          
             <br />
+            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+              <br>
+                Pizza Name: {{pizza.name}} <br>
+                Toppings: 
+                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
+                   {{topping.name}}
+                </div>
+                
+                <br>
+              </div>
+          
         </div>
         <footer class="card-footer">
           <a href="#" class="card-footer-item">Delete</a>
@@ -57,6 +68,7 @@
 
 <script>
 import OrderPizzaService from "@/services/OrderPizzaService";
+import PizzaService from "@/services/PizzaService";
 export default {
   data() {
     return {
@@ -93,10 +105,19 @@ export default {
   created() {
     OrderPizzaService.getAllOrders().then((response) => {
       this.orders = response.data;
+    
+      this.orders.forEach(order => {
+        OrderPizzaService.getPizzasByOrderId(order.orderId).then(orderResponse => {
+          order.pizzas = orderResponse.data.pizzas;
+
+          order.pizzas.forEach(pizza => {
+            PizzaService.getToppingsByPizzaId(pizza.pizzaId).then(pizzaResponse => {
+              pizza.toppings = pizzaResponse.data.toppings;
+            })
+          })
+        })
+      })
     });
-    this.orders.forEach(order => {
-      order.pizzas = OrderPizzaService.getPizzasByOrderId(order.orderId);
-    })
   },
   };
 </script>

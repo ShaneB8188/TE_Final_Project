@@ -40,7 +40,7 @@ export default new Vuex.Store({
     specialtyPizza: {
       pizzaId: '',
       name: '',
-      size: '',
+      size: 'Medium',
       crust: '',
       sauce: '',
       image_url: '',
@@ -50,7 +50,7 @@ export default new Vuex.Store({
     tempSpecialtyPizza:{
       pizzaId: '',
       name: '',
-      size: '',
+      size: 'Medium',
       crust: '',
       sauce: '',
       image_url: '',
@@ -126,6 +126,7 @@ export default new Vuex.Store({
     },
     SET_TEMP_PIZZA(state, pizza) {
       state.tempSpecialtyPizza = pizza;
+      state.tempSpecialtyPizza.size = "Medium";
     },
     SET_CART_TOTAL(state, price){
       state.Cart.price = price;
