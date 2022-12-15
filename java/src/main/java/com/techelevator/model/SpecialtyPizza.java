@@ -66,7 +66,4 @@ public class SpecialtyPizza {
     public void setToppings(List<Toppings> toppings) {
         this.toppings = toppings;
     }
-
-    public void setPizzaSize(String pizza_size) {
-    }
 }

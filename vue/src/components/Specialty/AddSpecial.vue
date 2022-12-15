@@ -141,13 +141,13 @@
       <div id="toppingList">
         Select which toppings you'd like
         <!-- change to topping in availableToppings once topping add functionality is complete -->
-        <div v-for="topping in availableToppings" :key="topping.id">
+        <div v-for="topping in availableToppings" :key="topping.name">
           <label for="PizzaTopping"> </label>
           <input
             :id="`PizzaTopping${topping.name}`"
             type="checkbox"
             v-model="newPizza.toppings"
-            :value="topping.toppingId"
+            :value="topping"
           />
           <label :for="topping.name">{{ topping.name }}</label>
         </div>
@@ -199,6 +199,7 @@ export default {
         crust: "Regular",
         sauce: "Red",
         price: "",
+        ImageUrl: "",
         toppings: [],
       },
     };
@@ -210,9 +211,9 @@ export default {
     createNewPizza() {
       const newPizza = this.newPizza;
 
-      newPizza.toppings = this.newPizza.toppings.map((toppingId) => {
-        return this.toppings.find((topping) => topping.toppingId === toppingId);
-      });
+      // newPizza.toppings = this.newPizza.toppings.map((toppingId) => {
+      //   return this.toppings.find((topping) => topping.toppingId === toppingId);
+      // });
       newPizza.price = this.pizzaPrice;
       // OrderPizzaService.addPizza(newPizza);
       SpecialPizzaService.createNewSpecialtyPizza(newPizza);
@@ -235,11 +236,13 @@ export default {
       if (specialsMod.length > 0) {
         alert(newPizza);
         newPizza.pizzaId = specialsMod[0].pizzaId;
-        newPizza.toppings = this.newPizza.toppings.map((toppingId) => {
-          return this.toppings.find(
-            (topping) => topping.toppingId === toppingId
-          );
-        });
+        newPizza.toppings = this.newPizza.toppings;
+        newPizza.image_url = "@/Assests/cheese-za.jpg"
+        // .map((toppingId) => {
+        // //   return this.toppings.find(
+        // //     (topping) => topping.toppingId === toppingId
+        // //   );
+        // // });
         SpecialPizzaService.updateSpecialtyPizza(newPizza).then(() => {
           this.resetForm();
           this.$store.dispatch("setSpecials");
@@ -257,6 +260,7 @@ export default {
         crust: "Regular",
         sauce: "Red",
         price: "",
+        imageUrl: "",
         toppings: [],
       };
     },

@@ -1,11 +1,14 @@
 <template>
   <div>
     <div>
-      <h2>Topping: {{ topping.name }}</h2>
+      <h2 id="topping-name">
+        Topping: {{ topping.name }}</h2>
     </div>
     <div>
-      Amount(grams):
-      {{ nutritionPull.serving_weight_grams }}
+      <p>
+        Amount(grams):
+        {{ nutritionPull.serving_weight_grams }}
+      </p>
     </div>
 
     <div>
@@ -44,10 +47,6 @@
       Protein(grams):
       {{ nutritionPull.nf_protein }}
     </div>
-    <div>
-      Potassium(milligrams):
-      {{ nutritionPull.nf_potassium }}
-    </div>
   </div>
 </template>
 
@@ -56,22 +55,19 @@ import NutritionService from "../services/NutritionService.js";
 
 export default {
   created() {
-    NutritionService.getToppingNutrition(this.topping.name).then((response) => {
+     NutritionService.getToppingNutrition(this.topping.name).then((response) => {
       this.nutrition = response.data;
-    });
+    }).then(this.nutritionPuller);
   },
   data() {
     return {
       nutrition: [],
+      nutritionPull: [],
     };
   },
-  computed: {
-    // pulls information out of returned nested array of size 1
-    // <div>
-    //   {{ nutrition["foods"][0] }}
-    // </div>
-    nutritionPull() {
-      return this.nutrition["foods"][0];
+  methods: {
+    nutritionPuller() {
+      this.nutritionPull = this.nutrition["foods"][0];
     },
   },
   props: ["topping"],

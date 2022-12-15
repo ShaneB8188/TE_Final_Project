@@ -16,8 +16,8 @@ public class NutritionService {
      * remove these before posting on github
      */
 
-    private String id = "bdfcdf10";
-    private String key = "eff739e751de6ea7dda74c8031e7da5f";
+    private String id = "063ddb60";
+    private String key = "dd2a37bbeaa58e8966aaa71fe0b5aa7d";
 /**
     Nutritionix API does not require a true login; it simply uses the id and key to authenticate a request and returns
     It may, however, require the user to be logged in to the website to authenticate
@@ -40,5 +40,7 @@ public class NutritionService {
         }
         return temp;
     }
+
+
 
 }

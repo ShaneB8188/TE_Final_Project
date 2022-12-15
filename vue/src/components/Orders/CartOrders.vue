@@ -1,21 +1,43 @@
 <template>
-  <div class="content">
-    <div id="login" class="text-center">
-      <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
+  <div class="contenty">
+    <div id="flex-box" class="text-center">
+      <div class=""></div>
 
-      <h3>Order Total: ${{ cartTotal.toFixed(2) }}</h3>
-      <label for="isDelivery">Delivery </label>
-      <input type="checkbox" name="isDelivery" v-model="isDelivery" />
-      <br />
-      <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
-        <br>
-         Pizza Name: {{ pizza.name }} &nbsp; <button class="delete" @click="deleteFromCart(pizza.pizzaId)"></button>
-         <br>
-        {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
-        {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
-        <div class="is-divider"></div>
-        
+      <h1 id="cart" class="h3 mb-3 font-w eight-normal" align="center">Cart</h1>
+      <h3 id="flexbox-total">Order Total: ${{ cartTotal }}</h3>
+
+      <div id="flexbox-delivery">
+        <label for="isDelivery">Delivery? &nbsp;</label>
+        <input type="checkbox" name="isDelivery" v-model="isDelivery" />
       </div>
+
+      <br />
+
+      <div id="flexbox">
+        <div id="pizza-for" class="card-content">
+          <div class="spacer">
+            <div
+              id="flexbox-pizza"
+              v-for="pizza in $store.state.Cart.pizzas"
+              :key="pizza.pizzaId"
+            >
+              <br />
+              Pizza Name: {{ pizza.name }} &nbsp;
+
+              <br />
+              {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
+              {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
+              <div class="is-divider"></div>
+              <button
+                id="flexbox-remove"
+                class="delete"
+                @click="deleteFromCart(pizza.pizzaId)"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <form v-show="isDelivery">
         <label for="Address">Street Address for Delivery</label> <br />
         <input type="text" name="Address" /><br />
@@ -26,18 +48,21 @@
         <label for="ZipCode">ZipCode</label><br />
         <input type="text" name="ZipCode" /><br />
       </form>
+      <div id="flex-menu">
+        <router-link
+          :to="{ name: 'menu' }"
+          @click.native="$store.state.showCart = !$store.state.showCart"
+          >Return to Menu</router-link
+        >
+      </div>
 
-      <router-link :to="{ name: 'menu' }" @click.native="$store.state.showCart = !$store.state.showCart">Return to Menu</router-link>
       <br />
-
-      <!-- <router-link :to="{ name: 'menu' }"></router-link> -->
-      <button
-        type="submit"
-        class="checkoutBtn"
-        @click="createOrder()"
-      >
-        Checkout
-      </button>
+      <div id="flexbox-checkout">
+        <router-link :to="{ name: 'menu' }"></router-link>
+        <button type="submit" class="checkoutBtnB" @click="createOrder()">
+          Checkout
+        </button>
+      </div>
     </div>
   </div>
   <!-- </div> -->
@@ -74,7 +99,7 @@ export default {
         orderStatus: "",
         pizzas: [],
       },
-      filteredCart: []
+      filteredCart: [],
     };
   },
   methods: {
@@ -90,14 +115,13 @@ export default {
         this.$store.state.Cart = this.newOrder;
       }
     },
-    deleteFromCart(id){
-      this.filteredCart = this.$store.state.Cart.pizzas.filter(pizza => {
-        if (pizza.pizzaId != id){
+    deleteFromCart(id) {
+      this.filteredCart = this.$store.state.Cart.pizzas.filter((pizza) => {
+        if (pizza.pizzaId != id) {
           return pizza;
         }
       });
       this.$store.state.Cart.pizzas = this.filteredCart;
-
     },
     resetOrder() {
       this.order = this.newOrder;
@@ -116,7 +140,72 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#flex-menu {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+#cart {
+  font-weight: 700;
+  font-size: 26px;
+}
+#flexbox-checkout {
+  display: flex;
+  justify-content: center;
+}
+form {
+  text-align: center;
+}
+
+#flexbox {
+  display: flex;
+  flex-direction: column;
+
+  justify-self: center;
+  justify-content: space-around;
+}
+#flexbox-remove {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#flexbox-total {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#flexbox-delivery {
+  display: flex;
+  justify-content: center;
+}
+#flexbox-pizza {
+  display: flex;
+  justify-content: space-between;
+  
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 15%;
+  margin-right: 15%;
+  flex-wrap: none;
+  min-height: 50%;
+
+  box-shadow: 1px 1px 2.5px 2.5px rgba(192, 227, 250, 0.884);
+}
+
+.contenty {
+  background: white;
+}
+
+h3 {
+  color: white;
+}
+
 .text-center {
   display: inline;
   justify-content: center;
@@ -125,16 +214,31 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.checkoutBtn {
-  display: flex;
-  flex-direction: row;
+.checkoutBtnB {
+  align-content: space-around;
+
+  width: 50%;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #27b055, #064d15);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   align-items: center;
-  justify-content: space-evenly;
-  justify-items: center;
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 24px;
 }
 
 .delete {
   color: crimson;
   background-color: rgb(212, 92, 116);
 }
+
 </style>
