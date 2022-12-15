@@ -3,7 +3,7 @@
     <div id="login" class="text-center">
       <h1 class="h3 mb-3 font-weight-normal" align="center">Cart</h1>
 
-      <h3>Order Total: ${{ cartTotal }}</h3>
+      <h3>Order Total: ${{ cartTotal.toFixed(2) }}</h3>
       <label for="isDelivery">Delivery </label>
       <input type="checkbox" name="isDelivery" v-model="isDelivery" />
       <br />
@@ -87,6 +87,7 @@ export default {
         OrderPizzaService.addOrder(this.order);
         this.resetOrder();
         this.$store.state.showCart = !this.$store.state.showCart;
+        this.$store.state.Cart = this.newOrder;
       }
     },
     deleteFromCart(id){

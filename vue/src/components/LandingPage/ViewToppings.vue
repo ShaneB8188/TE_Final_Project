@@ -37,6 +37,7 @@ header:hover{
 #create{
   text-align: center;
   min-height: 100%;
+  min-width: 100%;
 }
 
 
