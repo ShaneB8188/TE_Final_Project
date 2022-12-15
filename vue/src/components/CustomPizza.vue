@@ -67,9 +67,9 @@
     </div><div id="toppingList">
     Select which toppings you'd like:
     <!-- change to topping in availableToppings once topping add functionality is complete -->
-    <div v-for="topping in availableToppings" :key="topping.name" >
+    <div v-for="topping in availableToppings" :key="topping.name">
         <label for="PizzaTopping"> </label>
-        <input :key="toppings.name" :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping" >
+        <input :key="toppings.name" :id="`PizzaTopping${topping.name}`" type="checkbox" v-model="newPizza.toppings" :value="topping">
         <label :for="topping.name">{{topping.name}}</label>
        
         
