@@ -76,6 +76,7 @@ export default {
 <style>
 #pizza-name-title {
   font-size: 35px;
+  font-weight: 700;
   margin-right: 90px;
 }
 
@@ -117,7 +118,7 @@ export default {
   justify-content: center;
   flex-direction: row;
   font: icon;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
   align-items: center;
   align-content: center;
   color: black;
@@ -129,7 +130,7 @@ border-radius: 4px;
   cursor: pointer;
   width: 4em;
   color: black;
-  background: linear-gradient(to right, #5dbea3, #5adbb5);
+  background: linear-gradient(to right, #42c96f, #2dbd5d);
 }
 .checkout {
   border: red;
