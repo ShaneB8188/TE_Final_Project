@@ -30,7 +30,7 @@
       <router-link :to="{ name: 'menu' }" @click.native="$store.state.showCart = !$store.state.showCart">Return to Menu</router-link>
       <br />
 
-      <router-link :to="{ name: 'menu' }"></router-link>
+      <!-- <router-link :to="{ name: 'menu' }"></router-link> -->
       <button
         type="submit"
         class="checkoutBtn"
