@@ -2,7 +2,6 @@
   <div>
     <div  class="card-container">
       <nutrition-info v-for="topping in toppings" :key="topping.name" v-bind:topping="topping" class="card" />
-      Placeholder
     </div>
   </div>
 </template>

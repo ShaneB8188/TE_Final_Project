@@ -1,11 +1,13 @@
 <template>
   <div>
     <div>
-      <h2>Topping: {{ topping.name }}</h2>
+      <h2 id="topping-name">Topping: {{ topping.name }}</h2>
     </div>
     <div>
-      Amount(grams):
-      {{ nutritionPull.serving_weight_grams }}
+      <p>
+        Amount(grams):
+        {{ nutritionPull.serving_weight_grams }}
+      </p>
     </div>
 
     <div>
@@ -44,10 +46,6 @@
       Protein(grams):
       {{ nutritionPull.nf_protein }}
     </div>
-    <div>
-      Potassium(milligrams):
-      {{ nutritionPull.nf_potassium }}
-    </div>
   </div>
 </template>
 
@@ -63,15 +61,18 @@ export default {
   data() {
     return {
       nutrition: [],
+      nutrition1: [],
+      refresh: this.nutritionPull(),
     };
   },
   computed: {
-    // pulls information out of returned nested array of size 1
-    // <div>
-    //   {{ nutrition["foods"][0] }}
-    // </div>
     nutritionPull() {
       return this.nutrition["foods"][0];
+    },
+  },
+  watch: {
+    computedData() {
+      this.nutrition1 = this.nutritionPull;
     },
   },
   props: ["topping"],
