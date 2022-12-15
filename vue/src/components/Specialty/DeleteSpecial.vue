@@ -9,9 +9,7 @@
           <button  type="button" @click="destroyPizza(pizza)">
             Delete Pizza
     </button>
-      <figure class="image is-4by3">
-        <img src="\Assests\meaty.jfif" alt="Place Holder Image for Pizza" />
-      </figure>
+        
       <div class="card-content">
         {{ pizza.pizzaSize }}
       </div>

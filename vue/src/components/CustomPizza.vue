@@ -124,7 +124,7 @@ export default {
       else if(this.newPizza.size === 'Large'){
         basePrice = 12.50;
       }
-      else if (this.newPizza.size === 'Extra Large'){
+      else if (this.newPizza.size === 'ExLarge'){
         basePrice = 15.00;
       }
       let pizzaSum = basePrice;

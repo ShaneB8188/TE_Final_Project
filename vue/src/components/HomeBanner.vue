@@ -5,7 +5,8 @@
       &nbsp;&nbsp;
       <button
         class="fa-icon-btn"
-        @click="$store.state.showCart = !$store.state.showCart"
+        @click="$store.state.showCart = !$store.state.showCart, scrollToTop()"
+
       >
         <div class="fa-icon">
           <font-awesome-icon icon="fas fa-shopping-cart" />Cart
@@ -67,6 +68,11 @@
 import Checkout from "@/views/Checkout.vue";
 
 export default {
+  methods: {
+    scrollToTop(){
+      window.scrollTo(0,0);
+    }
+  },
   components: {
     Checkout,
   },
