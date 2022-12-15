@@ -53,7 +53,7 @@ export default new Vuex.Store({
       size: 'Medium',
       crust: '',
       sauce: '',
-      image_url: '',
+      image_url: "@/Assets/cheese-za.jpg",
       toppings: []
     }
   },
@@ -127,6 +127,7 @@ export default new Vuex.Store({
     SET_TEMP_PIZZA(state, pizza) {
       state.tempSpecialtyPizza = pizza;
       state.tempSpecialtyPizza.size = "Medium";
+      state.tempSpecialtyPizza.image_url = "@/Assests/cheese-za.jpg";
     },
     SET_CART_TOTAL(state, price){
       state.Cart.price = price;

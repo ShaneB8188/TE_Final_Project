@@ -237,6 +237,7 @@ export default {
         alert(newPizza);
         newPizza.pizzaId = specialsMod[0].pizzaId;
         newPizza.toppings = this.newPizza.toppings;
+        newPizza.image_url = "@/Assests/cheese-za.jpg"
         // .map((toppingId) => {
         // //   return this.toppings.find(
         // //     (topping) => topping.toppingId === toppingId

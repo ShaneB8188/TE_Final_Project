@@ -241,6 +241,4 @@ h3 {
   background-color: rgb(212, 92, 116);
 }
 
-h1 {
-}
 </style>
