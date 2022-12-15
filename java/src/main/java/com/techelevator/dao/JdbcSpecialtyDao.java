@@ -83,17 +83,22 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
     @Override
     public void removeAllToppings(int pizzaId) {
         String sql = "DELETE FROM specialty_pizza_toppings WHERE pizza_id = ?;";
-        jdbc.update(sql);
+        jdbc.update(sql, pizzaId);
     }
 
     @Override
     public SpecialtyPizza updateSpecial(String name, int pizzaId, String size, String crust, String sauce, List<Toppings> toppingsList) {
-        return null;
+        String sql = "UPDATE specialty_pizzas SET name = ?, size = ?, crust = ?, sauce = ? WHERE pizza_id = ?;";
+        jdbc.update(sql, name, size, crust, sauce, pizzaId);
+        removeAllToppings(pizzaId);
+        addToppingsToPizza(toppingsList, pizzaId);
+        return getSpecialById(pizzaId);
     }
 
     @Override
     public void deleteSpecial(int pizzaId) {
-
+        String sql = "DELETE FROM specialty_pizzas WHERE pizza_id = ?";
+        jdbc.update(sql, pizzaId);
     }
 
     @Override
@@ -111,7 +116,7 @@ public class JdbcSpecialtyDao implements SpecialtyDao{
         special.setName(rowSet.getString("name"));
         special.setCrust(rowSet.getString("crust"));
         special.setSauce(rowSet.getString("sauce"));
-        special.setPizzaSize(rowSet.getString("pizza_size"));
+        special.setSize(rowSet.getString("pizza_size"));
         special.setImageUrl(rowSet.getString("image_url"));
         return special;
     }
