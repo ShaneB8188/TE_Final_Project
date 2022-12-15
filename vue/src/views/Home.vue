@@ -61,14 +61,17 @@ export default {
 
 <style>
 .menu{
+  size: 6rem;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
+  padding-left: 1.5rem;
   position: sticky;
-  width: 18%;
+  width: 100%;
   background-color: #f3ebf6;
   font-family: "Ubuntu", sans-serif;
-  height: 100%;
-  padding-bottom: 100%; 
+  /* height: 10%; */
+  padding-bottom: 25%; 
   border-right: 1px solid black;
 }
 
