@@ -65,7 +65,7 @@
     </div>
     <br>
     </div><div id="toppingList">
-    Select which toppings you'd like
+    Select which toppings you'd like:
     <!-- change to topping in availableToppings once topping add functionality is complete -->
     <div v-for="topping in availableToppings" :key="topping.name" >
         <label for="PizzaTopping"> </label>
@@ -124,7 +124,7 @@ export default {
       else if(this.newPizza.size === 'Large'){
         basePrice = 12.50;
       }
-      else if (this.newPizza.size === 'Extra Large'){
+      else if (this.newPizza.size === 'ExLarge'){
         basePrice = 15.00;
       }
       let pizzaSum = basePrice;
@@ -152,6 +152,7 @@ export default {
         price: "",
         toppings: []
       },
+      cols: 2
     };
   },
   methods: {

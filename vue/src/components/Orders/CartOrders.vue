@@ -10,24 +10,25 @@
       >
         Cart
       </h1>
-      <h3 class="has-text-white">Order Total: ${{ cartTotal }}</h3>
-      <label for="isDelivery">Delivery </label>
-      <input type="checkbox" name="isDelivery" v-model="isDelivery" />
+      <h3 id="flexbox-total" class="has-text-white">Order Total: ${{ cartTotal }}</h3>
+      <label class="has-text-white" id="flexbox-delivery" for="isDelivery">Delivery </label>
+      <input id="flexbox-delivery" type="checkbox" name="isDelivery" v-model="isDelivery" />
       <br />
       <div id="flexbox">
         <div id="pizza-for" class="card-content">
           <div class="spacer">
-            <div v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
+            <div id="flexbox-pizza" v-for="pizza in $store.state.Cart.pizzas" :key="pizza.pizzaId">
               <br />
               Pizza Name: {{ pizza.name }} &nbsp;
-              <button
-                class="delete"
-                @click="deleteFromCart(pizza.pizzaId)"
-              ></button>
+              
               <br />
               {{ pizza.crust }} Crust, {{ pizza.sauce }} Sauce,
               {{ pizza.toppings.map((topping) => topping.name).join(", ") }}
               <div class="is-divider"></div>
+              <button id="flexbox-remove"
+                class="delete"
+                @click="deleteFromCart(pizza.pizzaId)"
+              ></button>
             </div>
           </div>
         </div>
@@ -104,6 +105,7 @@ export default {
         OrderPizzaService.addOrder(this.order);
         this.resetOrder();
         this.$store.state.showCart = !this.$store.state.showCart;
+        this.$store.state.Cart = this.newOrder;
       }
     },
     deleteFromCart(id) {
@@ -132,20 +134,39 @@ export default {
 </script>
 
 <style>
-.flex {
-  display: flex;
-}
-
-.spacer {
-  margin: 40px;
-}
-
 #flexbox {
   display: flex;
   flex-direction: column;
+
+ justify-self: center;
+ justify-content: space-around;
+}
+#flexbox-remove{
+display: flex;
+justify-content: flex-end;
+align-items: center;
+}
+
+#flexbox-total{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#flexbox-delivery{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+#flexbox-pizza{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
-  text-align: center;
-  justify-content: space-evenly;
+  border-radius: 5px;
+  min-width: 100%;
+  
+
 }
 
 .content {

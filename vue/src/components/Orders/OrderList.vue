@@ -1,17 +1,31 @@
 <template>
   <div>
-    <label > Show Pending Orders</label>
-    <input type="checkbox" v-model="showPending">
-    <label > Show Cancelled Orders</label>
-    <input type="checkbox" v-model="showCancelled">
-    <label > Show Completed Orders</label>
-    <input type="checkbox" v-model="showCompleted">
-    <label > Show All Orders</label>
-    <input type="checkbox" v-model="showAll">
-  
-    <div v-if="showActive">
-      <h1>Active Orders</h1>
-    <div v-for="order in activeOrders" v-bind:key="order.orderId" >
+    <nav id="orderSearchBar">
+      <div>
+    <label >Search by Order Status</label>
+          <select id="statusFilter" v-model="search.orderStatus">
+            <option value="">Show All</option>
+            <option value="Pending">Active</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+          </div>
+          <div>
+      <label > Search by Delivery</label>
+        <select id="statusFilter" v-model="search.Delivery">
+            <option value="">Show All</option>
+            <option value="true">Is a Delivery</option>
+            <option value="false">is not a Delivery</option>
+           
+          </select>
+          </div>
+          <div>
+          <label > Search by Order Id</label>
+          <input type="number"  min="0" v-model="search.orderId">
+           </div>
+    </nav>
+      <h1>{{search.orderStatus}}</h1>
+    <div v-for="order in filteredOrders" v-bind:key="order.orderId">
       
       <div class="card">
         <header class="card-header">
@@ -24,182 +38,48 @@
         </header>
         <div class="card-content">
           <div class="content">
-            ${{order.price}}
+            <div id="card-price-delivery">
+            Price: ${{order.price}}
             <br>
-            Is this a Delivery: {{order.delivery}} <br>
-            </div>
-            <label > Pending </label>
-            <input type="radio" v-model="order.orderStatus" value="Pending">
-            <label > Completed </label>
-            <input type="radio" v-model="order.orderStatus" value="Completed">
-            <label > Cancelled </label>
-            <input type="radio" v-model="order.orderStatus" value="Cancelled">
-          
-            <br />
-            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
-              <br>
-                Pizza Name: {{pizza.name}} <br>
-                Toppings: 
-                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
-                   {{topping.name}}
-                </div>
-                <br>
-              </div>
-          
-        </div>
-        <footer class="card-footer">
-          
-          
-          <a href="#" class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-
-    </div>
-    </div>
-    <div v-if="showCompleted">
-    <h1>Completed Orders</h1>
-    <div v-for="order in completedOrders" v-bind:key="order.orderId">
-      
-      <div class="card">
-        <header class="card-header">
-          <p class="card-header-title"> Order #{{order.orderId}}</p>
-          <button class="card-header-icon" aria-label="more options">
-            <span class="icon">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            ${{order.price}}
+            Is this a Delivery: 
             <br>
-            Is this a Delivery: {{order.delivery}} <br>
-            </div>
-            <label > Pending </label>
-            <input type="radio" v-model="order.orderStatus" value="Pending">
-            <label > Completed </label>
-            <input type="radio" v-model="order.orderStatus" value="Completed">
-            <label > Cancelled </label>
-            <input type="radio" v-model="order.orderStatus" value="Cancelled">
-          
-            <br />
-            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
-              <br>
-                Pizza Name: {{pizza.name}} <br>
-                Toppings: 
-                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
-                   {{topping.name}}
-                </div>
-                <br>
-              </div>
-          
-        </div>
-        <footer class="card-footer">
-          
-          
-          <a href="#" class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-
-    </div>
-    </div>
-    <div v-if="showCancelled">
-    <h1>Cancelled Orders</h1>
-    <div v-for="order in cancelledOrders" v-bind:key="order.orderId">
-      
-      <div class="card">
-        <header class="card-header">
-          <p class="card-header-title"> Order #{{order.orderId}}</p>
-          <button class="card-header-icon" aria-label="more options">
-            <span class="icon">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            ${{order.price}}
-            <br>
-            Delivery? : {{order.delivery}} <br>
-            </div>
-            <label > Pending </label>
-            <input type="radio" v-model="order.orderStatus" value="Pending">
-            <label > Completed </label>
-            <input type="radio" v-model="order.orderStatus" value="Completed">
-            <label > Cancelled </label>
-            <input type="radio" v-model="order.orderStatus" value="Cancelled">
-          
-            <br />
             
-           <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
-              <br>
-                Pizza Name: {{pizza.name}} <br>
-                Toppings: 
-                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
-                   {{topping.name}}
-                </div>
-                <br>
-              </div>
-        </div>
-       
-        <footer class="card-footer">
-          
-          
-          <a href="#" class="card-footer-item">Delete</a>
-        </footer>
-      </div>
-
-    </div>
-    </div>
-    <div v-if="showAll">
-    <h1>All Orders</h1>
-    <div v-for="order in orders" v-bind:key="order.orderId">
-      
-      <div class="card">
-        <header class="card-header">
-          <p class="card-header-title"> Order #{{order.orderId}}</p>
-          <button class="card-header-icon" aria-label="more options">
-            <span class="icon">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            ${{order.price}}
-            <br>
-            Is this a Delivery: {{order.delivery}} <br>
+            {{order.delivery}} <br>
             </div>
+            </div>
+            <div id="order-status-select">
+              <div>
             <label > Pending </label>
             <input type="radio" v-model="order.orderStatus" value="Pending">
+            </div>
+            <div>
             <label > Completed </label>
             <input type="radio" v-model="order.orderStatus" value="Completed">
+            </div>
+            <div>
             <label > Cancelled </label>
             <input type="radio" v-model="order.orderStatus" value="Cancelled">
-          
+            </div>
+            </div>
             <br />
-            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId">
+            <div  v-for="pizza in order.pizzas" v-bind:key="pizza.pizzaId" id="pizza-content">
               <br>
-                Pizza Name: {{pizza.name}} <br>
-                Toppings: 
-                <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
-                   {{topping.name}}
+              <div>
+                Pizza Name: {{pizza.name}} 
                 </div>
-                
+                <div>
+                Toppings: 
+                  <div v-for="topping in pizza.toppings" v-bind:key="topping.toppingId">
+                    {{topping.name}}
+                  </div>
+                </div>
                 <br>
               </div>
           
         </div>
-        <footer class="card-footer">
-          
-          
-          <a href="#" class="card-footer-item">Delete</a>
-        </footer>
+      
       </div>
-
     </div>
-    </div>
-    
     <button type="button"  @click="saveOrderChanges()">Save Changes</button>
     
   </div>
@@ -212,28 +92,23 @@ export default {
   data() {
     return {
       orders: [],
-      showPending: false,
-      showCancelled: false,
-      showCompleted: false,
-      showAll: false,
+      
+      search: {
+        orderId:'',
+        Delivery: '',
+        orderStatus: '',
+
+      }
     };
   },
   computed:{
-    activeOrders(){
-      return this.orders.filter(order => {
-         return order.orderStatus == 'Pending'
+    filteredOrders() {
+      return this.orders.filter((order) => {
+        if (order.orderStatus.includes(this.search.orderStatus) && (this.search.Delivery === "" || (order.delivery && this.search.Delivery) || (!order.delivery && this.search.Delivery === 'false')) && (order.orderId==(this.search.orderId) || this.search.orderId=="")) {
+          return order;
+        }
       })
-    },
-    completedOrders(){
-      return this.orders.filter(order => {
-         return order.orderStatus == 'Completed'
-      })
-    },
-    cancelledOrders(){
-      return this.orders.filter(order => {
-         return order.orderStatus == 'Cancelled'
-      })
-    },
+    }
   },
   methods: {
     saveOrderChanges() {
@@ -263,15 +138,51 @@ export default {
       })
     });
   },
-};
+  };
 </script>
 
 <style>
-#saveOrderChanges{
-  /* position: fixed;
-  z-index: 3;
+#orderSearchBar{
   display: flex;
-  align-content: flex-end; */
+  justify-content: space-around; 
+  padding: 10px;
+}
+.card{
+  padding-bottom: 20px;
+
+  background: #f3ebf6;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 120%;
+}
+#card-content{
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+#pizza-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 3;
+  outline: 2px solid black;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 5px;
+  background: white;
+}
+#order-status-select {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex-grow: 1;
+  margin-top: 16px;
+}
+#card-price-delivery{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
   
 }
 </style>
