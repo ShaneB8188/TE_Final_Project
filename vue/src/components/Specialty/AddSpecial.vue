@@ -154,7 +154,7 @@
       </div>
       <br />
       <button type="submit" class="btn btn-submit" @click.prevent="updatePizza">
-        Order
+        Create New Special
       </button>
       <button type="button" class="btn btn-cancel" @click="resetForm">
         Clear Choices
