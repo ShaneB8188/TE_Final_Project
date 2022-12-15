@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="contenty">
     <div id="flex-box" class="text-center">
       <div class=""></div>
 
@@ -169,7 +169,7 @@ align-items: center;
 
 }
 
-.content {
+.contenty {
   background: linear-gradient(to right, #27b055, #064d15);
 }
 
@@ -198,6 +198,4 @@ h3 {
   background-color: rgb(212, 92, 116);
 }
 
-h1 {
-}
 </style>
