@@ -77,7 +77,7 @@
         <div class="content">
           We try constantly to outperform our past best. We continually
           “Increase present expectations.” No issue how great we will be, we
-          will dependably show signs of improvement. Nothing shows improvement like the story of our twin chefs Tom and Tom. Like a pizza, the were baked and developed under the care of our chef Walt and now they are running our booming Pizza truck business like pros.
+          will dependably show signs of improvement. Nothing shows improvement like the story of our twin chefs Tom and Tom. Like a pizza, they were baked and developed under the care of our chef Walt and now they are running our booming Pizza truck business like pros.
         </div>
       </div>
     </div>
