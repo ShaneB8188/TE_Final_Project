@@ -8,7 +8,7 @@
       <div class="card-content" id="name">Speziata's Pizzaeria Values</div>
 
       <div class="card-content">
-        The key to progress is much similar to the key to improving a pizza –
+        The key to progress is similar to the key to improving a pizza –
         the more you put into it, the more you receive in return. Our pizza
         family is as eager for flawlessness today as we were the point at which
         we originally opened our entryways over 40 years back. Also, we’re
@@ -16,13 +16,12 @@
         is at our center. It’s the establishment we begun with, from the main
         Speziata's pizza that was made in a sweeper storage room in
         Tech Elevator, to now in excess of 5,000 areas in 45 nations and regions
-        around the globe. We don’t utilize shabby and increasingly prepared
-        fixings. Regardless of whether it’s our mark sauce, fixings, our unique
-        new mixture, or even the case itself, we put resources into our fixings
-        to guarantee that we generally give you the best quality pizza. For you,
-        it’s not only a superior pizza. It’s a family assembling, important
-        birthday, work festivity or basically an incredible supper. It’s our
-        objective to ensure you generally have the best elements for each event.
+        around the globe. We don’t utilize shabby or ready-made
+        fixings. Regardless of whether it’s our signature sauce, fixings, our unique
+        new flour, or even the cheese itself, we put resources into our fixings
+        to guarantee that we give you the best quality pizza. For you,
+        it’s not only a superior pizza. It’s a family assembling, building, and designing a true unique pizza creation. It’s our
+        objective to ensure you absolutely have the best ingredients for each pizza.
       </div>
     </div>
     <div class="card" id="core-interest">
@@ -31,9 +30,7 @@
       </header>
       <div class="card-content">
         <div class="content">
-          We should keep priority the main thing , The Main Thing which is
-          pizza. We will reliably convey a conventional Speziata's
-          unrivaled quality pizza.
+          When it comes down to it, it's all about the Pizza. If we aren't talking pizza we don't wanna talk. From our local fresh ingredients to the love and care that our head chef Walt uses, every Pizza is a "pizza" of our hearts.
         </div>
       </div>
     </div>
@@ -43,35 +40,31 @@
       </header>
       <div class="card-content">
         <div class="content">
-          Our consumer loyalty must be predictable, quantifiable and verifiable.
-          At Speziata's we anticipate perfection – the “best in its
-          class” in all that we do.
+          When we were founded we made a pledge to never again be at the bottom of the chain. Our local shop now dominates the field, thanks to our special touch.
+          At Speziata's we anticipate perfection – the “Best in its
+          Class” in all that we do.
         </div>
       </div>
     </div>
     <div class="card" id="thought-process">
       <header class="card-header">
-        <p class="card-header-title">Thought Process</p>
+        <p class="card-header-title">Customers</p>
       </header>
       <div class="card-content">
         <div class="content">
           Individuals Are Priority Always. Our prosperity relies on our
           capacity, as a group, to cooperate to accomplish our objectives and
-          desires.
+          desires. And there's no one more important to us than our paying customers. We literally wouldn't in business without them.
         </div>
       </div>
     </div>
     <div class="card" id="disposition">
       <header class="card-header">
-        <p class="card-header-title">Disposition</p>
+        <p class="card-header-title">Attitude</p>
       </header>
       <div class="card-content">
         <div class="content">
-          On the off chance that you want to or you figure you can’t – you’re
-          correct! The distinction among champs and failures is a positive
-          mental frame of mind. Our frame of mind is an impression of what we
-          esteem: fruitful colleagues must be perky, proactive and enthusiastic
-          about all that they do.
+          When it comes to attitude I'm reminded of something my grandfather once told me on the beach in Sicily, "Never give up, and make the best damn Pizza place out there." He also mentioned that the Americans were fools and we could easily corner the market there since our business was failing in Italy. But I digress, we have the chops.
         </div>
       </div>
     </div>
@@ -84,7 +77,7 @@
         <div class="content">
           We try constantly to outperform our past best. We continually
           “Increase present expectations.” No issue how great we will be, we
-          will dependably show signs of improvement.
+          will dependably show signs of improvement. Nothing shows improvement like the story of our twin chefs Tom and Tom. Like a pizza, the were baked and developed under the care of our chef Walt and now they are running our booming Pizza truck business like pros.
         </div>
       </div>
     </div>
